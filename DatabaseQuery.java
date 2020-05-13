@@ -2,6 +2,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+
+// Simple Database Query
 public class DatabaseQuery {
 
     public static ResultSet getResultSet(String query, Connection connection) {
