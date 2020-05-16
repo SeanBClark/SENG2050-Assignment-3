@@ -5,11 +5,11 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
-@WebServlet(urlPatterns = { "/HomePage" })
+@WebServlet(urlPatterns = { "/HomePageController" })
 
-public class HomePage extends HttpServlet {
+public class HomePageController extends HttpServlet {
 
-    public HomePage() {
+    public HomePageController() {
 
         super();
 
