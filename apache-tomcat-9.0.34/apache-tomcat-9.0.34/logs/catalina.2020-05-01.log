@@ -1,0 +1,123 @@
+01-May-2020 15:24:41.241 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.34
+01-May-2020 15:24:41.243 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2020 12:02:52 UTC
+01-May-2020 15:24:41.244 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.34.0
+01-May-2020 15:24:41.244 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+01-May-2020 15:24:41.244 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+01-May-2020 15:24:41.244 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+01-May-2020 15:24:41.245 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-11.0.6
+01-May-2020 15:24:41.245 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.6+8-LTS
+01-May-2020 15:24:41.245 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+01-May-2020 15:24:41.245 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+01-May-2020 15:24:41.245 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+01-May-2020 15:24:41.259 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+01-May-2020 15:24:41.260 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+01-May-2020 15:24:41.260 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+01-May-2020 15:24:41.260 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\conf\logging.properties
+01-May-2020 15:24:41.260 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+01-May-2020 15:24:41.260 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+01-May-2020 15:24:41.261 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+01-May-2020 15:24:41.261 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+01-May-2020 15:24:41.261 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+01-May-2020 15:24:41.261 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+01-May-2020 15:24:41.262 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\temp
+01-May-2020 15:24:41.262 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files\WorldPainter;C:\Program Files\Git\cmd;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Users\seanc\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\seanc\AppData\Local\Programs\Python\Python37-32\;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.3.3\bin;C:\Ruby26-x64\bin;C:\Users\seanc\AppData\Local\Microsoft\WindowsApps;C:\Users\seanc\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\seanc\AppData\Local\GitHubDesktop\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\seanc\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\seanc\AppData\Local\Programs\Python\Python37-32\;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.3.3\bin;C:\Ruby26-x64\bin;C:\Users\seanc\AppData\Local\Microsoft\WindowsApps;C:\Users\seanc\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\seanc\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk-11.0.6\bin;;.]
+01-May-2020 15:24:41.473 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+01-May-2020 15:24:41.561 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [493] milliseconds
+01-May-2020 15:24:41.599 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+01-May-2020 15:24:41.599 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.34]
+01-May-2020 15:24:41.608 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\c3269995_assignment2]
+01-May-2020 15:24:42.161 WARNING [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = MyConnection Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "10" for "maxActive" property, which is being ignored.
+01-May-2020 15:24:42.233 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+01-May-2020 15:24:42.324 SEVERE [main] org.apache.catalina.session.StandardManager.startInternal Exception loading sessions from persistent storage
+	java.lang.ClassCastException: class java.io.ObjectStreamClass cannot be cast to class java.lang.String (java.io.ObjectStreamClass and java.lang.String are in module java.base of loader 'bootstrap')
+		at java.base/java.io.ObjectInputStream.readTypeString(ObjectInputStream.java:1726)
+		at java.base/java.io.ObjectStreamClass.readNonProxy(ObjectStreamClass.java:793)
+		at java.base/java.io.ObjectInputStream.readClassDescriptor(ObjectInputStream.java:936)
+		at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1930)
+		at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1827)
+		at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2115)
+		at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1646)
+		at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:464)
+		at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:422)
+		at java.base/java.util.ArrayList.readObject(ArrayList.java:928)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1160)
+		at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2271)
+		at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2142)
+		at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1646)
+		at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:464)
+		at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:422)
+		at org.apache.catalina.session.StandardSession.doReadObject(StandardSession.java:1597)
+		at org.apache.catalina.session.StandardSession.readObjectData(StandardSession.java:1049)
+		at org.apache.catalina.session.StandardManager.doLoad(StandardManager.java:218)
+		at org.apache.catalina.session.StandardManager.load(StandardManager.java:162)
+		at org.apache.catalina.session.StandardManager.startInternal(StandardManager.java:354)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5168)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:717)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:690)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:705)
+		at org.apache.catalina.startup.HostConfig.deployDirectory(HostConfig.java:1133)
+		at org.apache.catalina.startup.HostConfig$DeployDirectory.run(HostConfig.java:1867)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDirectories(HostConfig.java:1045)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:429)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:423)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:366)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:936)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:841)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:262)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:421)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:633)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:343)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:474)
+01-May-2020 15:24:42.347 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\c3269995_assignment2] has finished in [739] ms
+01-May-2020 15:24:42.348 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\docs]
+01-May-2020 15:24:42.369 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\docs] has finished in [21] ms
+01-May-2020 15:24:42.370 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\examples]
+01-May-2020 15:24:42.646 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\examples] has finished in [276] ms
+01-May-2020 15:24:42.647 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\host-manager]
+01-May-2020 15:24:42.682 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\host-manager] has finished in [36] ms
+01-May-2020 15:24:42.682 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\manager]
+01-May-2020 15:24:42.714 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\manager] has finished in [32] ms
+01-May-2020 15:24:42.715 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\ROOT]
+01-May-2020 15:24:42.740 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\seanc\Documents\Git Hub\SENG2250-Web-Engineering\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\ROOT] has finished in [24] ms
+01-May-2020 15:24:42.746 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+01-May-2020 15:24:42.754 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1,192] milliseconds
+01-May-2020 16:02:13.342 INFO [Thread-3] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+01-May-2020 16:02:13.384 INFO [Thread-3] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+01-May-2020 16:02:13.417 WARNING [Thread-3] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [c3269995_assignment2] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+01-May-2020 16:02:13.418 WARNING [Thread-3] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [c3269995_assignment2] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.6/java.lang.Object.wait(Native Method)
+ java.base@11.0.6/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@11.0.6/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+ java.base@11.0.6/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.6/java.lang.Thread.run(Thread.java:834)
+01-May-2020 16:02:13.424 INFO [Thread-3] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+01-May-2020 16:02:13.427 INFO [Thread-3] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
