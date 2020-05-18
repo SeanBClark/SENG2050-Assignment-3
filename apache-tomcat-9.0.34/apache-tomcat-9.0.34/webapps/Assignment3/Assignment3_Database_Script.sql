@@ -4,18 +4,22 @@
 
 -- mySQL script for Assignment 3: SENG2050
 
+-- DROP DATABASE GroupManagementDatabase;
+DROP USER IF EXISTS 'admin'@'GroupManagementDatabase';
+
 CREATE DATABASE IF NOT EXISTS GroupManagementDatabase;
 USE GroupManagementDatabase;
 
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin'; 
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+CREATE USER 'admin'@'GroupManagementDatabase' IDENTIFIED BY 'admin'; 
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'GroupManagementDatabase';
 
-DROP TABLE user_group_info;
-DROP TABLE group_milestones;
-DROP TABLE group_appointment;
-DROP TABLE file_mngt;
-DROP TABLE user;
-DROP TABLE group_info;
+DROP TABLE IF EXISTS user_group_info;
+DROP TABLE IF EXISTS group_milestones;
+DROP TABLE IF EXISTS group_appointment;
+DROP TABLE IF EXISTS file_mngt;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS group_info;
 
 -- User Info table
 -- user_password must be inserted or updated using sha1('password') hash function
