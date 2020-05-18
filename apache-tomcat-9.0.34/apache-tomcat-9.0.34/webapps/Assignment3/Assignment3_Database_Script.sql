@@ -7,6 +7,9 @@
 CREATE DATABASE IF NOT EXISTS GroupManagementDatabase;
 USE GroupManagementDatabase;
 
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin'; 
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+
 DROP TABLE user_group_info;
 DROP TABLE group_milestones;
 DROP TABLE group_appointment;
