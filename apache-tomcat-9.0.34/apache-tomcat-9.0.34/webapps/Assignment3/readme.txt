@@ -1,1 +1,3 @@
 javac -cp ".;mysql-connector-java-8.0.20.jar;C:\Users\Work Account\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\lib\servlet-api.jar" *.java
+
+javac -cp ".;mysql-connector-java-8.0.20.jar" *.java

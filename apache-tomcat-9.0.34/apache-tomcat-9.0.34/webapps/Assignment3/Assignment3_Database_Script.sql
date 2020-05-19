@@ -4,6 +4,8 @@
 
 -- mySQL script for Assignment 3: SENG2050
 
+select * from mysql.user;
+
 -- DROP DATABASE GroupManagementDatabase;
 DROP USER IF EXISTS 'admin'@'GroupManagementDatabase';
 
