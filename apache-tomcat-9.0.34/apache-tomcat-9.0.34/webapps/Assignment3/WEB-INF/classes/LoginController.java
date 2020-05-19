@@ -35,7 +35,8 @@ public class LoginController extends HttpServlet {
                 connection = ConfigBean.getConnection();
                 System.out.println("Connected");
             }
-            catch (Exception e){ System.out.println("Could not connect to DBMS"); }
+            catch (Exception e){ System.out.println("Could not connect to DBMS");
+                                    e.printStackTrace();}
 
             String queryString = "SELECT EXISTS(select * from user where user_email = '" + inputEmail + "' and user_password = sha1('" + inputPassword + "'));";
             // Checks if user exists
