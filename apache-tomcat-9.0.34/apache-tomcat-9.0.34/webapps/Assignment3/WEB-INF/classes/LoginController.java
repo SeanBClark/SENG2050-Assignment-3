@@ -45,13 +45,9 @@ public class LoginController extends HttpServlet {
                         else {
                             UserBean userBean = new UserBean();
                             userBean.setUserId(resultSet.getInt("user_id"));
-                            System.out.println("User ID = " + resultSet.getInt("user_id"));
                             userBean.setUserEmail(resultSet.getString("user_email"));
-                            System.out.println("User Email = " + resultSet.getString("user_email"));
                             userBean.setUserName(resultSet.getString("user_name"));
-                            System.out.println("User Name = " + resultSet.getString("user_name"));
                             userBean.setUserStatus(resultSet.getInt("user_status"));
-                            System.out.println("User Status = " + resultSet.getInt("user_status"));
                             session.setAttribute("userBean", userBean);
                         }
                     }
