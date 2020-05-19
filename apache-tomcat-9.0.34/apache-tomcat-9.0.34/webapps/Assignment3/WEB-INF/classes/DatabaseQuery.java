@@ -22,4 +22,30 @@ public class DatabaseQuery {
 
     }
 
+    public static boolean ifExists(String query, Connection connection) {
+
+        boolean result = false;
+        int check = 0;
+        ResultSet resultSet = null;
+        
+        try {
+
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            System.out.println("Query Success. Result = " + result);
+
+            while(resultSet.next()) {
+                if(resultSet.getInt(1) == 1) {
+                    check = 1;
+                    result = true;
+                }
+            }
+            System.out.println("Result = " + result);
+            
+        } catch (Exception e) { e.printStackTrace(); }
+
+        return result;
+
+    }
+
 }

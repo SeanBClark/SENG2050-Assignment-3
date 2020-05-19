@@ -1,0 +1,17 @@
+.login-form-div {
+
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 150px;
+
+}
+
+.form-input {
+
+    max-width: 50%;
+    min-width: 50%;
+    margin: 0 auto;
+    text-align: center;
+
+}

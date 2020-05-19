@@ -28,11 +28,19 @@ CREATE TABLE user (
 	user_id INT PRIMARY KEY NOT NULL auto_increment,
     user_email VARCHAR(50) NOT NULL,
     user_password VARCHAR(50) NOT NULL,
+    user_name VARCHAR(100) NOT NULL,
     user_status bit(1) default 1,
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp on update current_timestamp    
 
 );
+
+INSERT INTO user(user_email, user_password, user_name) VALUES ('admin@admin.com', sha1('admin'), 'admin');
+
+-- UPDATE user SET user_status = 1 where user_id = 1 and user_password = sha1('admin');
+
+-- SELECT EXISTS(select * from user where user_email = 'admin@admin.com' and user_password = sha1('admin'));
+-- SELECT user_id, user_email, user_status FROM user WHERE user_email = 'admin@admin.com';
 
 --  Group Infomation Table
 CREATE TABLE group_info (

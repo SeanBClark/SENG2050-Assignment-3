@@ -6,10 +6,10 @@
         type = "javax.sql.DataSource"
         maxActive="10"
         maxIdle="5"
-        username = "root"
-        password = "c3269995"
+        username = "admin"
+        password = "admin"
         driverClassName = "com.mysql.cj.jdbc.Driver"
-        url = "jdbc:mysql://localhost:3306/SENG2050_c3269995">
+        url = "jdbc:mysql://localhost:3306/GroupManagementDatabase">
 
     </Resource>
 
