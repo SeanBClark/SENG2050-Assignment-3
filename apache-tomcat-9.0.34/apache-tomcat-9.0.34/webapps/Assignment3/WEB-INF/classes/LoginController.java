@@ -12,6 +12,18 @@ public class LoginController extends HttpServlet {
         super();
     }
 
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/login/login.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+
+    }
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
             Connection connection = null;
@@ -54,7 +66,7 @@ public class LoginController extends HttpServlet {
                 }
                 else {
                     // TO DO: set user to register page
-                    response.setRedirect("../Assignment3/views/login/login.jsp");
+                    // response.setRedirect("../Assignment3/views/login/login.jsp");
                 }
                 connection.close();                
             } catch (Exception e) {

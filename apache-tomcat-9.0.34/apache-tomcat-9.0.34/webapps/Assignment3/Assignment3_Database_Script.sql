@@ -29,6 +29,7 @@ CREATE TABLE user (
     user_email VARCHAR(50) NOT NULL,
     user_password VARCHAR(50) NOT NULL,
     user_name VARCHAR(100) NOT NULL,
+    user_type VARCHAR(3) default 'Std',
     user_status bit(1) default 1,
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp on update current_timestamp    
