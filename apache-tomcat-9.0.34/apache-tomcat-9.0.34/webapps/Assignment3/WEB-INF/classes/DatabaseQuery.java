@@ -48,4 +48,14 @@ public class DatabaseQuery {
 
     }
 
+    public static String ifExistsQuery(String email, String password) {
+        String result = "SELECT EXISTS(select * from user where user_email = '" + email + "' and user_password = sha1('" + password + "'));";
+        return result;
+    }
+
+    public static String insertUser(String name, String email, String password) {
+        String result = "INSERT INTO user(user_email, user_password, user_name) VALUES ('" + email + "', sha1('" + password + "'), '" + name + "');";
+        return result;
+    }
+
 }

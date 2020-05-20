@@ -39,7 +39,7 @@ CREATE TABLE user (
 );
 
 INSERT INTO user(user_email, user_password, user_name) VALUES ('admin@admin.com', sha1('admin'), 'admin');
-
+SELECT * from user;
 -- UPDATE user SET user_status = 1 where user_id = 1 and user_password = sha1('admin');
 
 -- SELECT EXISTS(select * from user where user_email = 'admin@admin.com' and user_password = sha1('admin'));

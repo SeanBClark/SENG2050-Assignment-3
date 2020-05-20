@@ -13,15 +13,12 @@ public class LoginController extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/login/login.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -35,10 +32,12 @@ public class LoginController extends HttpServlet {
                 connection = ConfigBean.getConnection();
                 System.out.println("Connected");
             }
-            catch (Exception e){ System.out.println("Could not connect to DBMS");
-                                    e.printStackTrace();}
+            catch (Exception e){ 
+                System.out.println("Could not connect to DBMS");
+                e.printStackTrace();
+            }
 
-            String queryString = "SELECT EXISTS(select * from user where user_email = '" + inputEmail + "' and user_password = sha1('" + inputPassword + "'));";
+            String queryString = DatabaseQuery.ifExistsQuery(inputEmail, inputPassword);
             // Checks if user exists
             // True = exists, False = !exists
             boolean exists = DatabaseQuery.ifExists(queryString, connection);
