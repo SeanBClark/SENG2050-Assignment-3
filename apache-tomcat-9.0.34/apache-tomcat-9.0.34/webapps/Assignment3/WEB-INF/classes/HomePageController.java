@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
-@WebServlet(urlPatterns = { "/HomePageController" })
+@WebServlet(name = "/HomePageController", urlPatterns = { "/HomePage" })
 
 public class HomePageController extends HttpServlet {
 

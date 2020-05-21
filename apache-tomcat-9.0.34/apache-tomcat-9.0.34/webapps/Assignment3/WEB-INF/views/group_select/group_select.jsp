@@ -36,6 +36,8 @@
 
         <div class = 'align-self-center page-div'>
 
+            GROUP SELECT!
+
         </div>
 
     </body>

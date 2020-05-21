@@ -10,8 +10,15 @@
 .form-input {
 
     max-width: 50%;
-    min-width: 50%;
+    min-width: 400px;
     margin: 0 auto;
     text-align: center;
+
+}
+
+.alert-danger {
+
+    margin-top: 15px;
+    margin-bottom: 15px;
 
 }

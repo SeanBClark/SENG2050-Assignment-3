@@ -33,122 +33,187 @@
     <body>
 
         <div class = 'align-self-center page-div'>
+
+            <div class = 'header'>
+
+                <nav class = 'navbar navbar-expand-lg navbar-light bg-light'>
+
+                    <a class="navbar-brand" href="/Assignment3/HomePage">Group Mangement System</a>
+
+                    <%-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button> --%>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="/Assignment3/HomePage">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Home</button>
+                                    
+                                </a>
+
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="/Assignment3/LoginController">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button>
+                                    
+                                </a>
+
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="/Assignment3/CreateAccount">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Register</button>
+                                    
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <%-- Doesn't do anything --%>
+                    <form class="form-inline">
+
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+                    </form>
+
+                </nav>
+
+            </div>
+
+            <div class = 'body'>
         
-            <div class = 'login-form-div'>
-                <%-- onSubmit = 'return registerValidation()' --%>
-                <form method = "post"  onSubmit = 'return registerValidation()'  action = "/Assignment3/CreateAccount">
+                <div class = 'login-form-div'>
+                    <%-- onSubmit = 'return registerValidation()' --%>
+                    <form method = "post"  onSubmit = 'return registerValidation()'  action = "/Assignment3/CreateAccount">
 
-                    <div class = 'form-group'>
-                    
-                        <label for = 'userName' class = 'form-label'>Name</label>
-
-                        <input type = 'text' class = 'form-control form-input' id = 'userName' name = 'userName' placeholder = 'Enter Name'>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'name-invalid'>
-
-                            Name must only contain letters
-
-                        </div>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-name'>
-
-                            Please Enter Name
-
-                        </div>
-
-                    </div>
-
-                    <div class = 'form-group'>
-                    
-                        <label for = 'userEmail' class = 'form-label'>Email Address</label>
-
-                        <input type = 'email' class = 'form-control form-input' id = 'userEmail' name = 'userEmail' placeholder = 'Enter Email Address'>
-
-                        <h1 id = 'exists'></h1>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid'>
-
-                            Invalid Email Address
-
-                        </div>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email'>
-
-                            Please Enter Email
-                            
-                        </div>
-
-                    </div>
-
-                    <div class = 'form-group'>
-                    
-                        <label for = 'userEmail' class = 'form-label'>Confirm Email Address</label>
-
-                        <input type = 'email' class = 'form-control form-input' id = 'userEmailConf' name = 'userEmailConf' placeholder = 'Confirm Email Address'>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-no-match'>
-
-                            Emails do not match
-
-                        </div>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid-conf'>
-
-                            Invalid Email Address
-
-                        </div>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email-conf'>
-
-                            Please Enter Email Again
-                            
-                        </div>
-
-                    </div>
-
-                    <div class = 'form-group'>
-
-                        <label for = 'userPassword' class = 'form-label'>Password</label>
-
-                        <input type = 'password'  class = 'form-control form-input' id = 'userPassword' name = 'userPassword' placeholder = 'Enter Password'>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-password'>
-
-                            Please Enter Password
-                            
-                        </div>
-
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'password-invalid'>
+                        <div class = 'form-group'>
                         
-                            Password should only contain letters or numbers
+                            <label for = 'userName' class = 'form-label'>Name</label>
+
+                            <input type = 'text' class = 'form-control form-input' id = 'userName' name = 'userName' placeholder = 'Enter Name'>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'name-invalid'>
+
+                                Name must only contain letters
+
+                            </div>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-name'>
+
+                                Please Enter Name
+
+                            </div>
 
                         </div>
 
-                    </div>
+                        <div class = 'form-group'>
+                        
+                            <label for = 'userEmail' class = 'form-label'>Email Address</label>
 
-                    <div class = 'form-group'>
+                            <input type = 'email' class = 'form-control form-input' id = 'userEmail' name = 'userEmail' placeholder = 'Enter Email Address'>
 
-                        <label for = 'userPassword' class = 'form-label'>Confirm Password</label>
+                            <h1 id = 'exists'></h1>
 
-                        <input type = 'password'  class = 'form-control form-input' id = 'userPasswordConf' name = 'userPasswordConf' placeholder = 'Confirm Password'>
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid'>
 
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'password-no-match'>
+                                Invalid Email Address
 
-                            Password does not match
+                            </div>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email'>
+
+                                Please Enter Email Address
+                                
+                            </div>
+
+                        </div>
+
+                        <div class = 'form-group'>
+                        
+                            <label for = 'userEmail' class = 'form-label'>Confirm Email Address</label>
+
+                            <input type = 'email' class = 'form-control form-input' id = 'userEmailConf' name = 'userEmailConf' placeholder = 'Confirm Email Address'>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-no-match'>
+
+                                Emails do not match
+
+                            </div>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid-conf'>
+
+                                Invalid Email Address
+
+                            </div>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email-conf'>
+
+                                Please Enter Email Again
+                                
+                            </div>
+
+                        </div>
+
+                        <div class = 'form-group'>
+
+                            <label for = 'userPassword' class = 'form-label'>Password</label>
+
+                            <input type = 'password'  class = 'form-control form-input' id = 'userPassword' name = 'userPassword' placeholder = 'Enter Password'>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-password'>
+
+                                Please Enter Password
+                                
+                            </div>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'password-invalid'>
                             
+                                Password should only contain letters or numbers
+
+                            </div>
+
                         </div>
 
-                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-password-conf'>
+                        <div class = 'form-group'>
 
-                            Please Enter Re-enter Password
-                            
+                            <label for = 'userPassword' class = 'form-label'>Confirm Password</label>
+
+                            <input type = 'password'  class = 'form-control form-input' id = 'userPasswordConf' name = 'userPasswordConf' placeholder = 'Confirm Password'>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'password-no-match'>
+
+                                Password does not match
+                                
+                            </div>
+
+                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-password-conf'>
+
+                                Please Enter Re-enter Password
+                                
+                            </div>
+
                         </div>
 
-                    </div>
+                        <button type = "submit" class = "btn btn-success">Submit</button>
 
-                    <button type = "submit" class = "btn btn-primary">Submit</button>
+                    </form>
 
-                </form>
+                </div>
 
             </div>
 

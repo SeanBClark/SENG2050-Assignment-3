@@ -39,6 +39,10 @@ CREATE TABLE user (
 );
 
 INSERT INTO user(user_email, user_password, user_name) VALUES ('admin@admin.com', sha1('admin'), 'admin');
+INSERT INTO user(user_email, user_password, user_name) VALUES ('a@a.com', sha1('password'), 'Person 1');
+INSERT INTO user(user_email, user_password, user_name) VALUES ('b@b.com', sha1('password'), 'Person 2');
+INSERT INTO user(user_email, user_password, user_name) VALUES ('c@c.com', sha1('password'), 'Person 3');
+INSERT INTO user(user_email, user_password, user_name) VALUES ('d@d.com', sha1('password'), 'Person 4');
 SELECT * from user;
 -- UPDATE user SET user_status = 1 where user_id = 1 and user_password = sha1('admin');
 
@@ -49,12 +53,19 @@ SELECT * from user;
 CREATE TABLE group_info (
 
 	group_id INT PRIMARY KEY NOT NULL auto_increment,
-    group_name VARCHAR(50) NOT NULL,    
+    group_name VARCHAR(50) NOT NULL,
+    group_description VARCHAR(200), 
     group_status bit(1) default 1,
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp    
 
 );
+
+INSERT INTO group_info(group_name, group_description) VALUES ('Group 1', 'Test group description short');
+INSERT INTO group_info(group_name, group_description) VALUES ('Group 3', 'Test group description looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong');
+INSERT INTO group_info(group_name) VALUES ('Group 4');
+INSERT INTO group_info(group_name) VALUES ('Group 5');
+SELECT * FROM group_info;
 
 -- User Group Info table
 -- Enables user to be a part of multiple groups
@@ -73,6 +84,19 @@ CREATE TABLE user_group_info (
 -- insert into user_group_info(user_id, group_id) values (
 -- 	(select user_id from user where user_name = 'name'), 
 --  (select group_id from group_info where group_name = 'name'));
+
+INSERT INTO user_group_info(user_id, group_id) VALUES (1,1);
+INSERT INTO user_group_info(user_id, group_id) VALUES (2,1);
+INSERT INTO user_group_info(user_id, group_id) VALUES (4,1);
+INSERT INTO user_group_info(user_id, group_id) VALUES (1,2);
+INSERT INTO user_group_info(user_id, group_id) VALUES (3,2);
+SELECT * FROM user_group_info;
+
+SELECT group_info.group_id, group_info.group_name, group_info.group_description, user.user_name, user.user_id 
+	FROM user_group_info 
+    JOIN user ON user.user_id = user_group_info.user_id 
+    JOIN group_info ON group_info.group_id = user_group_info.group_id 
+    WHERE user_group_info.user_id = 1;
 
 -- Stores Group Appointments
 CREATE TABLE group_appointment (

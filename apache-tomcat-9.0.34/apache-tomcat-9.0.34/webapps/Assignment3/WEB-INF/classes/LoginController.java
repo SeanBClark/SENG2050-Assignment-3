@@ -60,9 +60,13 @@ public class LoginController extends HttpServlet {
                             userBean.setUserEmail(resultSet.getString("user_email"));
                             userBean.setUserName(resultSet.getString("user_name"));
                             userBean.setUserStatus(resultSet.getInt("user_status"));
+                            session.setAttribute("userID", resultSet.getInt("user_id"));
                             session.setAttribute("userBean", userBean);
+                            System.out.println("Session Set");
                         }
                     }
+
+                    response.sendRedirect("/Assignment3/GroupSelect");
                 }
                 else {
                     // TO DO: set user to register page

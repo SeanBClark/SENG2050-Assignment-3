@@ -34,30 +34,119 @@
 
         <div class = 'align-self-center page-div'>
 
-            <div class = 'login-form-div'>
+        <div class = 'header'>
 
-                <form method = "post" action = '/Assignment3/LoginController'>
+                <nav class = 'navbar navbar-expand-lg navbar-light bg-light'>
 
-                    <div class = 'form-group'>
-                    
-                        <label for = 'userEmail' class = 'form-label'>Email Address</label>
+                    <a class="navbar-brand" href="/Assignment3/HomePage">Group Mangement System</a>
 
-                        <input type = 'email' class = 'form-control form-input' id = 'userEmail' name = 'userEmail' placeholder = 'Enter Email Address'>
+                    <%-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button> --%>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="/Assignment3/HomePage">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Home</button>
+                                    
+                                </a>
+
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="/Assignment3/LoginController">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button>
+                                    
+                                </a>
+
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="/Assignment3/CreateAccount">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Register</button>
+                                    
+                                </a>
+
+                            </li>
+
+                        </ul>
 
                     </div>
 
-                    <div class = 'form-group'>
+                    <%-- Doesn't do anything --%>
+                    <form class="form-inline">
 
-                        <label for = 'userPassword' class = 'form-label'>Password</label>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
-                        <input type = 'password'  class = 'form-control form-input' id = 'userPassword' name = 'userPassword' placeholder = 'Enter Password'>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
-                    </div>
+                    </form>
 
-                    <button type = "submit" class = "btn btn-primary">Submit</button>
-                    <a href = '/Assignment3/CreateAccount'><button type = "button" class = "btn btn-primary" >Register</button></a>
+                </nav>
 
-                </form>
+            </div>
+
+            <div class = 'body'>
+
+                <div class = 'login-form-div'>
+
+                    <form method = "post" action = '/Assignment3/LoginController' onSubmit = "return formValidation()" >
+
+                        <div class = 'form-group'>
+                        
+                            <label for = 'userEmail' class = 'form-label'>Email Address</label>
+
+                            <input type = 'email' class = 'form-control form-input' id = 'userEmail' name = 'userEmail' placeholder = 'Enter Email Address'>
+
+                        </div>
+
+                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid'>
+
+                                Invalid Email Address
+
+                        </div>
+
+                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email'>
+
+                            Please Enter Email Address
+                                
+                        </div>
+
+                        <div class = 'form-group'>
+
+                            <label for = 'userPassword' class = 'form-label'>Password</label>
+
+                            <input type = 'password'  class = 'form-control form-input' id = 'userPassword' name = 'userPassword' placeholder = 'Enter Password'>
+
+                        </div>
+
+                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-password'>
+
+                                Please Enter Password
+                                
+                            </div>
+
+                        <div class = 'alert alert-danger form-input' role = 'alert' id = 'password-invalid'>
+                            
+                                Password should only contain letters or numbers
+
+                        </div>
+
+                        <button type = "submit" class = "btn btn-success">Submit</button>
+                        <button type = "button" class = "btn btn-success" onClick = "clearForm()">Clear</button>
+
+                    </form>
+
+                </div>
 
             </div>
 

@@ -32,7 +32,7 @@ function registerValidation() {
     {
 
         hideErrors();
-        $('#no-name').show();
+        $('#no-name').slideDown();
         return false;
 
     }
@@ -40,7 +40,7 @@ function registerValidation() {
     {
 
         hideErrors();
-        $('#no-email').show();
+        $('#no-email').slideDown();
         return false;
 
     }
@@ -48,14 +48,14 @@ function registerValidation() {
     {
 
         hideErrors();
-        $('#no-email-conf').show();
+        $('#no-email-conf').slideDown();
         return false;
 
     }
     else if (isLetNum(userPassword) === false) {
 
         hideErrors();
-        $('#password-invalid').show();
+        $('#password-invalid').slideDown();
         return false;
         
     }
@@ -63,7 +63,7 @@ function registerValidation() {
     {
 
         hideErrors();
-        $('#no-password').show();
+        $('#no-password').slideDown();
         return false;
 
     }
@@ -71,7 +71,7 @@ function registerValidation() {
     {
 
         hideErrors();
-        $('#no-password-conf').show();
+        $('#no-password-conf').slideDown();
         return false;
 
     }
@@ -82,14 +82,14 @@ function registerValidation() {
     if (isLetters(userName) === false){
 
         hideErrors();
-        $('#name-invalid').show();
+        $('#name-invalid').slideDown();
         return false;
 
     }
     if (isEmail(userEmail === false)) {
 
         hideErrors();
-        $('#email-invalid').show();
+        $('#email-invalid').slideDown();
         return false;
 
     }
@@ -97,14 +97,14 @@ function registerValidation() {
     if (userEmail !== userEmailConf) {
 
         hideErrors();
-        $('#email-no-match').show();
+        $('#email-no-match').slideDown();
         return false;
 
     }
     if (userPassword !== userPasswordConf) {
 
         hideErrors();
-        $('#password-no-match').show();
+        $('#password-no-match').slideDown();
         return false;
 
     }
