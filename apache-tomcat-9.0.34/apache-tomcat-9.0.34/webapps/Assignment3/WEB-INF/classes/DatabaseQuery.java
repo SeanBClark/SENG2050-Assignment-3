@@ -12,7 +12,7 @@ public class DatabaseQuery {
             
             Statement statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
-            System.out.println("Query Success");
+            // System.out.println("Query Success");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,6 +55,16 @@ public class DatabaseQuery {
 
     public static String insertUser(String name, String email, String password) {
         String result = "INSERT INTO user(user_email, user_password, user_name) VALUES ('" + email + "', sha1('" + password + "'), '" + name + "');";
+        return result;
+    }
+
+    public static String insertGroup(String groupName, String groupDesc) {
+        String result = "INSERT INTO group_info(group_name, group_description) VALUES ('" + groupName + "', '" + groupDesc + "');";
+        return result;
+    }
+
+    public static String insertGroupUser(int userID, String groupName) {
+        String result = "INSERT INTO user_group_info(user_id, group_id) VALUES ('" + userID + "', (SELECT group_id FROM group_info WHERE group_name = '" + groupName + "'))";
         return result;
     }
 

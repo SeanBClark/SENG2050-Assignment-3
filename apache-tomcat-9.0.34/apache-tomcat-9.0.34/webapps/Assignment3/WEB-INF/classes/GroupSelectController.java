@@ -1,6 +1,7 @@
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.*;
@@ -32,14 +33,17 @@ public class GroupSelectController extends HttpServlet {
             
             while(groupResultSet.next()) {
 
+                session = request.getSession();
+
                 GroupListBean groupListBean = new GroupListBean();
                 groupListBean.setGroupId(groupResultSet.getInt("group_id"));
                 groupListBean.setGroupName(groupResultSet.getString("group_name"));
                 groupListBean.setGroupDesc(groupResultSet.getString("group_description"));
-                session.setAttribute("groupListBean", groupListBean);
                 groupList.add(groupListBean);
+                session.setAttribute("groupListBean", groupListBean);
 
             }
+            session.setAttribute("groupList", groupList);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,11 +59,41 @@ public class GroupSelectController extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException {            
-            // Connection connection = null;
-            // try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
+        throws ServletException, IOException {
+            Connection connection = null;
+            try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
 
-            // try { connection.close(); } catch (Exception e) { e.printStackTrace(); }            
+            String groupName = request.getParameter("groupName");
+            String groupDesc = request.getParameter("groupDesc");
+
+            String insertGroupQuery = DatabaseQuery.insertGroup(groupName, groupDesc);
+
+            try {
+                Statement statement = connection.createStatement();
+                statement.execute(insertGroupQuery);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            
+            HttpSession session = request.getSession();
+            int userID = (int) session.getAttribute("userID");
+
+            String addGroupUser = DatabaseQuery.insertGroupUser(userID, groupName);
+
+            try {
+                Statement statement = connection.createStatement();
+                statement.execute(addGroupUser);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            try {
+                connection.close(); 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+                     
     }
 
     public static String getGroupInfo(int userID) {

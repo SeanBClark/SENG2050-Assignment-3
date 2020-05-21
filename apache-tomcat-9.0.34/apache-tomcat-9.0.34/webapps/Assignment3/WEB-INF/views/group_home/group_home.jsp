@@ -4,6 +4,7 @@
 <%@page import="java.util.Iterator" %>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.Map.Entry" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -35,6 +36,8 @@
     <body>
 
         <div class = 'align-self-center page-div'>
+
+            GROUP HOME
 
         </div>
 

@@ -61,15 +61,6 @@
                             </li>
                             <li class="nav-item">
 
-                                <a class="nav-link" href="/Assignment3/LoginController">
-                                
-                                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button>
-                                    
-                                </a>
-
-                            </li>
-                            <li class="nav-item">
-
                                 <a class="nav-link" href="/Assignment3/CreateAccount">
                                 
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="button">Register</button>
