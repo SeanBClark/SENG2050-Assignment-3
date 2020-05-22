@@ -39,6 +39,7 @@ public class GroupSelectController extends HttpServlet {
                 groupListBean.setGroupId(groupResultSet.getInt("group_id"));
                 groupListBean.setGroupName(groupResultSet.getString("group_name"));
                 groupListBean.setGroupDesc(groupResultSet.getString("group_description"));
+                session.setAttribute("groupID", groupResultSet.getInt("group_id"));
                 groupList.add(groupListBean);
                 session.setAttribute("groupListBean", groupListBean);
 
@@ -84,6 +85,7 @@ public class GroupSelectController extends HttpServlet {
             try {
                 Statement statement = connection.createStatement();
                 statement.execute(addGroupUser);
+                response.sendRedirect("/Assignment3/GroupHome");
             } catch (Exception e) {
                 e.printStackTrace();
             }

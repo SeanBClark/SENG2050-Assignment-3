@@ -97,6 +97,11 @@ SELECT group_info.group_id, group_info.group_name, group_info.group_description,
     JOIN user ON user.user_id = user_group_info.user_id 
     JOIN group_info ON group_info.group_id = user_group_info.group_id 
     WHERE user_group_info.user_id = 1;
+    
+SELECT user.user_name, user.user_id 
+	FROM user
+    JOIN user_group_info on user_group_info.user_id = user.user_id
+    WHERE user_group_info.group_id = 1;
 
 -- Stores Group Appointments
 CREATE TABLE group_appointment (

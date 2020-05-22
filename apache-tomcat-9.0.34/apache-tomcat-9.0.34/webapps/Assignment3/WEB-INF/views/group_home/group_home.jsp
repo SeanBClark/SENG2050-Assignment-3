@@ -21,6 +21,7 @@
 
         <%-- Stylesheets --%>
         <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity = "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin = "anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel = "stylesheet" href ="../Assignment3/views/group_home/group_home.css" type = "text/css">
         <link rel = "stylesheet" href ="../Assignment3/views/application.css" type = "text/css">
 
@@ -37,7 +38,115 @@
 
         <div class = 'align-self-center page-div'>
 
-            GROUP HOME
+            <div class = 'header'>
+
+                <nav class = 'navbar navbar-expand-lg navbar-light bg-light'>
+
+                    <a class="navbar-brand" href="/Assignment3/HomePage">Group Mangement System</a>
+
+                    <%-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button> --%>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="/Assignment3/HomePage">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Home</button>
+                                    
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <%-- Doesn't do anything --%>
+                    <form class="form-inline">
+
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+                    </form>
+
+                </nav>
+
+            </div>
+
+            <div class = 'container con-div'>
+
+                <div class = 'row'>
+
+                    <div class = 'border col'>
+                    
+                        <c:forEach var = "item" items = "${sessionScope.groupInfo}">
+
+                            <div class = 'border-bottom group-name-div'>
+
+                                <p class = 'h4'>${item.getGroupName()}</p>
+
+                            </div>
+
+                        </c:forEach>
+
+                        <div class = 'border-bottom member-list-div'>
+
+                            <p class = 'h5'>Members</p>
+
+                            <ul class = 'list-group'>
+
+                                <c:forEach var = "item" items = "${sessionScope.groupMemberList}">                                    
+
+                                    <c:choose>
+                                    
+                                        <c:when test = "${item.getMemberID() == sessionScope.userID}">
+                                        
+                                            <li class = 'list-group-item active'>${item.getMemberName()}</li>
+                                        
+                                        </c:when>
+                                        <c:otherwise>
+
+                                            <li class = 'list-group-item'>${item.getMemberName()}</li>
+
+                                        </c:otherwise>
+                                    
+                                    </c:choose>
+
+                                </c:forEach>
+
+                            </ul>
+
+                        </div>
+
+                        <div class = 'add-member-div'>
+
+                            <button class = 'btn btn-success add-member-btn'><i class="fas fa-plus"></i> Add Member</button> 
+
+                        </div>
+                    
+                    </div>
+                    <div class = 'border col-8'>
+
+                        Info about the group
+
+                    </div>
+                    <div class = 'border col'>
+
+                        Stuff
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
