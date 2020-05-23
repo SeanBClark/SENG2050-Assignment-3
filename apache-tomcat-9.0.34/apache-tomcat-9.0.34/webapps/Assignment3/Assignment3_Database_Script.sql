@@ -118,6 +118,21 @@ CREATE TABLE group_appointment (
     FOREIGN KEY (group_id) REFERENCES group_info(group_id) ON DELETE CASCADE
 );
 
+INSERT group_appointment(group_id, app_name, app_status, appointment_datetime)
+	VALUES (1, 'Appointment One', 1, '2020-05-24 11:00:00');
+INSERT group_appointment(group_id, app_name, app_status, appointment_datetime)
+	VALUES (1, 'Appointment Two', 0, '2020-06-24 11:00:00');
+INSERT group_appointment(group_id, app_name, app_status, appointment_datetime)
+	VALUES (1, 'Appointment Three', 0, '2020-07-24 11:00:00');
+INSERT group_appointment(group_id, app_name, app_status, appointment_datetime)
+	VALUES (1, 'Appointment Four', 0, '2020-08-24 11:00:00');
+INSERT group_appointment(group_id, app_name, app_status, appointment_datetime)
+	VALUES (1, 'Appointment Five', 0, '2020-09-24 11:00:00');
+    
+-- SELECT app_name, appointment_datetime FROM group_appointment WHERE group_id = 1 and app_status = 0 ORDER BY appointment_datetime ASC LIMIT 4;
+
+-- SELECT milestone_datetime, milestone_name FROM group_milestones WHERE group_id = 1 ORDER BY milestone_datetime ASC LIMIT 4;
+
 -- Stores milesstones for groups
 CREATE TABLE group_milestones(
 
@@ -134,7 +149,7 @@ CREATE TABLE group_milestones(
 );
 
 INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
-	VALUES (1, 'Milestone 1', 0, '2020-05-24 11:00:00');
+	VALUES (1, 'Milestone 1', 1, '2020-05-24 11:00:00');
 INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
 	VALUES (1, 'Milestone 2', 0, '2020-06-24 11:00:00');
 INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
@@ -154,6 +169,7 @@ SELECT * FROM group_milestones;
 
 -- SELECT (count(select count(milestone_status) from group_milestones where group_status = 0)* 100 / (select count(milestone_status) from group_milestones)) as percentageComplete  FROM group_milestones WHERE group_id = 1;
 
+-- SELECT milestone_datetime, milestone_name FROM group_milestones WHERE group_id = 1 ORDER BY milestone_datetime ASC LIMIT 4;
 
 -- info on files
 CREATE TABLE file_mngt (

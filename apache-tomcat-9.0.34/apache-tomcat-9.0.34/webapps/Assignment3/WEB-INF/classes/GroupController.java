@@ -22,9 +22,13 @@ public class GroupController extends HttpServlet {
         ResultSet groupInfoRS = null;
         ResultSet groupMemberRS = null;
         ResultSet completedPercentageRS = null;
+        ResultSet upcomingMilestonesRS = null;
+        ResultSet upcomingAppRS = null;
         String groupID = request.getParameter("groupid");
         List <GroupBean> groupInfo = new ArrayList<>();
         List <GroupMemberBean> groupMemberList = new ArrayList<>();
+        List <UpcomingMilestoneBean> upcomingMSList = new ArrayList<>();
+        List <UpcomingAppBean> upcomingAppList = new ArrayList<>();
         String getGroupInfoQuery = "SELECT group_id, group_name, group_description FROM group_info WHERE group_id =  " + groupID + "";
 
         HttpSession session = request.getSession();
@@ -85,6 +89,57 @@ public class GroupController extends HttpServlet {
                 int percentageComplete = completedPercentageRS.getInt("percentageComplete");
                 session.setAttribute("percentageComplete", percentageComplete);
             }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Gets 4 upcoming milestones
+        String upcomingMilestoneQuery = "SELECT milestone_datetime, milestone_name, milestone_status FROM group_milestones WHERE " + groupID + " = 1 ORDER BY milestone_datetime ASC LIMIT 4;";
+
+        upcomingMilestonesRS = DatabaseQuery.getResultSet(upcomingMilestoneQuery, connection);
+
+        try {
+
+            while (upcomingMilestonesRS.next()) {
+
+                session = request.getSession();
+
+                UpcomingMilestoneBean upcomingMilestoneBean = new UpcomingMilestoneBean();
+                upcomingMilestoneBean.setMilestoneName(upcomingMilestonesRS.getString("milestone_name"));
+                upcomingMilestoneBean.setMilestoneDate(upcomingMilestonesRS.getString("milestone_datetime"));
+                upcomingMilestoneBean.setMilestoneStatus(upcomingMilestonesRS.getInt("milestone_status"));
+                upcomingMSList.add(upcomingMilestoneBean);
+                session.setAttribute("upcomingMilestoneBean", upcomingMilestoneBean);
+
+            }
+
+            session.setAttribute("upcomingMSList", upcomingMSList);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Upcoming Appointments
+        String upcomingAppQuery = "SELECT app_name, appointment_datetime FROM group_appointment WHERE " + groupID + " = 1 and app_status = 0 ORDER BY appointment_datetime ASC LIMIT 4;";
+
+        upcomingAppRS = DatabaseQuery.getResultSet(upcomingAppQuery, connection);
+
+        try {
+
+            while (upcomingAppRS.next()) {
+
+                session = request.getSession();
+
+                UpcomingAppBean upcomingAppBean = new UpcomingAppBean();
+                upcomingAppBean.setAppName(upcomingAppRS.getString("app_name"));
+                upcomingAppBean.setAppDate(upcomingAppRS.getString("appointment_datetime"));
+                upcomingAppList.add(upcomingAppBean);
+                session.setAttribute("upcomingAppBean", upcomingAppBean);
+
+            }
+
+            session.setAttribute("upcomingAppList", upcomingAppList);
             
         } catch (Exception e) {
             e.printStackTrace();

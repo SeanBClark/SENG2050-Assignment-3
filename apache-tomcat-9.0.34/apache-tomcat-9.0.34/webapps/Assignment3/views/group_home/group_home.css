@@ -47,12 +47,6 @@
 
 }
 
-/* .progress-bar {
-
-    width: 50%;
-
-} */
-
 .info-header {
 
     text-align: center;
@@ -68,12 +62,20 @@
 }
 
 .info-list {
-    width: 20rem;
+    width: 18rem;
+    min-width: 18rem;
+    max-width: 30rem;
     margin: 1rem;
 }
 
 .info-btn {
 
     margin: 1rem;
+
+}
+
+.list-group-item {
+
+    text-align: center;
 
 }

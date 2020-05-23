@@ -64,6 +64,16 @@
 
                             </li>
 
+                            <li class="nav-item">
+                            
+                                <a class="nav-link" href="/Assignment3/LogOutController">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
+                                    
+                                 </a>
+
+                            </li>
+
                         </ul>
 
                     </div>
@@ -156,34 +166,69 @@
 
                         <div class = 'row'>
 
+                            <%-- Appointment column --%>
                             <div class = 'border col info-col'>
 
                                 <div class = 'row'>
                                 
-                                    <p class = 'h5 info-header border-bottom '>Appointments</p>
+                                    <p class = 'h5 info-header border-bottom '>Upcoming Appointments</p>
                                     
                                 </div>
 
-                                <div class = 'row'>
+                                <div class = 'border-bottom row d-flex justify-content-center'>
+
+                                    <ul class = 'list-group info-list'>
+
+                                        <c:forEach var = "item" items = "${sessionScope.upcomingAppList}">     
+
+                                            <li class = 'list-group-item'><span class = 'ms-name'>${item.getAppName()} </span> </br> <span class = 'ms-date'>${item.getAppDate()}</span></li>
+
+                                        </c:forEach>
+
+                                    </ul>
+
+                                </div>
+
+                                <div class = 'row d-flex justify-content-center info-btn'>
+
+                                    <a href = '/Assignment3/ManageAppointments'><button class = 'btn btn-success'>Manage Appointments</button></a>
+
                                 </div>
 
                             </div>
+                            <%-- Milestone column --%>
                             <div class = 'border col info-col'>
 
                                 <div class = 'row'>
                                 
-                                    <p class = 'h5 info-header border-bottom'>Milestones</p>
+                                    <p class = 'h5 info-header border-bottom'>Upcoming Milestones</p></a> 
                                     
                                 </div>
 
                                 <div class = 'border-bottom row d-flex justify-content-center'>
                                 
                                     <ul class = 'list-group info-list'>
-                                
-                                        <li class = 'list-group-item'>Appointment</li>
-                                        <li class = 'list-group-item'>Appointment</li>
-                                        <li class = 'list-group-item'>Appointment</li>
-                                        <li class = 'list-group-item'>Appointment</li>
+
+                                        <c:forEach var = "item" items = "${sessionScope.upcomingMSList}">     
+
+                                            <%-- <li class = 'list-group-item list-group-item-light'><span class = 'ms-name'>${item.getMilestoneName()} </span> </br> <span class = 'ms-date'>${item.getMilestoneDate()}</span></li> --%>
+
+                                            <c:choose>
+                                    
+                                                <c:when test = "${item.getMilestoneStatus() == 1}">
+                                                
+                                                    <li class = 'list-group-item list-group-item-success'><span class = 'ms-name'>${item.getMilestoneName()} </span> </br> <span class = 'ms-date'><i class = 'fas fa-check-circle'></i> Completed</span></li>
+                                                
+                                                </c:when>
+                                                <c:otherwise>
+
+                                                    <li class = 'list-group-item'><span class = 'ms-name'>${item.getMilestoneName()} </span> </br> <span class = 'ms-date'>${item.getMilestoneDate()}</span></li>
+
+                                                </c:otherwise>
+                                            
+                                            </c:choose>
+
+                                        </c:forEach>
                                     
                                     </ul>
                                 
@@ -191,7 +236,34 @@
 
                                 <div class = 'row d-flex justify-content-center info-btn'>
 
-                                    <button class = 'btn btn-success'>Manage Appointments</button> 
+                                    <a href = '/Assignment3/ManageMilestones'><button class = 'btn btn-success'>Manage Milestones</button></a>  
+
+                                </div>
+
+                            </div>
+                            <%-- Files column --%>
+                            <div class = 'border col info-col'>
+
+                                <div class = 'row'>
+                                
+                                    <p class = 'h5 info-header border-bottom '>Group Files</p>
+                                    
+                                </div>
+
+                                <div class = 'border-bottom row d-flex justify-content-center'>
+
+                                    <ul class = 'list-group info-list'>
+                                        <li class = 'list-group-item'>Files placeholder</li>
+                                        <li class = 'list-group-item'>Files placeholder</li>
+                                        <li class = 'list-group-item'>Files placeholder</li>
+                                        <li class = 'list-group-item'>Files placeholder</li>
+                                    </ul>
+
+                                </div>
+
+                                <div class = 'row d-flex justify-content-center info-btn'>
+
+                                    <a href = '/Assignment3/ManageFiles'><button class = 'btn btn-success'>Manage Files</button></a> 
 
                                 </div>
 
@@ -202,7 +274,7 @@
                     </div>
                     <div class = 'border col'>
 
-                        Stuff
+                        Group Messanger?
 
                     </div>
 
