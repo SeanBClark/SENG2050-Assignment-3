@@ -135,7 +135,69 @@
                     </div>
                     <div class = 'border col-8'>
 
-                        Info about the group
+                        <div class = 'row progress-row'>
+
+                            <div class = 'col-1 '>
+
+                                <p class = 'progress-text'>Progress:</p>
+
+                            </div>
+                            <div class = 'col-11'>
+
+                                <div class = 'progress'>
+
+                                    <div class = 'progress-bar progress-bar-striped bg-success' style = 'width: ${sessionScope.percentageComplete}%;' roll = 'progressbar' aria-valuemin = '0' aria-valuemax = '100'"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class = 'row'>
+
+                            <div class = 'border col info-col'>
+
+                                <div class = 'row'>
+                                
+                                    <p class = 'h5 info-header border-bottom '>Appointments</p>
+                                    
+                                </div>
+
+                                <div class = 'row'>
+                                </div>
+
+                            </div>
+                            <div class = 'border col info-col'>
+
+                                <div class = 'row'>
+                                
+                                    <p class = 'h5 info-header border-bottom'>Milestones</p>
+                                    
+                                </div>
+
+                                <div class = 'border-bottom row d-flex justify-content-center'>
+                                
+                                    <ul class = 'list-group info-list'>
+                                
+                                        <li class = 'list-group-item'>Appointment</li>
+                                        <li class = 'list-group-item'>Appointment</li>
+                                        <li class = 'list-group-item'>Appointment</li>
+                                        <li class = 'list-group-item'>Appointment</li>
+                                    
+                                    </ul>
+                                
+                                </div>
+
+                                <div class = 'row d-flex justify-content-center info-btn'>
+
+                                    <button class = 'btn btn-success'>Manage Appointments</button> 
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
                     <div class = 'border col'>

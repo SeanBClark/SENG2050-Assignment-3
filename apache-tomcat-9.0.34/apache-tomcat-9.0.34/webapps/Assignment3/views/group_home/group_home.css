@@ -24,3 +24,56 @@
     text-align: center;
 
 }
+
+.progress-row {
+
+    margin-top: 0.5rem;
+
+}
+
+.progress-text {
+
+    text-align: center;
+    margin: 0.5rem;
+
+}
+
+.progress {
+
+    width: 98%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+
+}
+
+/* .progress-bar {
+
+    width: 50%;
+
+} */
+
+.info-header {
+
+    text-align: center;
+    padding:0.5rem;
+    width: 100%;
+
+}
+
+.info-col {
+
+    margin: 1rem;
+    
+}
+
+.info-list {
+    width: 20rem;
+    margin: 1rem;
+}
+
+.info-btn {
+
+    margin: 1rem;
+
+}

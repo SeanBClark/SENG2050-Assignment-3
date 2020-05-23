@@ -12,7 +12,6 @@ public class DatabaseQuery {
             
             Statement statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
-            // System.out.println("Query Success");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,7 +31,6 @@ public class DatabaseQuery {
 
             Statement statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
-            System.out.println("Query Success. Result = " + result);
 
             while(resultSet.next()) {
                 if(resultSet.getInt(1) == 1) {
@@ -40,7 +38,6 @@ public class DatabaseQuery {
                     result = true;
                 }
             }
-            System.out.println("Result = " + result);
             
         } catch (Exception e) { e.printStackTrace(); }
 

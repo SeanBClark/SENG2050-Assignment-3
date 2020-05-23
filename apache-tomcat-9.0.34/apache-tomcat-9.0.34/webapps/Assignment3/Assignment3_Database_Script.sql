@@ -133,6 +133,27 @@ CREATE TABLE group_milestones(
 	FOREIGN KEY (group_id) REFERENCES group_info(group_id) ON DELETE CASCADE
 );
 
+INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
+	VALUES (1, 'Milestone 1', 0, '2020-05-24 11:00:00');
+INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
+	VALUES (1, 'Milestone 2', 0, '2020-06-24 11:00:00');
+INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
+	VALUES (1, 'Milestone 3', 0, '2020-07-24 11:00:00');
+INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
+	VALUES (1, 'Milestone 4', 1, '2020-08-24 11:00:00');
+    
+SELECT * FROM group_milestones;
+
+-- SET @zeroCount = SELECT count(milestone_status) FROM group_milestones where group_id = 1 and group_status = 0;
+-- SET @totalCount = SELECT count(milestone_status) FROM group_milestones where group_id = 1 and group_status = 0
+
+-- SELECT (count(milestone_status) * 100 / (SELECT count(milestone_status) FROM group_milestones where group_id = 1)) as percentageComplete from group_milestones where group_id = 1 and milestone_status = 0;
+
+-- SELECT count(milestone_status) FROM group_milestones where group_id = 1 and milestone_status = 0;
+-- SELECT count(milestone_status) FROM group_milestones where group_id = 1;
+
+-- SELECT (count(select count(milestone_status) from group_milestones where group_status = 0)* 100 / (select count(milestone_status) from group_milestones)) as percentageComplete  FROM group_milestones WHERE group_id = 1;
+
 
 -- info on files
 CREATE TABLE file_mngt (

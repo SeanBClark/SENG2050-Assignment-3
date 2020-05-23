@@ -21,6 +21,7 @@ public class GroupController extends HttpServlet {
 
         ResultSet groupInfoRS = null;
         ResultSet groupMemberRS = null;
+        ResultSet completedPercentageRS = null;
         String groupID = request.getParameter("groupid");
         List <GroupBean> groupInfo = new ArrayList<>();
         List <GroupMemberBean> groupMemberList = new ArrayList<>();
@@ -66,6 +67,24 @@ public class GroupController extends HttpServlet {
 
             }
             session.setAttribute("groupMemberList", groupMemberList);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Calculates the percentage of currently completed milestones 
+        String percentCompleteQuery = "SELECT (count(milestone_status) * 100 / (SELECT count(milestone_status) FROM group_milestones where " + groupID + " = 1)) as percentageComplete from group_milestones where " + groupID + " = 1 and milestone_status = 0;";
+
+        completedPercentageRS = DatabaseQuery.getResultSet(percentCompleteQuery, connection);
+
+        try {
+
+            session = request.getSession();
+
+            while (completedPercentageRS.next()) {
+                int percentageComplete = completedPercentageRS.getInt("percentageComplete");
+                session.setAttribute("percentageComplete", percentageComplete);
+            }
             
         } catch (Exception e) {
             e.printStackTrace();
