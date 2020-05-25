@@ -81,9 +81,64 @@
 
             </div>
 
-            <div class = 'body'>
+            <div class = 'body-div'>
 
-                Group Invites
+                <form method = "post" action = "/Assignment3/InviteMembers">
+
+                    <div  class = 'container invite-container'>
+
+                        <div class = 'row invite-row  d-flex justify-content-center'>
+
+                            <div class = 'row input-row' id = 'inputRow'>
+
+                                <div class = 'lbl-col  d-flex justify-content-center'>
+
+                                    <label class = 'col-form-label'>Enter Email:</label>
+
+                                </div>
+
+                                <div class = 'border-bottom input-col'>
+
+                                    <input type = 'text' class = 'form-control form-input' id = 'userEmail' name = 'userEmail' placeholder = 'Enter Email'>
+
+                                </div>
+                                
+
+                            </div>
+
+                            
+                        </div>
+
+                        <div class = 'row add-more-row invite-row  d-flex justify-content-center'>
+
+
+                        </div>
+                    
+                        <input type = 'text' id = 'inputCount' name = 'inputCount' placeholder = '' value = '1' hidden>
+
+                        <div class = 'row'>
+
+                            <div class = 'col add-member-col d-flex justify-content-center'>
+                            
+                                <button type = "button" class = "btn btn-outline-primary add-member-btn" onClick = "addMember()" id = "addMemberBtn"><i class="fas fa-plus"></i></button>
+
+                            </div>
+
+                        </div>
+
+                        <div class = 'row'>
+
+                            <div class = 'col add-member-col d-flex justify-content-center'>
+
+                                <button type = "submit" class = "btn btn-success add-member-btn"> Add Members to Group</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
 
             <div>
 

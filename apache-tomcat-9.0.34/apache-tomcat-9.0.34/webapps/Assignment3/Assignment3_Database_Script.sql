@@ -85,6 +85,9 @@ CREATE TABLE user_group_info (
 -- 	(select user_id from user where user_name = 'name'), 
 --  (select group_id from group_info where group_name = 'name'));
 
+-- Add new user to group
+-- INSERT INTO user_group_info(user_id, group_id) VALUES ((SELECT user_id FROM user WHERE user_email = 'd@d.com'), 1);
+
 INSERT INTO user_group_info(user_id, group_id) VALUES (1,1);
 INSERT INTO user_group_info(user_id, group_id) VALUES (2,1);
 INSERT INTO user_group_info(user_id, group_id) VALUES (4,1);
