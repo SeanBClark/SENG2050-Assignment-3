@@ -138,7 +138,7 @@
 
                         <div class = 'add-member-div'>
 
-                            <button class = 'btn btn-success add-member-btn'><i class="fas fa-plus"></i> Add Member</button> 
+                            <a href = '/Assignment3/InviteMembers?${request.getParameter("groupID")}'><button class = 'btn btn-success add-member-btn'><i class="fas fa-plus"></i> Add Member</button> </a>
 
                         </div>
                     

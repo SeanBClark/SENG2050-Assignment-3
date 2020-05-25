@@ -32,6 +32,7 @@ public class GroupController extends HttpServlet {
         String getGroupInfoQuery = "SELECT group_id, group_name, group_description FROM group_info WHERE group_id =  " + groupID + "";
 
         HttpSession session = request.getSession();
+        session.setAttribute("groupID", Integer.parseInt(groupID));
         groupInfoRS = DatabaseQuery.getResultSet(getGroupInfoQuery, connection);
 
         try {       
