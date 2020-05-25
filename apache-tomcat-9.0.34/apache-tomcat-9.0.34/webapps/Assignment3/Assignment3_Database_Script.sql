@@ -177,6 +177,8 @@ CREATE TABLE file_mngt (
 	file_id INT PRIMARY KEY NOT NULL auto_increment,
     group_id INT NOT NULL,
     file_name VARCHAR(200) NOT NULL,
+    file_url VARCHAR(200) NOT NULL,
+    file_desc VARCHAR(500),
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
     
