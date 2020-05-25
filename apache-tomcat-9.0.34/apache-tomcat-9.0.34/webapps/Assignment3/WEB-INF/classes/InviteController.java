@@ -18,6 +18,11 @@ public class InviteController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         Connection connection = null;
         try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
+
+        HttpSession session = request.getSession();
+        int groupID = (int) session.getAttribute("groupID");
+
+        System.out.println("Group ID = " + groupID);
         
         try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/group_invite/group_invite.jsp");
