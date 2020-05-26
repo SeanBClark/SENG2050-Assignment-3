@@ -10,7 +10,6 @@ import beans.*;
 @WebServlet(name = "/FilesController", urlPatterns = { "/ManageFiles" })
 public class FilesController extends HttpServlet 
 {
-
     public FilesController() 
     {
         super();
@@ -22,6 +21,8 @@ public class FilesController extends HttpServlet
 
         HttpSession session = request.getSession();
         int groupId = (int) session.getAttribute("groupID");
+
+        // prepare query
         String fileQuery = ("SELECT * FROM file_mngt WHERE group_id = " + groupId + ";" ); 
 
         try(Connection connection = ConfigBean.getConnection(); 
@@ -38,10 +39,6 @@ public class FilesController extends HttpServlet
                 file.setUrl(result.getString("file_url"));
                 file.setDescription(result.getString("file_desc")); 
 
-                System.out.println(file.getName());
-                System.out.println(file.getUrl());
-                System.out.println(file.getDescription());
-
                 folder.add(file); // add file to folder
             }
 
@@ -55,12 +52,12 @@ public class FilesController extends HttpServlet
 
 
 
-
         try 
         {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/manage_files/manage_files.jsp");
             dispatcher.forward(request, response);
-        } catch (Exception e) 
+        } 
+        catch (Exception e) 
         {
             e.printStackTrace();
         }
@@ -68,8 +65,38 @@ public class FilesController extends HttpServlet
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException 
+    throws ServletException, IOException 
     {
+        // get file values
+        HttpSession session = request.getSession();
+        int groupId = (int) session.getAttribute("groupID");
 
+        String name = request.getParameter("fileName");
+        String url = request.getParameter("fileUrl");
+        String description = request.getParameter("fileDesc");
+
+        // prepare query 
+        String fileQuery = "INSERT INTO file_mngt (group_id, file_name, file_url, file_desc) VALUES (?, ?, ?, ?);"; 
+
+        // connect to database and assign values to file
+        try(Connection connection = ConfigBean.getConnection(); 
+            PreparedStatement pS = connection.prepareStatement(fileQuery);)
+        {
+            pS.setInt(1, groupId);
+            pS.setString(2, name);
+            pS.setString(3, url);
+            pS.setString(4, description);
+
+            pS.executeUpdate(); 
+        }
+        catch(SQLException e)
+        {
+            System.err.println(e.getMessage());
+            System.err.println(e.getStackTrace()); 
+        }
+
+
+        // redirect to list of files jsp page. 
+        response.sendRedirect("/Assignment3/ManageFiles");
     }
 }

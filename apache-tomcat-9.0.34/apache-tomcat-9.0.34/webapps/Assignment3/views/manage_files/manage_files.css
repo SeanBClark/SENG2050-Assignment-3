@@ -50,21 +50,22 @@
     
 }
 
-.create-file-btn {
+.add-file-btn {
 
-    margin-left: 40%;
-    margin-right: 60%;
+    margin-left: 44%;
+    margin-right: 56%;
+    
 
 }
 
-.create-file-btn2 {
+.add-file-btn2 {
 
     margin-left: 47%;
     margin-right: 53%;
 
 }
 
-.create-file-form-div {
+.add-file-form-div {
 
     padding: 20px;
     margin: 20px;
@@ -88,4 +89,9 @@
 
     width: 100%;
     
+}
+
+.error{
+
+    display: none;
 }

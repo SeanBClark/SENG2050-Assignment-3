@@ -81,16 +81,16 @@
 
             </div>
 
+
+
+
+
+
+
+
+
+
             <div class = 'body'>
-
-
-
-
-
-
-
-
-
 
                 <div class = 'border container file-list-div' >
 
@@ -107,16 +107,22 @@
                                     <c:out value="${file.getName()}" />
 
                                 </div>
+
                                 <div class="border-right col-sm file-desc-div">
                             
                                     <c:out value="${file.getDescription()}" />
 
-                                </div>  
-                                <div class="border-right col-sm file-desc-div">
-                            
-                                    <c:out value="${file.getUrl()}" />
-                                    
                                 </div> 
+
+                                <div class="col-sm btn-div">
+                            
+                                    <a class="nav-link" href="${file.getUrl()}">
+                                        
+                                        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Visit</button>
+                                            
+                                    </a>
+
+                                </div>
 
                             
                             </div>
@@ -127,7 +133,97 @@
 
                 <div><%-- END: <div class = 'border container group-list-div'>--%>
 
+
+
+
+
+
+
+
+
+
+
+
+                <div class='container add-file-div'>
+
+                        <button class='btn btn-success btn-lg add-file-btn' id="addFileBtn" onClick="showAddFile()")><i class="fas fa-plus"></i> Add Files</div>
+
+                </div>
                 
+
+                <div class='border add-file-form-div' id='addFileForm'>
+
+                <div class='h2 file-title-div'>Add New File</div>
+
+                    <form id="fileForm" method="POST" action="/Assignment3/ManageFiles" onSubmit="return formValidation()">
+
+                        <div class='form-div'>
+
+
+                            <div class='form-file row'>
+                            
+                                <label for='fileName' class='col-sm-2 col-form-label'>File Name:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type='text' class='form-control form-input' id='fileName' name='fileName' placeholder='Enter Name'>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class='form-file row'>
+                            
+                                <label for='fileUrl' class='col-sm-2 col-form-label'>File URL:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type='text' class='form-control form-input' id='fileUrl' name='fileUrl' placeholder='Enter URL'>
+
+                                </div>
+
+                                <div class='alert alert-danger error' role='alert' id='urlInvalid' hidden>
+
+                                    Must be a valid URL 
+
+                                </div>
+
+
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                                    Must be a valid URL 
+
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    
+                                </div>
+
+                            </div>
+
+
+                            <div class='form-file row'>
+                            
+                                <label for='fileDesc' class='col-sm-2 col-form-label'>File Description:</label>
+
+                                <div class="col-sm-10">
+
+                                    <textarea class='form-contol text-area' id='fileDesc' name='fileDesc'></textarea>
+
+                                </div>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-lg add-file-btn2"><i class="fas fa-plus"></i> Add File</button>
+
+
+                        </div>
+
+                    </form>
+
+                </div>    
+
 
 
 
