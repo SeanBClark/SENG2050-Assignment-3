@@ -85,6 +85,9 @@ CREATE TABLE user_group_info (
 -- 	(select user_id from user where user_name = 'name'), 
 --  (select group_id from group_info where group_name = 'name'));
 
+-- Add new user to group
+-- INSERT INTO user_group_info(user_id, group_id) VALUES ((SELECT user_id FROM user WHERE user_email = 'd@d.com'), 1);
+
 INSERT INTO user_group_info(user_id, group_id) VALUES (1,1);
 INSERT INTO user_group_info(user_id, group_id) VALUES (2,1);
 INSERT INTO user_group_info(user_id, group_id) VALUES (4,1);
@@ -177,6 +180,8 @@ CREATE TABLE file_mngt (
 	file_id INT PRIMARY KEY NOT NULL auto_increment,
     group_id INT NOT NULL,
     file_name VARCHAR(200) NOT NULL,
+    file_url VARCHAR(200) NOT NULL,
+    file_desc VARCHAR(500),
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
     
