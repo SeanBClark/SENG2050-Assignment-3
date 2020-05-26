@@ -4,24 +4,28 @@
 
 -- mySQL script for Assignment 3: SENG2050
 
-select * from mysql.user;
+-- select * from mysql.user;
 
 -- DROP DATABASE GroupManagementDatabase;
-DROP USER IF EXISTS 'admin'@'GroupManagementDatabase';
+DROP USER IF EXISTS 'root'@'GroupManagementDatabase';
 
 CREATE DATABASE IF NOT EXISTS GroupManagementDatabase;
 USE GroupManagementDatabase;
 
 FLUSH PRIVILEGES;
-CREATE USER 'admin'@'GroupManagementDatabase' IDENTIFIED BY 'admin'; 
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'GroupManagementDatabase';
+CREATE USER 'root'@'GroupManagementDatabase' IDENTIFIED BY 'root'; 
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'GroupManagementDatabase';
 
+DROP TABLE IF EXISTS project;
+DROP TABLE IF EXISTS course_cord;
+DROP TABLE IF EXISTS course_enrolments;
 DROP TABLE IF EXISTS user_group_info;
 DROP TABLE IF EXISTS group_milestones;
 DROP TABLE IF EXISTS group_appointment;
 DROP TABLE IF EXISTS file_mngt;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS group_info;
+DROP TABLE IF EXISTS course;
 
 -- User Info table
 -- user_password must be inserted or updated using sha1('password') hash function
@@ -31,29 +35,37 @@ CREATE TABLE user (
     user_email VARCHAR(50) NOT NULL,
     user_password VARCHAR(50) NOT NULL,
     user_name VARCHAR(100) NOT NULL,
-    user_type VARCHAR(3) default 'Std',
+    user_type VARCHAR(5) default 'Std',
     user_status bit(1) default 1,
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp on update current_timestamp    
 
 );
 
-INSERT INTO user(user_email, user_password, user_name) VALUES ('admin@admin.com', sha1('admin'), 'admin');
-INSERT INTO user(user_email, user_password, user_name) VALUES ('a@a.com', sha1('password'), 'Person 1');
-INSERT INTO user(user_email, user_password, user_name) VALUES ('b@b.com', sha1('password'), 'Person 2');
-INSERT INTO user(user_email, user_password, user_name) VALUES ('c@c.com', sha1('password'), 'Person 3');
-INSERT INTO user(user_email, user_password, user_name) VALUES ('d@d.com', sha1('password'), 'Person 4');
-SELECT * from user;
--- UPDATE user SET user_status = 1 where user_id = 1 and user_password = sha1('admin');
+-- Admin Acccount
+INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('admin@admin.com', sha1('admin'), 'admin', 'admin');
+-- SELECT * FROM user where user_type = 'admin';
 
--- SELECT EXISTS(select * from user where user_email = 'admin@admin.com' and user_password = sha1('admin'));
--- SELECT user_id, user_email, user_status FROM user WHERE user_email = 'admin@admin.com';
+-- Student Accounts
+INSERT INTO user(user_email, user_password, user_name) VALUES ('std1@std1.com', sha1('password'), 'Student 1');
+INSERT INTO user(user_email, user_password, user_name) VALUES ('std2@std2.com', sha1('password'), 'Student 2');
+INSERT INTO user(user_email, user_password, user_name) VALUES ('std3@std3.com', sha1('password'), 'Student 3');
+INSERT INTO user(user_email, user_password, user_name) VALUES ('std4@std4.com', sha1('password'), 'Student 4');
+-- SELECT * FROM user where user_type = 'std';
+
+-- Lecturer Accounts
+INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect1@lect1.com', sha1('lect1'), 'Lecturer 1', 'lect');
+INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect2@lect2.com', sha1('lect2'), 'Lecturer 2', 'lect');
+INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect3@lect3.com', sha1('lect3'), 'Lecturer 3', 'lect');
+INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect4@lect4.com', sha1('lect4'), 'Lecturer 4', 'lect');
+-- SELECT * FROM user where user_type = 'lect';
+
 
 --  Group Infomation Table
 CREATE TABLE group_info (
 
 	group_id INT PRIMARY KEY NOT NULL auto_increment,
-    group_name VARCHAR(50) NOT NULL,
+    group_name VARCHAR(50) NOT NULL, -- Also Project Name!!!!!!!!
     group_description VARCHAR(200), 
     group_status bit(1) default 1,
     date_created TIMESTAMP default current_timestamp,
@@ -62,10 +74,10 @@ CREATE TABLE group_info (
 );
 
 INSERT INTO group_info(group_name, group_description) VALUES ('Group 1', 'Test group description short');
-INSERT INTO group_info(group_name, group_description) VALUES ('Group 3', 'Test group description looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong');
+INSERT INTO group_info(group_name, group_description) VALUES ('Group 2', 'Test group description looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong');
+INSERT INTO group_info(group_name) VALUES ('Group 3');
 INSERT INTO group_info(group_name) VALUES ('Group 4');
-INSERT INTO group_info(group_name) VALUES ('Group 5');
-SELECT * FROM group_info;
+-- SELECT * FROM group_info;
 
 -- User Group Info table
 -- Enables user to be a part of multiple groups
@@ -80,31 +92,14 @@ CREATE TABLE user_group_info (
     FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
 	FOREIGN KEY (group_id) REFERENCES group_info(group_id) ON DELETE CASCADE
 );
--- INSERT EXAMPLE
--- insert into user_group_info(user_id, group_id) values (
--- 	(select user_id from user where user_name = 'name'), 
---  (select group_id from group_info where group_name = 'name'));
 
--- Add new user to group
--- INSERT INTO user_group_info(user_id, group_id) VALUES ((SELECT user_id FROM user WHERE user_email = 'd@d.com'), 1);
 
 INSERT INTO user_group_info(user_id, group_id) VALUES (1,1);
 INSERT INTO user_group_info(user_id, group_id) VALUES (2,1);
 INSERT INTO user_group_info(user_id, group_id) VALUES (4,1);
 INSERT INTO user_group_info(user_id, group_id) VALUES (1,2);
 INSERT INTO user_group_info(user_id, group_id) VALUES (3,2);
-SELECT * FROM user_group_info;
-
-SELECT group_info.group_id, group_info.group_name, group_info.group_description, user.user_name, user.user_id 
-	FROM user_group_info 
-    JOIN user ON user.user_id = user_group_info.user_id 
-    JOIN group_info ON group_info.group_id = user_group_info.group_id 
-    WHERE user_group_info.user_id = 1;
-    
-SELECT user.user_name, user.user_id 
-	FROM user
-    JOIN user_group_info on user_group_info.user_id = user.user_id
-    WHERE user_group_info.group_id = 1;
+-- SELECT * FROM user_group_info;
 
 -- Stores Group Appointments
 CREATE TABLE group_appointment (
@@ -131,10 +126,6 @@ INSERT group_appointment(group_id, app_name, app_status, appointment_datetime)
 	VALUES (1, 'Appointment Four', 0, '2020-08-24 11:00:00');
 INSERT group_appointment(group_id, app_name, app_status, appointment_datetime)
 	VALUES (1, 'Appointment Five', 0, '2020-09-24 11:00:00');
-    
--- SELECT app_name, appointment_datetime FROM group_appointment WHERE group_id = 1 and app_status = 0 ORDER BY appointment_datetime ASC LIMIT 4;
-
--- SELECT milestone_datetime, milestone_name FROM group_milestones WHERE group_id = 1 ORDER BY milestone_datetime ASC LIMIT 4;
 
 -- Stores milesstones for groups
 CREATE TABLE group_milestones(
@@ -160,19 +151,7 @@ INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milesto
 INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
 	VALUES (1, 'Milestone 4', 1, '2020-08-24 11:00:00');
     
-SELECT * FROM group_milestones;
-
--- SET @zeroCount = SELECT count(milestone_status) FROM group_milestones where group_id = 1 and group_status = 0;
--- SET @totalCount = SELECT count(milestone_status) FROM group_milestones where group_id = 1 and group_status = 0
-
--- SELECT (count(milestone_status) * 100 / (SELECT count(milestone_status) FROM group_milestones where group_id = 1)) as percentageComplete from group_milestones where group_id = 1 and milestone_status = 0;
-
--- SELECT count(milestone_status) FROM group_milestones where group_id = 1 and milestone_status = 0;
--- SELECT count(milestone_status) FROM group_milestones where group_id = 1;
-
--- SELECT (count(select count(milestone_status) from group_milestones where group_status = 0)* 100 / (select count(milestone_status) from group_milestones)) as percentageComplete  FROM group_milestones WHERE group_id = 1;
-
--- SELECT milestone_datetime, milestone_name FROM group_milestones WHERE group_id = 1 ORDER BY milestone_datetime ASC LIMIT 4;
+-- SELECT * FROM group_milestones;
 
 -- info on files
 CREATE TABLE file_mngt (
@@ -186,13 +165,116 @@ CREATE TABLE file_mngt (
     date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
     
     FOREIGN KEY (group_id) REFERENCES group_info(group_id) ON DELETE CASCADE
-)
--- Test functions
+);
 
--- INSERT INTO user(user_email, user_password) VALUES ('a@a.com', sha1('test'));
--- SELECT * FROM user;
+-- Table for course details
+CREATE TABLE course (
 
--- INSERT INTO group_info(group_name) VALUES ('test');
--- UPDATE GROUP_INFO SET group_name = 'update' WHERE group_id = 1;
+    id INT PRIMARY KEY NOT NULL auto_increment,
+    name VARCHAR(200) NOT NULL,
+    description VARCHAR(500),
+    course_code VARCHAR(8) NOT NULL,
+    date_created TIMESTAMP default current_timestamp,
+    date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp
 
--- SELECT * FROM group_info;
+);
+
+-- Creates courses
+INSERT INTO course(name, description,course_code) VALUES ('Web Engineering', 'Web End Desc', 'SENG2050');
+INSERT INTO course(name, description,course_code) VALUES ('Advanced Databases', 'Advaced Databases Desc', 'COMP3350');
+INSERT INTO course(name, description,course_code) VALUES ('Data Structures', 'Data Structures Desc', 'COMP1120');
+INSERT INTO course(name, description,course_code) VALUES ('Algorithms', 'Algorithms Desc', 'COMP2230');
+-- SELECT * FROM course;
+
+-- Table for students to enrol within a course
+-- Currently will just be set by admin
+CREATE TABLE course_enrolments (
+
+    id INT PRIMARY KEY NOT NULL auto_increment,
+    course_id INT NOT NULL,
+    std_id INT NOT NULL,
+
+    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
+    FOREIGN KEY (std_id) REFERENCES user(user_id) ON DELETE CASCADE
+
+);
+
+-- Insert Student 1 into courses
+INSERT INTO course_enrolments(course_id, std_id) VALUES (1,2);
+INSERT INTO course_enrolments(course_id, std_id) VALUES (2,2);
+INSERT INTO course_enrolments(course_id, std_id) VALUES (3,2);
+INSERT INTO course_enrolments(course_id, std_id) VALUES (4,2);
+
+-- Insert Student 2 into courses
+INSERT INTO course_enrolments(course_id, std_id) VALUES (1,3);
+INSERT INTO course_enrolments(course_id, std_id) VALUES (2,3);
+INSERT INTO course_enrolments(course_id, std_id) VALUES (3,3);
+
+-- Insert Student 3 into courses
+INSERT INTO course_enrolments(course_id, std_id) VALUES (2,4);
+INSERT INTO course_enrolments(course_id, std_id) VALUES (3,4);
+INSERT INTO course_enrolments(course_id, std_id) VALUES (4,4);
+
+-- Insert Student 4 into courses
+INSERT INTO course_enrolments(course_id, std_id) VALUES (1,5);
+INSERT INTO course_enrolments(course_id, std_id) VALUES (2,5);
+
+-- SELECT * FROM course_enrolments
+
+
+-- Table to assign a lect to a course
+CREATE TABLE course_cord (
+
+    id INT PRIMARY KEY NOT NULL auto_increment,
+    course_id INT NOT NULL,
+    lect_id INT NOT NULL,
+
+    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
+    FOREIGN KEY (lect_id) REFERENCES user(user_id) ON DELETE CASCADE
+
+);
+
+-- Assign lecture 1 to web eng
+INSERT INTO course_cord(course_id, lect_id) VALUES (1, 6);
+
+-- Assign lecture 2 to web eng
+INSERT INTO course_cord(course_id, lect_id) VALUES (1, 7);
+
+-- Assign lecture 3 to web eng
+INSERT INTO course_cord(course_id, lect_id) VALUES (1, 8);
+
+-- Assign lecture 4 to web eng
+INSERT INTO course_cord(course_id, lect_id) VALUES (1, 9);
+
+-- SELECT * FROM course_cord
+
+CREATE TABLE project (
+
+    id INT PRIMARY KEY NOT NULL auto_increment,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(500),
+    grade DECIMAL(4,2),
+    mark VARCHAR(1),
+    marked bit(1) default 0,
+    feedback VARCHAR(1000),
+    course_id INT NOT NULL,
+    group_id INT NOT NULL,
+
+    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
+    FOREIGN KEY (group_id) REFERENCES group_info(group_id) ON DELETE CASCADE
+
+
+);
+
+-- Creates 2 uncompleted Projects for web eng and adv db for group 1 and group 2
+INSERT INTO project(name, description, course_id, group_id) VALUES ('Assignment 2', 'Assignment 2 Desc', 1, 1);
+INSERT INTO project(name, description, course_id, group_id) VALUES ('Assignment 2', 'Assignment 2 Desc', 2, 1);
+INSERT INTO project(name, description, course_id, group_id) VALUES ('Assignment 2', 'Assignment 2 Desc', 1, 2);
+INSERT INTO project(name, description, course_id, group_id) VALUES ('Assignment 2', 'Assignment 2 Desc', 2, 2);
+
+-- Create 2 completed Projects for group 1 and 2
+INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 1, 1, 1, 77.55, 'C', 'Great job you did not fail!');
+INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 2, 1, 1, 12.55, 'F', 'Terrilbe job you failure');
+INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 1, 2, 1, 77.55, 'C', 'Great job you did not fail!');
+INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 2, 2, 1, 37.55, 'F', 'Terrilbe job you failure');
+-- SELECT * FROM project
