@@ -4,52 +4,50 @@ public class FileManagementBean implements java.io.Serializable
 {
     // Private variables
     private static final long serialVersionUID = 1L;
-    private String fileName; 
+    private String name; 
+    private String url;
     private String description; 
-    private int version; 
 
     // Constructors
     public FileManagementBean()
-    {
+    {}
 
-    }
-
-    public FileManagementBean(String fileName, String description, int version)
+    public FileManagementBean(String name, String url, String description)
     {
-        this.fileName = fileName;
+        this.name = name;
+        this.url = url;
         this.description = description;
-        this.version = version;
     }
 
     // Getters
-    public String getFileName() 
+    public String getName() 
     {
-        return this.fileName;
+        return this.name;
+    }
+
+    public String getUrl() 
+    {
+        return this.url;
     }
 
     public String getDescription() 
     {
-        return this.fileName;
-    }
-
-    public int getVersion() 
-    {
-        return this.version;
+        return this.description;
     }
 
     // Setters
-    public void setFileName(String fileName)
+    public void setName(String name)
     {
-        this.fileName = fileName;
+        this.name = name;
+    }
+
+    public void setUrl(String url)
+    {
+        this.url = url;
     }
 
     public void setDescription(String description)
     {
         this.description = description;
-    }
-
-    public void setVersion(int version)
-    {
-        this.version = version;
     }
 }

@@ -83,7 +83,56 @@
 
             <div class = 'body'>
 
-                Files
+
+
+
+
+
+
+
+
+
+                <div class = 'border container file-list-div' >
+
+                    <div id = 'folder'>
+
+                        <div class = 'h2 file-title-div'>Files</div>
+
+                        <c:forEach var="file" items="${sessionScope.folder}">
+                        
+                            <div class="border row row-div">
+
+                                <div class="border-right col-sm file-name-div">
+                    
+                                    <c:out value="${file.getName()}" />
+
+                                </div>
+                                <div class="border-right col-sm file-desc-div">
+                            
+                                    <c:out value="${file.getDescription()}" />
+
+                                </div>  
+                                <div class="border-right col-sm file-desc-div">
+                            
+                                    <c:out value="${file.getUrl()}" />
+                                    
+                                </div> 
+
+                            
+                            </div>
+                        
+                        </c:forEach>
+
+                    </div>
+
+                <div><%-- END: <div class = 'border container group-list-div'>--%>
+
+                
+
+
+
+
+
 
             <div>
 

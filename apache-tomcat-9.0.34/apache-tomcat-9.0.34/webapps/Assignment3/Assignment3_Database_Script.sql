@@ -196,3 +196,12 @@ CREATE TABLE file_mngt (
 -- UPDATE GROUP_INFO SET group_name = 'update' WHERE group_id = 1;
 
 -- SELECT * FROM group_info;
+
+
+
+
+-- Test file
+-- INSERT INTO file_mngt (group_id, file_name, file_url, file_desc) VALUES (1, 'test file', 'https://www.google.com/', 'google');
+-- INSERT INTO file_mngt (group_id, file_name, file_url, file_desc) VALUES (1, 'abcd', 'https://123', 'jksdflhsdfjkjjkljkdfjkgnjf');
+
+-- SELECT * FROM file_mngt WHERE group_id = 1; 
