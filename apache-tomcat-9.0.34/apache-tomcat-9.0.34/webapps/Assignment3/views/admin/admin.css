@@ -1,0 +1,26 @@
+.btn-row {
+
+    padding: 50px
+
+}
+
+.form-group-row {
+
+    width: 700px;
+    text-align: center;
+    white-space: nowrap;    
+    padding: 50px;
+
+}
+
+.btn-col {
+
+    margin-top: 20px;
+
+}
+
+.btn-add-lec {
+
+    margin-top: 20px;
+
+}

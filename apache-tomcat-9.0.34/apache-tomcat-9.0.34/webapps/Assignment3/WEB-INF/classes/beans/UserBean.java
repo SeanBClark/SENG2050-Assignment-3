@@ -11,16 +11,18 @@ public class UserBean implements java.io.Serializable
     private int userId;
     private String userEmail;
     private int userStatus;
+    private String userType;
 
     public UserBean(){}
 
-    public UserBean(String userName, int userId, String userEmail, int userStatus)
+    public UserBean(String userName, int userId, String userEmail, int userStatus, String userType)
     {
 
         this.userName = userName;
         this.userId = userId;
         this.userEmail = userEmail;
         this.userStatus = userStatus;
+        this.userType = userType;
 
     }
 
@@ -78,6 +80,20 @@ public class UserBean implements java.io.Serializable
 
         return userStatus;
         
+    }
+
+    public void setUserType(String param) 
+    {
+
+        this.userType = param;
+
+    }
+
+    public String getUserType()
+    {
+
+        return userType;
+
     }
 
 

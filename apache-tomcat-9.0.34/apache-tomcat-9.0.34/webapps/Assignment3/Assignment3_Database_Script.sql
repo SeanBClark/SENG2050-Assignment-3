@@ -35,7 +35,7 @@ CREATE TABLE user (
     user_email VARCHAR(50) NOT NULL,
     user_password VARCHAR(50) NOT NULL,
     user_name VARCHAR(100) NOT NULL,
-    user_type VARCHAR(5) default 'Std',
+    user_type VARCHAR(5) default 'std' NOT NULL,
     user_status bit(1) default 1,
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp on update current_timestamp    
@@ -57,9 +57,12 @@ INSERT INTO user(user_email, user_password, user_name) VALUES ('std4@std4.com', 
 INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect1@lect1.com', sha1('lect1'), 'Lecturer 1', 'lect');
 INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect2@lect2.com', sha1('lect2'), 'Lecturer 2', 'lect');
 INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect3@lect3.com', sha1('lect3'), 'Lecturer 3', 'lect');
-INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect4@lect4.com', sha1('lect4'), 'Lecturer 4', 'lect');
+INSERT INTO user(user_email, user_password, user_name) VALUES ('lect4@lect4.com', sha1('lect4'), 'Lecturer 4');
 -- SELECT * FROM user where user_type = 'lect';
 
+-- UPDATE user SET user_type = 'lect' WHERE user_id = 9 AND user_email = 'lect4@lect4.com';
+-- SELECT * FROM user where user_type = 'lect' AND user_email = 'lect4@lect4.com';
+-- SELECT user_id FROM user where user_email = 'lect4@lect4.com';
 
 --  Group Infomation Table
 CREATE TABLE group_info (
