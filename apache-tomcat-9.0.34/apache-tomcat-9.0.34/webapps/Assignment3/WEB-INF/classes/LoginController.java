@@ -45,7 +45,7 @@ public class LoginController extends HttpServlet {
             try {
                 if (exists != false) {
 
-                    String userString = "SELECT user_id, user_email, user_name, user_status FROM user WHERE user_email = '" + inputEmail + "';";
+                    String userString = "SELECT user_id, user_email, user_name, user_status, user_type FROM user WHERE user_email = '" + inputEmail + "';";
                     ResultSet resultSet = DatabaseQuery.getResultSet(userString, connection);
                     HttpSession session = request.getSession();
 
@@ -60,17 +60,34 @@ public class LoginController extends HttpServlet {
                             userBean.setUserEmail(resultSet.getString("user_email"));
                             userBean.setUserName(resultSet.getString("user_name"));
                             userBean.setUserStatus(resultSet.getInt("user_status"));
+                            userBean.setUserType(resultSet.getString("user_type"));
                             session.setAttribute("userID", resultSet.getInt("user_id"));
+                            session.setAttribute("userType", resultSet.getString("user_type"));
                             session.setAttribute("userBean", userBean);
                             System.out.println("Session Set");
                         }
                     }
 
-                    response.sendRedirect("/Assignment3/GroupSelect");
+                    String userType = (String) session.getAttribute("userType");
+
+                    if ( userType.equals("std")) {
+                        response.sendRedirect("/Assignment3/GroupSelect");
+                    }
+                    else if ( userType.equals("lect")) {
+
+                        System.out.println("Lecturer");
+
+                    }
+                    else if ( userType.equals("admin")) {
+
+                        response.sendRedirect("/Assignment3/Admin");
+
+                    }
+                    
                 }
                 else {
                     // TO DO: set user to register page
-                    // response.setRedirect("../Assignment3/views/login/login.jsp");
+                    response.sendRedirect("../Assignment3/views/login/login.jsp");
                 }
                 connection.close();                
             } catch (Exception e) {
