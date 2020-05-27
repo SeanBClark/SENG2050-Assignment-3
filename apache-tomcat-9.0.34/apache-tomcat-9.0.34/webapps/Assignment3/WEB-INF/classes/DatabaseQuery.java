@@ -65,4 +65,19 @@ public class DatabaseQuery {
         return result;
     }
 
+    public static String ifStdExists(String userEmail) {
+        String result = "SELECT EXISTS( SELECT user_id FROM user WHERE user_email = '" + userEmail + "');";
+        return result;
+    }
+
+    public static String ifCourseExists(String courseCode) {
+        String result = "SELECT EXISTS( SELECT id FROM course WHERE course_code = '" + courseCode + "');";
+        return result;
+    }
+
+    public static String enrollStudentQuery(String userEmail, String courseID) {
+        String result = "INSERT INTO course_enrollments(course_id, std_id) VALUES ( ( SELECT id FROM course WHERE course_code = '" + courseID + "' ), ( SELECT user_id FROM user WHERE user_email = '" + userEmail + "'  ) );";
+        return result;
+    }
+
 }

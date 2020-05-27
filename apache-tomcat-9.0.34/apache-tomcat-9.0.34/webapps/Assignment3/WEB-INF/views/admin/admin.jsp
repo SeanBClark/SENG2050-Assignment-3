@@ -74,12 +74,62 @@
 
                     </div>
 
-                    <div class = 'row form-row d-flex justify-content-center' id = 'lectForm'>
+                    <c:if test="${not empty param.enrolSuccess}" >
+                        <c:if test="${param.enrolSuccess == 'false'}">
 
-                        <%-- return formValidation() --%>
-                        <form method = "post" action = '/Assignment3/Admin?param=createLect' onSubmit = "" >
+                            <div class = 'alert alert-danger justify-content-center email-suc-fail' role = 'alert'  id = 'emailSucFail'>
+                        
+                            Email does not exist
 
-                            <div class = 'border form-group-row'>
+                            </div>
+
+                        </c:if>
+                    </c:if>
+                    
+                    <c:if test="${not empty param.enrolSuccess}" >
+                        <c:if test = "${param.enrolSuccess == 'true'}">
+
+                            <div class = 'alert alert-success form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                        
+                            Student Enroled!
+
+                            </div>
+
+                        </c:if>
+                    </c:if>
+
+                    <c:if test="${not empty param.courseExists}" >
+                        <c:if test="${param.courseExists == 'false'}">
+
+                            <div class = 'alert alert-danger justify-content-center email-suc-fail' role = 'alert'  id = 'emailSucFail'>
+                        
+                                Invalid Course Code
+
+                            </div>
+
+                        </c:if>
+                    </c:if>
+                    
+                    <c:if test="${not empty param.courseExists}" >
+                        <c:if test = "${param.courseExists == 'true'}">
+
+                            <div class = 'alert alert-success form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                        
+                                Student Enroled!
+
+                            </div>
+
+                        </c:if>
+                    </c:if>
+
+                        
+
+                    <div class = 'row form-row justify-content-center' id = 'lectForm' name = 'lectForm'>
+
+                        <%-- --%>
+                        <form method = "post" action = '/Assignment3/Admin?param=createLect' onSubmit = "return formValidationLect() " >
+
+                            <div class = 'form-group-row'>
 
                                 <label for = 'searchUser' class = 'col-sm-2 col-form-label'>Enter Email</label>
 
@@ -87,6 +137,18 @@
 
                                     <input type = 'email' class = 'form-control ' id = 'searchUser' name = 'searchUser' placeholder = 'Enter Email Address'>
 
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid'>
+
+                                    Invalid Email Address
+
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email'>
+
+                                    Please Enter Email Address
+                                        
                                 </div>
 
                                 <div class = 'col-sm d-flex justify-content-center btn-add-lec'>
@@ -101,9 +163,55 @@
 
                     </div>
 
-                    <div class = 'border row form-row' id = 'enrolForm'>
+                    <div class = 'border row form-row justify-content-center' id = 'enrolForm'>
 
-                        ENR
+                        <form method = "post" action = '/Assignment3/Admin?param=enrolStd' onSubmit = "return formValidationEnrol() " >
+
+                            <div class = 'form-group-row'>
+
+                                <label for = 'userEnrol' class = 'col-sm-2 col-form-label'>Enter Email</label>
+
+                                <div class = 'col'>
+
+                                    <input type = 'email' class = 'form-control ' id = 'userEnrol' name = 'userEnrol' placeholder = 'Enter Email Address'>
+
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid-enrol'>
+
+                                    Invalid Email Address
+
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email-enrol'>
+
+                                    Please Enter Email Address
+                                        
+                                </div>
+
+                                <label for = 'classCode' class = 'col-sm-2 col-form-label'>Class Code</label>
+
+                                <div class = 'col'>
+
+                                    <input type = 'text' class = 'form-control ' id = 'classCode' name = 'classCode' placeholder = 'Enter Class Code'>
+
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'courseCodeAlert'>
+
+                                    Please Course Code
+                                        
+                                </div>
+
+                                <div class = 'col-sm d-flex justify-content-center btn-add-lec'>
+
+                                    <button type = 'submit' onClick = '' class = 'btn btn-success'><i class="fas fa-plus"></i> Enrol Student</button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
 
                     </div>
 
@@ -115,7 +223,7 @@
 
                 </div>
 
-            <div>
+            </div>
 
         </div>
 

@@ -18,7 +18,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'GroupManagementDatabase';
 
 DROP TABLE IF EXISTS project;
 DROP TABLE IF EXISTS course_cord;
-DROP TABLE IF EXISTS course_enrolments;
+DROP TABLE IF EXISTS course_enrollments;
 DROP TABLE IF EXISTS user_group_info;
 DROP TABLE IF EXISTS group_milestones;
 DROP TABLE IF EXISTS group_appointment;
@@ -52,6 +52,7 @@ INSERT INTO user(user_email, user_password, user_name) VALUES ('std2@std2.com', 
 INSERT INTO user(user_email, user_password, user_name) VALUES ('std3@std3.com', sha1('password'), 'Student 3');
 INSERT INTO user(user_email, user_password, user_name) VALUES ('std4@std4.com', sha1('password'), 'Student 4');
 -- SELECT * FROM user where user_type = 'std';
+-- SELECT EXISTS( SELECT user_id FROM user WHERE user_email = 'std1@std1.com')
 
 -- Lecturer Accounts
 INSERT INTO user(user_email, user_password, user_name, user_type) VALUES ('lect1@lect1.com', sha1('lect1'), 'Lecturer 1', 'lect');
@@ -191,7 +192,7 @@ INSERT INTO course(name, description,course_code) VALUES ('Algorithms', 'Algorit
 
 -- Table for students to enrol within a course
 -- Currently will just be set by admin
-CREATE TABLE course_enrolments (
+CREATE TABLE course_enrollments (
 
     id INT PRIMARY KEY NOT NULL auto_increment,
     course_id INT NOT NULL,
@@ -203,27 +204,29 @@ CREATE TABLE course_enrolments (
 );
 
 -- Insert Student 1 into courses
-INSERT INTO course_enrolments(course_id, std_id) VALUES (1,2);
-INSERT INTO course_enrolments(course_id, std_id) VALUES (2,2);
-INSERT INTO course_enrolments(course_id, std_id) VALUES (3,2);
-INSERT INTO course_enrolments(course_id, std_id) VALUES (4,2);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (1,2);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (2,2);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (3,2);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (4,2);
 
 -- Insert Student 2 into courses
-INSERT INTO course_enrolments(course_id, std_id) VALUES (1,3);
-INSERT INTO course_enrolments(course_id, std_id) VALUES (2,3);
-INSERT INTO course_enrolments(course_id, std_id) VALUES (3,3);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (1,3);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (2,3);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (3,3);
 
 -- Insert Student 3 into courses
-INSERT INTO course_enrolments(course_id, std_id) VALUES (2,4);
-INSERT INTO course_enrolments(course_id, std_id) VALUES (3,4);
-INSERT INTO course_enrolments(course_id, std_id) VALUES (4,4);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (2,4);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (3,4);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (4,4);
 
 -- Insert Student 4 into courses
-INSERT INTO course_enrolments(course_id, std_id) VALUES (1,5);
-INSERT INTO course_enrolments(course_id, std_id) VALUES (2,5);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (1,5);
+INSERT INTO course_enrollments(course_id, std_id) VALUES (2,5);
 
--- SELECT * FROM course_enrolments
+-- SELECT * FROM course_enrollments
 
+-- INSERT INTO course_enrollments(course_id, std_id) VALUES ( ( SELECT id FROM course WHERE course_code = 'COMP1120' ), ( SELECT user_id FROM user WHERE user_email = 'std4@std4.com'  ) );
+-- SELECT std_id, course_id FROM course_enrollments WHERE std_id = ( SELECT user_id FROM user WHERE user_email = 'std4@std4.com'  );
 
 -- Table to assign a lect to a course
 CREATE TABLE course_cord (
