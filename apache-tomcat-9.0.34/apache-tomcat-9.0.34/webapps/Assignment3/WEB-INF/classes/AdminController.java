@@ -82,6 +82,7 @@ public class AdminController extends HttpServlet {
                     else {
 
                         //Checks if Course Exists
+                        // If it does enrolls student
                         ResultSet ifCourseExists = null;
                         int courseExists = 0;
 
@@ -108,6 +109,46 @@ public class AdminController extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+            else if (type.equals("createCourse")) {
+
+                String courseName = request.getParameter("courseName");
+                String courseDesc = request.getParameter("courseDesc");
+                String courseCode = request.getParameter("courseCode");
+
+                try {
+
+                    //Check if course already exists
+                    ResultSet ifCourseExists = null;
+                    int courseExists = 0;
+
+                    ifCourseExists = DatabaseQuery.getResultSet(DatabaseQuery.ifCourseExists(courseCode), connection);
+                    while (ifCourseExists.next()){
+                        courseExists = ifCourseExists.getInt(1);                    
+                    }
+
+                    if (courseExists == 1) {
+
+                        connection.close();
+                        response.sendRedirect("/Assignment3/Admin?courseExists=true");
+
+                    }
+                    else {
+
+                        String createCourseQuery = DatabaseQuery.createCourseQuery(courseName, courseDesc, courseCode);
+                        Statement statement = connection.createStatement();
+                        statement.execute(createCourseQuery);
+
+                        connection.close();
+                        response.sendRedirect("/Assignment3/Admin?courseExists=created");
+
+                    }
+
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
     }
 }

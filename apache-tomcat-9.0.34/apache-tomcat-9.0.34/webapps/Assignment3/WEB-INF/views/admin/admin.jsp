@@ -122,6 +122,18 @@
                         </c:if>
                     </c:if>
 
+                    <c:if test="${not empty param.courseExists}" >
+                        <c:if test = "${param.courseExists == 'created'}">
+
+                            <div class = 'alert alert-success form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                        
+                                Course Created
+
+                            </div>
+
+                        </c:if>
+                    </c:if>
+
                         
 
                     <div class = 'row form-row justify-content-center' id = 'lectForm' name = 'lectForm'>
@@ -138,19 +150,16 @@
                                     <input type = 'email' class = 'form-control ' id = 'searchUser' name = 'searchUser' placeholder = 'Enter Email Address'>
 
                                 </div>
-
                                 <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid'>
 
                                     Invalid Email Address
 
                                 </div>
-
                                 <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email'>
 
                                     Please Enter Email Address
                                         
                                 </div>
-
                                 <div class = 'col-sm d-flex justify-content-center btn-add-lec'>
 
                                     <button type = 'submit' onClick = '' class = 'btn btn-success'><i class="fas fa-plus"></i> Add Lecturer</button>
@@ -163,7 +172,7 @@
 
                     </div>
 
-                    <div class = 'border row form-row justify-content-center' id = 'enrolForm'>
+                    <div class = 'row form-row justify-content-center' id = 'enrolForm'>
 
                         <form method = "post" action = '/Assignment3/Admin?param=enrolStd' onSubmit = "return formValidationEnrol() " >
 
@@ -176,19 +185,16 @@
                                     <input type = 'email' class = 'form-control ' id = 'userEnrol' name = 'userEnrol' placeholder = 'Enter Email Address'>
 
                                 </div>
-
                                 <div class = 'alert alert-danger form-input' role = 'alert' id = 'email-invalid-enrol'>
 
                                     Invalid Email Address
 
                                 </div>
-
                                 <div class = 'alert alert-danger form-input' role = 'alert' id = 'no-email-enrol'>
 
                                     Please Enter Email Address
                                         
                                 </div>
-
                                 <label for = 'classCode' class = 'col-sm-2 col-form-label'>Class Code</label>
 
                                 <div class = 'col'>
@@ -196,13 +202,11 @@
                                     <input type = 'text' class = 'form-control ' id = 'classCode' name = 'classCode' placeholder = 'Enter Class Code'>
 
                                 </div>
-
                                 <div class = 'alert alert-danger form-input' role = 'alert' id = 'courseCodeAlert'>
 
                                     Please Course Code
                                         
                                 </div>
-
                                 <div class = 'col-sm d-flex justify-content-center btn-add-lec'>
 
                                     <button type = 'submit' onClick = '' class = 'btn btn-success'><i class="fas fa-plus"></i> Enrol Student</button>
@@ -215,9 +219,74 @@
 
                     </div>
 
-                    <div class = 'border row form-row' id = 'createCourseForm'>
+                    <div class = 'row form-row justify-content-center' id = 'createCourseForm'>
 
-                        COR
+                        <form method = "post" action = '/Assignment3/Admin?param=createCourse' onSubmit = "return formValidationCreate() " >
+
+                            <div class = 'border-bottom form-group-row'>
+                            
+                                <div class = 'col'>
+
+                                    <label for = 'courseName' class = 'col-form-label '>Enter Course Name</label>
+
+                                    <input type = 'text' class = 'form-control ' id = 'courseName' name = 'courseName' placeholder = 'Enter Course Name'>
+
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'noName'>
+
+                                    Please enter course name
+                                        
+                                </div>
+
+                            </div>
+                            <div class = 'border-bottom form-group-row'>
+
+                                <div class = 'col'>
+
+                                    <label for = 'courseDesc' class = 'col-form-label '>Enter Course Description</label>
+
+                                    <input type = 'text' class = 'form-control ' id = 'courseDesc' name = 'courseDesc' placeholder = 'Enter Course Description'>
+
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'noDesc'>
+
+                                    Please enter course description
+                                        
+                                </div>
+
+                            </div>
+                            <div class = 'border-bottom form-group-row'>
+
+                                <div class = 'col'>
+
+                                    <label for = 'courseCode' class = 'col-form-label '>Enter Course Code</label>
+
+                                    <input type = 'text' class = 'form-control ' id = 'courseCode' name = 'courseCode' placeholder = 'Enter Course Code'>
+
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'noCourseCode'>
+
+                                    Please enter course code
+                                        
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'invalidName'>
+
+                                    Invaid course name. Must start with 4 captial letters and end with 4 numbers
+                                        
+                                </div>                               
+
+                            </div>
+                            <div class = 'form-group-row'>
+
+                                <button type = 'submit' onClick = '' class = 'btn btn-success'><i class="fas fa-plus"></i> Create Course</button>
+
+                            </div>            
+                        
+                        </form>
 
                     </div>
 

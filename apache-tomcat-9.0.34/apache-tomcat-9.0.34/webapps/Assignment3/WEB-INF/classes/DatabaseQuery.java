@@ -80,4 +80,9 @@ public class DatabaseQuery {
         return result;
     }
 
+    public static String createCourseQuery(String courseName, String courseDesc, String CourseCode){
+        String result = "INSERT INTO course(name, description,course_code) VALUES ('" + courseName + "', '" + courseDesc + "', '" + CourseCode + "');";
+        return result;
+    }
+
 }

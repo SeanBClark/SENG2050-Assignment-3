@@ -8,8 +8,9 @@
 
     width: 700px;
     text-align: center;
-    white-space: nowrap;    
-    padding: 50px;
+    /* white-space: nowrap;     */
+    padding: 12px;
+    padding-bottom: 25px;
 
 }
 

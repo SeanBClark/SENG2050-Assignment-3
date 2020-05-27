@@ -2,16 +2,6 @@ $(document).ready(function () {
     hideForms();
 });
 
-function hideForms() {
-    $("#enrolForm").hide();
-    $("#createCourseForm").hide();
-    $("#lectForm").hide();
-    $("#email-invalid").hide();
-    $("#no-email").hide();
-    $("#email-invalid-enrol").hide();
-    $("#no-email-enrol").hide();
-    $("#courseCodeAlert").hide();
-}
 
 function showLectForm() {
     $("#enrolForm").slideUp();
@@ -30,6 +20,7 @@ function showEnrolForm() {
 function showCourseForm() {
     $("#lectForm").slideUp();
     $("#enrolForm").slideUp();
+    $("#emailSucFail").slideUp();
     $("#createCourseForm").slideToggle();
 }
 
@@ -95,6 +86,43 @@ function formValidationEnrol() {
 
 }
 
+function formValidationCreate() {
+
+    let courseName = document.getElementById("courseName").value;
+    let courseDesc = document.getElementById("courseDesc").value;
+    let courseCode = document.getElementById("courseCode").value;
+
+    if (isEmpty(courseName) === false) {
+        $("#noName").hide();
+        $("#noDesc").hide();
+        $("#invalidName").hide();
+        $("#noName").slideDown();
+        return false; 
+    }
+    else if (isEmpty(courseDesc) === false) {
+        $("#noCourseCode").hide();
+        $("#invalidName").hide();
+        $("#noName").hide();
+        $("#noDesc").slideDown();
+        return false
+    }
+    else if (isEmpty(courseCode) === false) {
+        $("#noDesc").hide();
+        $("#noName").hide();
+        $("#invalidName").hide();
+        $("#noCourseCode").slideDown();
+        return false
+    }
+    else if (isCourseCode(courseCode) == false) {
+        $("#noDesc").hide();
+        $("#noName").hide();  
+        $("#noCourseCode").hide();
+        $("#invalidName").slideDown();
+        return false
+    }
+
+}
+
 function isEmail(param) {
     var regex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
     return regex.test(param);
@@ -112,4 +140,20 @@ function isEmpty(param) {
 function isCourseCode(param) {
     var regex = /^[A-Z]{4}\d{4}$/;
     return regex.test(param);
+}
+
+
+function hideForms() {
+    $("#enrolForm").hide();
+    $("#createCourseForm").hide();
+    $("#lectForm").hide();
+    $("#email-invalid").hide();
+    $("#no-email").hide();
+    $("#email-invalid-enrol").hide();
+    $("#no-email-enrol").hide();
+    $("#courseCodeAlert").hide();
+    $("#noName").hide();
+    $("#noDesc").hide();
+    $("#noCourseCode").hide();
+    $("#invalidName").hide();
 }
