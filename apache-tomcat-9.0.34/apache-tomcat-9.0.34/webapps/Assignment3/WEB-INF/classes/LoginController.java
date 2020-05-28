@@ -30,7 +30,6 @@ public class LoginController extends HttpServlet {
             // Gets database connection
             try {
                 connection = ConfigBean.getConnection();
-                System.out.println("Connected");
             }
             catch (Exception e){ 
                 System.out.println("Could not connect to DBMS");
@@ -64,7 +63,6 @@ public class LoginController extends HttpServlet {
                             session.setAttribute("userID", resultSet.getInt("user_id"));
                             session.setAttribute("userType", resultSet.getString("user_type"));
                             session.setAttribute("userBean", userBean);
-                            System.out.println("Session Set");
                         }
                     }
 
@@ -75,7 +73,7 @@ public class LoginController extends HttpServlet {
                     }
                     else if ( userType.equals("lect")) {
 
-                        System.out.println("Lecturer");
+                        response.sendRedirect("/Assignment3/CourseSelect");
 
                     }
                     else if ( userType.equals("admin")) {

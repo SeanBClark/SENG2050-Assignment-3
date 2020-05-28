@@ -242,17 +242,20 @@ CREATE TABLE course_cord (
 
 -- Assign lecture 1 to web eng
 INSERT INTO course_cord(course_id, lect_id) VALUES (1, 6);
+INSERT INTO course_cord(course_id, lect_id) VALUES (2, 6);
 
--- Assign lecture 2 to web eng
-INSERT INTO course_cord(course_id, lect_id) VALUES (1, 7);
+-- Assign lecture 2 to course 2
+INSERT INTO course_cord(course_id, lect_id) VALUES (2, 7);
 
--- Assign lecture 3 to web eng
-INSERT INTO course_cord(course_id, lect_id) VALUES (1, 8);
+-- Assign lecture 3 to course 3
+INSERT INTO course_cord(course_id, lect_id) VALUES (3, 8);
 
--- Assign lecture 4 to web eng
-INSERT INTO course_cord(course_id, lect_id) VALUES (1, 9);
+-- Assign lecture 4 to course 4
+INSERT INTO course_cord(course_id, lect_id) VALUES (4, 9);
 
--- SELECT * FROM course_cord
+-- SELECT course_cord.course_id, course.name, course.course_code FROM course_cord 
+-- 	JOIN course ON course.id = course_cord.course_id
+-- 	WHERE course_cord.lect_id = 6;
 
 CREATE TABLE project (
 
@@ -283,4 +286,12 @@ INSERT INTO project(name, description, course_id, group_id, marked, grade, mark,
 INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 2, 1, 1, 12.55, 'F', 'Terrilbe job you failure');
 INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 1, 2, 1, 77.55, 'C', 'Great job you did not fail!');
 INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 2, 2, 1, 37.55, 'F', 'Terrilbe job you failure');
--- SELECT * FROM project
+-- SELECT * FROM project;
+
+-- SELECT project.id, project.name, group_info.group_id, group_info.group_name 
+--     FROM project 
+--     JOIN group_info ON group_info.group_id = project.group_id 
+--     WHERE group_info.group_status = 1
+--     AND project.marked = 0
+--     AND project.course_id = 1;
+
