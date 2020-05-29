@@ -169,6 +169,30 @@
 
                             </div>
 
+                            <div class = 'form-group row'>
+                                
+                                <label for = 'projectName' class = 'col-sm-2 col-form-label'>Project Name:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type = 'text' class = 'form-control form-input' id = 'projectName' name = 'projectName' placeholder = 'Enter Project that this group is for e.g. Assignment 1'>
+
+                                </div>
+
+                            </div>
+
+                            <div class = 'form-group row'>
+                                
+                                <label for = 'courseCode' class = 'col-sm-2 col-form-label'>Course Code:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type = 'text' class = 'form-control form-input' id = 'courseCode' name = 'courseCode' placeholder = 'Enter Course Code that this group is for'>
+
+                                </div>
+
+                            </div>
+
                             <button type = "submit" class = "btn btn-success btn-lg create-group-btn2"><i class="fas fa-plus"></i> Create Group</button>
 
                         </div>

@@ -276,7 +276,7 @@ CREATE TABLE project (
 
 );
 
--- Creates 2 uncompleted Projects for web eng and adv db for group 1 and group 2
+-- 
 INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 2', 'Assignment 2 Desc', 1, '2020-07-24 15:00:00');
 INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 3', 'Assignment 3 Desc', 2, '2020-08-24 10:00:00');
 INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 4', 'Assignment 4 Desc', 3, '2020-09-24 23:59:59');
@@ -311,12 +311,28 @@ INSERT INTO project_assign(project_id, group_id, feedback) VALUES (3, 2, 'This i
 INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES (2, 2, 88.88, 1, 'Great work!');
 INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES (1, 2, 12.33, 1, 'Worst I have ever seen!');
 
-SELECT project_assign.project_id, project.name, group_info.group_id, group_info.group_name, project_assign.marked
-	FROM project_assign
-    JOIN project ON project_assign.project_id = project.id
-    JOIN group_info ON group_info.group_id = project_assign.group_id
-    WHERE group_info.group_status = 1
-	AND project.course_id = 1;
+-- SELECT id FROM course WHERE course_code = 'COMP2230';
+-- SELECT id FROM project WHERE name = 'Assignment 5';
+-- SELECT group_id from group_info WHERE group_name = 'Assignment Group for Beavers';
+-- SELECT * FROM group_info;
+
+-- INSERT into project_assign(project_id, group_id) VALUES ( (SELECT id FROM project WHERE name = projectName AND course_id = courseCode) , (SELECT group_id FROM group_info WHERE group_name = groupName));
+
+-- INSERT INTO group_info(group_name) VALUES ('TEST GROUP');
+
+-- INSERT INTO project_assign(project_id, group_id) VALUES (
+-- 	(SELECT id FROM project WHERE name = 'Assignment 5' AND course_id = (SELECT id FROM course WHERE course_code = 'COMP2230')),
+--     (SELECT group_id FROM group_info WHERE group_name = 'TEST GROUP'));
+    
+-- SELECT * FROM project_assign WHERE group_id = (SELECT group_id FROM group_info WHERE group_name = 'The Group');
+    
+    
+-- SELECT project_assign.project_id, project.name, group_info.group_id, group_info.group_name, project_assign.marked
+-- 	FROM project_assign
+--     JOIN project ON project_assign.project_id = project.id
+--     JOIN group_info ON group_info.group_id = project_assign.group_id
+--     WHERE group_info.group_status = 1
+-- 	AND project.course_id = 1;
 
 -- SELECT project.id, project.name, group_info.group_id, group_info.group_name 
 --     FROM project 
