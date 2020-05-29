@@ -112,6 +112,8 @@ public class FileManagementBean implements java.io.Serializable
                 }
             }
 
+            //result.close();
+            //connection.close();
         }
         catch(SQLException e)
         {
@@ -149,6 +151,8 @@ public class FileManagementBean implements java.io.Serializable
                 folder.add(file); // add file to folder
             }
 
+            //result.close();
+            //connection.close();
         }
         catch(SQLException e)
         {
@@ -177,6 +181,9 @@ public class FileManagementBean implements java.io.Serializable
             pS.setBoolean(6, status);
 
             pS.executeUpdate(); 
+
+            //pS.close(); 
+            //connection.close();
         }
         catch(SQLException e)
         {
@@ -197,6 +204,8 @@ public class FileManagementBean implements java.io.Serializable
             Connection connection = ConfigBean.getConnection(); 
             Statement statement = connection.createStatement();   
             statement.executeUpdate(fileStatment);
+
+            //connection.close();
         }
         catch(SQLException e)
         {
@@ -223,6 +232,8 @@ public class FileManagementBean implements java.io.Serializable
                 currentVersion = (result.getInt("file_version"));
             }
 
+           // result.close();
+            //connection.close();
         }
         catch(SQLException e)
         {
@@ -245,6 +256,8 @@ public class FileManagementBean implements java.io.Serializable
             Connection connection = ConfigBean.getConnection(); 
             Statement statement = connection.createStatement();   
             statement.executeUpdate(fileStatment);
+
+            //connection.close();
         }
         catch(SQLException e)
         {

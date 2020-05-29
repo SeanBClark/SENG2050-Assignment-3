@@ -69,7 +69,7 @@
 
                             <li class="nav-item"> 
 
-                                <a class="nav-link" hre="/Assignment3/LogOutController">
+                                <a class="nav-link" href="/Assignment3/LogOutController">
 
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
 
