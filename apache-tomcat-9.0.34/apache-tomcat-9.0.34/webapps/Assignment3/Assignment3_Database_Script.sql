@@ -161,11 +161,38 @@ CREATE TABLE file_mngt (
     file_name VARCHAR(200) NOT NULL,
     file_url VARCHAR(200) NOT NULL,
     file_desc VARCHAR(500),
+    file_version INT NOT NULL, 
+    file_status bit(1) default 0,
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
     
     FOREIGN KEY (group_id) REFERENCES group_info(group_id) ON DELETE CASCADE
 );
+
+ -- Add files
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (1, 'Dropbox', 'https://www.dropbox.com/?landing=dbv2', 'Images used in report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (1, 'Google Drive', 'https://www.google.com/drive/', 'Notes for report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (1, 'Report', 'https://www.cdc.gov/niosh/surveyreports/pdfs/349-12a.pdf', 'Draft report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, file_status) VALUES (1, 'Report', 'https://www.gvsu.edu/cms4/asset/CC3BFEEB-C364-E1A1-A5390F221AC0FD2D/engineering_full_technical_report_gg_final.pdf', 'Final report.', 2, 1);
+
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (2, 'Dropbox', 'https://www.dropbox.com/?landing=dbv2', 'Images used in report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (2, 'Google Drive', 'https://www.google.com/drive/', 'Notes for report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (2, 'Report', 'https://www.cdc.gov/niosh/surveyreports/pdfs/349-12a.pdf', 'Draft report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, file_status) VALUES (2, 'Report', 'https://www.gvsu.edu/cms4/asset/CC3BFEEB-C364-E1A1-A5390F221AC0FD2D/engineering_full_technical_report_gg_final.pdf', 'Final report.', 2, 1);
+
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (3, 'Dropbox', 'https://www.dropbox.com/?landing=dbv2', 'Images used in report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (3, 'Google Drive', 'https://www.google.com/drive/', 'Notes for report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (3, 'Report', 'https://www.cdc.gov/niosh/surveyreports/pdfs/349-12a.pdf', 'Draft report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, file_status) VALUES (3, 'Report', 'https://www.gvsu.edu/cms4/asset/CC3BFEEB-C364-E1A1-A5390F221AC0FD2D/engineering_full_technical_report_gg_final.pdf', 'Final report.', 2, 1);
+
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (4, 'Dropbox', 'https://www.dropbox.com/?landing=dbv2', 'Images used in report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (4, 'Google Drive', 'https://www.google.com/drive/', 'Notes for report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (4, 'Report', 'https://www.cdc.gov/niosh/surveyreports/pdfs/349-12a.pdf', 'Draft report.', 1);
+INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, file_status) VALUES (4, 'Report', 'https://www.gvsu.edu/cms4/asset/CC3BFEEB-C364-E1A1-A5390F221AC0FD2D/engineering_full_technical_report_gg_final.pdf', 'Final report.', 2, 1);
+
+-- SELECT * FROM file_mngt; 
+
+
 
 -- Table for course details
 CREATE TABLE course (

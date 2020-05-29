@@ -17,41 +17,14 @@ public class FilesController extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) 
     {
-        List<FileManagementBean> folder = new LinkedList<>(); 
-
         HttpSession session = request.getSession();
         int groupId = (int) session.getAttribute("groupID");
 
-        // prepare query
-        String fileQuery = ("SELECT * FROM file_mngt WHERE group_id = " + groupId + ";" ); 
+        // add list of files to session     
+        FileManagementBean file = new FileManagementBean(); 
+        session.setAttribute("folder", (file.getAllFiles(groupId))); 
 
-        try(Connection connection = ConfigBean.getConnection(); 
-            Statement statement = connection.createStatement();   
-            ResultSet result = statement.executeQuery(fileQuery);)       
-        { 
-            while(result.next())                          
-            {
-                // create new file 
-                FileManagementBean file = new FileManagementBean(); 
-
-                // get file info
-                file.setName(result.getString("file_name"));
-                file.setUrl(result.getString("file_url"));
-                file.setDescription(result.getString("file_desc")); 
-
-                folder.add(file); // add file to folder
-            }
-
-            session.setAttribute("folder", folder); // add folder to session 
-        }
-        catch(SQLException e)
-        {
-            System.err.println(e.getMessage());
-            System.err.println(e.getStackTrace());
-        }
-
-
-
+        // redirect to jsp manage files page
         try 
         {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/manage_files/manage_files.jsp");
@@ -67,34 +40,57 @@ public class FilesController extends HttpServlet
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
     throws ServletException, IOException 
     {
+        FileManagementBean file = new FileManagementBean(); 
+
         // get file values
         HttpSession session = request.getSession();
         int groupId = (int) session.getAttribute("groupID");
 
-        String name = request.getParameter("fileName");
-        String url = request.getParameter("fileUrl");
-        String description = request.getParameter("fileDesc");
-
-        // prepare query 
-        String fileQuery = "INSERT INTO file_mngt (group_id, file_name, file_url, file_desc) VALUES (?, ?, ?, ?);"; 
-
-        // connect to database and assign values to file
-        try(Connection connection = ConfigBean.getConnection(); 
-            PreparedStatement pS = connection.prepareStatement(fileQuery);)
+        // find out if user wants to add or remove a file
+        if((request.getParameter("remove")) != null) // remove file
         {
-            pS.setInt(1, groupId);
-            pS.setString(2, name);
-            pS.setString(3, url);
-            pS.setString(4, description);
+            // get name of file to be removed 
+            String name = request.getParameter("removeFileName");
+            int version = Integer.parseInt(request.getParameter("removeFileVersion")); 
 
-            pS.executeUpdate(); 
+            // remove file
+            file.removeFile(groupId, name, version);
         }
-        catch(SQLException e)
+        else // add file
         {
-            System.err.println(e.getMessage());
-            System.err.println(e.getStackTrace()); 
-        }
+            if((request.getParameter("newVersion")) != null) // user wants to add new version of a file
+            {
+                // get values of new version
+                String name = request.getParameter("newVersionFileName"); 
+                String url = request.getParameter("newVersionUrl");
+                String description = request.getParameter("newVersionDesc");
 
+                // get current value of file
+                int latestVersion = ((file.getCurrentVersion(groupId, name)) + 1);
+
+                // add new version
+                file.addFile(groupId, name, url, description, latestVersion, false);
+            }
+            else // user wants to add new file
+            {
+                // get values from form 
+                String name = request.getParameter("fileName");
+
+                if(file.doesNameExist(groupId, name)) // file name already exists, but user is trying to add it as a new file
+                {
+
+                }
+                else // no file has this name, therefor we can add to database
+                {
+                    // get values of new file
+                    String url = request.getParameter("fileUrl");
+                    String description = request.getParameter("fileDesc");
+
+                    // add new file to database
+                    file.addFile(groupId, name, url, description, 1, false);
+                }
+            }
+        }
 
         // redirect to list of files jsp page. 
         response.sendRedirect("/Assignment3/ManageFiles");

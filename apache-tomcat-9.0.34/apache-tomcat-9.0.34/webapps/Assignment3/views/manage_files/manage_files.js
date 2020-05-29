@@ -1,42 +1,51 @@
 $(document).ready(function () 
 {
-    $("#addFileForm").hide();
+    $("#addVersionForm").hide();
 });
 
-function showAddFile() 
+
+function showFiles() 
 {
-    if ($("#folder").is(":visible")) 
-    {
-        $("#addFileForm").slideDown();
-        $("#folder").slideUp();
-        $("#addFileBtn").html('<i class="fas fa-plus"></i> Show Files');
-    }
-    else 
-    {
-        $("#addFileForm").slideUp();
-        $("#folder").slideDown();
-        $("#addFileBtn").html('<i class="fas fa-plus"></i> Add File');
-    }
+    $("#folder").slideDown();
+    $("#addVersionForm").slideUp();
 }
 
-function formValidation()
+function showAddVersion(versionName)
 {
-    var url = document.forms["fileForm"]["fileUrl"].value; 
+    document.getElementById("newVersion").value = true; 
+    document.getElementById("newVersionFileName").value = versionName;
 
-    if((url === "") || (urlValidation(url) === false))
+    $("#addVersionForm").slideDown();
+    $("#folder").slideUp();
+}
+
+
+function formVersionValidation()
+{
+    var newUrl = document.forms["newVersionForm"]["newVersionUrl"].value; 
+
+    if((newUrl === "") || (urlValidation(newUrl) === false))
     {
-        $("#urlInvalid").slideUp();
-        return false; 
-    }
-    else 
-    {
-        $("#urlInvalid").slideDown();
-        return false; 
+        $("#urlVersionInvalid").show();
+        return = false; 
     }
 
+    $("#urlVersionInvalid").hide();
+    return = true; 
 }
 
 function urlValidation(url)
 {
     return /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(url);
+}
+
+function removeFile(removeName, removeVersion)
+{
+    // get values from document and assign new value
+    document.getElementById("remove").value = true; 
+    document.getElementById("removeFileName").value = removeName;
+    document.getElementById("removeFileVersion").value = removeVersion;
+
+    // submit form 
+    document.getElementById("removeForm").submit(); 
 }
