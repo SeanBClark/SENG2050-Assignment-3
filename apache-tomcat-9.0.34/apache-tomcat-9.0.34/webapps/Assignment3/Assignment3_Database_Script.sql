@@ -9,6 +9,7 @@
 -- DROP DATABASE GroupManagementDatabase;
 DROP USER IF EXISTS 'root'@'GroupManagementDatabase';
 
+-- DROP DATABASE GroupManagementDatabase;
 CREATE DATABASE IF NOT EXISTS GroupManagementDatabase;
 USE GroupManagementDatabase;
 
