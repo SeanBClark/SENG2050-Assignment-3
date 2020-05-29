@@ -1,0 +1,81 @@
+con-div {
+
+    margin-top: 50px;
+
+}
+
+.group-name-div {
+
+    padding: 20px;
+    text-align: center;
+
+}
+
+.member-list-div {
+
+    padding: 20px;
+    text-align: center;
+
+}
+
+.add-member-div {
+
+    padding: 20px;
+    text-align: center;
+
+}
+
+.progress-row {
+
+    margin-top: 0.5rem;
+
+}
+
+.progress-text {
+
+    text-align: center;
+    margin: 0.5rem;
+
+}
+
+.progress {
+
+    width: 98%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+
+}
+
+.info-header {
+
+    text-align: center;
+    padding:0.5rem;
+    width: 100%;
+
+}
+
+.info-col {
+
+    margin: 1rem;
+    
+}
+
+.info-list {
+    width: 40rem;
+    min-width: 18rem;
+    max-width: 60rem;
+    margin: 1rem;
+}
+
+.info-btn {
+
+    margin: 1rem;
+
+}
+
+.list-group-item {
+
+    text-align: center;
+
+}

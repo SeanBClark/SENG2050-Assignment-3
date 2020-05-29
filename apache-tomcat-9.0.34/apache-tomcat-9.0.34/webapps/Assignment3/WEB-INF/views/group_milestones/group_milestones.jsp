@@ -81,11 +81,164 @@
 
             </div>
 
-            <div class = 'body'>
+             <div class = 'container con-div'>
+                <div class = 'row'>
 
-                MILESTONES
+                    <div class = 'border col'>
+                    
+                        <c:forEach var = "item" items = "${sessionScope.groupInfo}">
 
-            <div>
+                            <div class = 'border-bottom group-name-div'>
+
+                                <p class = 'h4'>${item.getGroupName()}</p>
+
+                            </div>
+
+                        </c:forEach>
+
+                        <div class = 'border-bottom member-list-div'>
+
+                            <p class = 'h5'>Members</p>
+
+                            <ul class = 'list-group'>
+
+                                <c:forEach var = "item" items = "${sessionScope.groupMemberList}">                                    
+
+                                    <c:choose>
+                                    
+                                        <c:when test = "${item.getMemberID() == sessionScope.userID}">
+                                        
+                                            <li class = 'list-group-item active'>${item.getMemberName()}</li>
+                                        
+                                        </c:when>
+                                        <c:otherwise>
+
+                                            <li class = 'list-group-item'>${item.getMemberName()}</li>
+
+                                        </c:otherwise>
+                                    
+                                    </c:choose>
+
+                                </c:forEach>
+
+                            </ul>
+
+                        </div>
+
+                        <div class = 'add-member-div'>
+
+                            <a href = '/Assignment3/GroupHome?${request.getParameter("groupID")}'><button class = 'btn btn-success add-member-btn'>Group Home</button></a>
+
+                        </div>
+                    
+                    </div>
+                    <div class = 'border col-8'>
+
+                        <div class = 'row progress-row'>
+
+                            <div class = 'col-1 '>
+
+                                <p class = 'progress-text'>Progress:</p>
+
+                            </div>
+                            <div class = 'col-11'>
+
+                                <div class = 'progress'>
+
+                                    <div class = 'progress-bar progress-bar-striped bg-success' style = 'width: ${sessionScope.percentageComplete}%;' roll = 'progressbar' aria-valuemin = '0' aria-valuemax = '100'"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class = 'row'>
+
+                            
+                            <%-- Milestone column --%>
+                            <div class = 'border col info-col'>
+
+                                <div class = 'row'>
+                                
+                                    <p class = 'h5 info-header border-bottom'>Upcoming Milestones</p></a> 
+                                    
+                                </div>
+
+                                <div class = 'border-bottom row d-flex justify-content-center'>
+                                
+                                    
+                                    <ul class = 'list-group info-list'>
+                                        <table>
+                                        
+                                        <c:forEach var = "item" items = "${sessionScope.upcomingMSList}">
+                                            <tr>
+                                            <td>
+                                            <%-- <li class = 'list-group-item list-group-item-light'><span class = 'ms-name'>${item.getMilestoneName()} </span> </br> <span class = 'ms-date'>${item.getMilestoneDate()}</span></li> --%>
+
+                                                <c:choose>
+
+                                                    <c:when test = "${item.getMilestoneStatus() == 1}">
+
+                                                        <li class = 'list-group-item list-group-item-success'><span class = 'ms-name'>${item.getMilestoneName()} </span> </br> <span class = 'ms-date'><i class = 'fas fa-check-circle'></i> Completed</span></li>
+
+                                                    </c:when>
+                                                    <c:otherwise>
+
+                                                        <li class = 'list-group-item'><span class = 'ms-name'>${item.getMilestoneName()} </span> </br> <span class = 'ms-date'>${item.getMilestoneDate()}</span></li>
+
+                                                    </c:otherwise>
+
+                                                </c:choose>
+                                            </td>
+                                            
+                                            <td>
+                                                <c:choose>
+                                    
+                                                <c:when test = "${item.getMilestoneStatus() == 1}">
+                                                
+                                                    mark incomplete
+                                                
+                                                </c:when>
+                                                <c:otherwise>
+
+                                                    mark complete
+
+                                                </c:otherwise>
+                                            
+                                                </c:choose>
+                                            </td>
+                                            
+                                            <td>
+                                                delete
+                                            </td>
+                                            
+                                            </tr>
+                                            
+                                        </c:forEach>
+                                        
+                                        </table>
+                                    </ul>
+                                
+                                </div>
+
+                                <div class = 'row d-flex justify-content-center info-btn'>
+
+                                      
+
+                                </div>
+
+                            </div>
+ 
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
 
         </div>
 

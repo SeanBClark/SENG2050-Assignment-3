@@ -64,6 +64,20 @@ public class DatabaseQuery {
         String result = "INSERT INTO user_group_info(user_id, group_id) VALUES ('" + userID + "', (SELECT group_id FROM group_info WHERE group_name = '" + groupName + "'))";
         return result;
     }
+        public static String addNewMilestone (int groupID, String milestoneName, String milestoneDate) {
+        String result = "";
+        return result;
+    }
+    
+    public static String markMilestone (int groupID, String milestoneName, int mark) {
+        String result = "";
+        return result;
+    }
+    
+    public static String deleteMilestone (int groupID, String milestoneName) {
+        String result = "";
+        return result;
+    }
 
     public static String ifStdExists(String userEmail) {
         String result = "SELECT EXISTS( SELECT user_id FROM user WHERE user_email = '" + userEmail + "');";
