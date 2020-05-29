@@ -1,0 +1,5 @@
+
+*.log
+apache-tomcat-9.0.34/apache-tomcat-9.0.34/logs/localhost_access_log.2020-05-30.txt
+apache-tomcat-9.0.34/apache-tomcat-9.0.34/work/Catalina/localhost/Assignment3/SESSIONS.ser
+apache-tomcat-9.0.34/apache-tomcat-9.0.34/work/Catalina/localhost/Assignment3/SESSIONS.ser
