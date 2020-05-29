@@ -19,8 +19,8 @@
 
 .file-name-div {
     
-    max-width: 200px;
-    min-width: 200px;
+    max-width: 160px;
+    min-width: 160px;
     align-self: center;
     word-wrap: break-word;
     white-space: nowrap;
@@ -31,6 +31,8 @@
 
 .file-desc-div {
     
+    max-width: 410px;
+    min-width: 410px;
     word-wrap: break-word;
     white-space: nowrap;
     overflow: hidden;
@@ -92,4 +94,28 @@
     margin-right: 2%;
     width: 100%;
     display: none;
+}
+
+.file-version-div {
+
+    max-width: 40px;
+    min-width: 40px;
+    align-self: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.btn-group-div {
+
+    max-width: 160px;
+    min-width: 320px;
+    align-self: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }

@@ -232,4 +232,24 @@ public class FileManagementBean implements java.io.Serializable
 
         return currentVersion; 
     }
+
+    // updates the status of a file 
+    public void updateStatus(int groupId, String name, int version, boolean status)
+    {
+        // prepare statment 
+        String fileStatment = ("UPDATE file_mngt SET file_status = " + status + " WHERE group_id = " + groupId + " AND  file_name = '" + name + "' AND file_version = " + version + ";");
+
+        // connect to database and update file 
+        try  
+        { 
+            Connection connection = ConfigBean.getConnection(); 
+            Statement statement = connection.createStatement();   
+            statement.executeUpdate(fileStatment);
+        }
+        catch(SQLException e)
+        {
+            System.err.println(e.getMessage());
+            System.err.println(e.getStackTrace());
+        }
+    }
 }

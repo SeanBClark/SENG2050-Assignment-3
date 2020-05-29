@@ -56,13 +56,32 @@ public class FilesController extends HttpServlet
             // remove file
             file.removeFile(groupId, name, version);
         }
+        else if((request.getParameter("status")) != null) // user wished to submit file or unsubmit it
+        {
+            // get values
+            boolean status; 
+            String name = request.getParameter("statusFileName");
+            int version = Integer.parseInt(request.getParameter("statusFileVersion")); 
+
+            if((request.getParameter("status").equals("true"))) // user wamts to unsubmit
+            {
+                status = false; 
+            }
+            else // user wants to submit
+            {
+                status = true; 
+            }
+
+            // update file status
+            file.updateStatus(groupId, name, version, status); 
+        }
         else // add file
         {
             if((request.getParameter("newVersion")) != null) // user wants to add new version of a file
             {
                 // get values of new version
                 String name = request.getParameter("newVersionFileName"); 
-                String url = request.getParameter("newVersionUrl");
+                String url = request.getParameter("versionUrl");
                 String description = request.getParameter("newVersionDesc");
 
                 // get current value of file
@@ -76,9 +95,17 @@ public class FilesController extends HttpServlet
                 // get values from form 
                 String name = request.getParameter("fileName");
 
-                if(file.doesNameExist(groupId, name)) // file name already exists, but user is trying to add it as a new file
+                if(file.doesNameExist(groupId, name)) // file name already exists, add new version
                 {
+                    // get values of new file
+                    String url = request.getParameter("fileUrl");
+                    String description = request.getParameter("fileDesc");
 
+                    // get current value of file
+                    int latestVersion = ((file.getCurrentVersion(groupId, name)) + 1);
+
+                    // add new version
+                    file.addFile(groupId, name, url, description, latestVersion, false);
                 }
                 else // no file has this name, therefor we can add to database
                 {

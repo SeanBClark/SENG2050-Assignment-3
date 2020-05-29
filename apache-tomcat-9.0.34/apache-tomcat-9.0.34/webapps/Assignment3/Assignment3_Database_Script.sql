@@ -190,8 +190,7 @@ INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) V
 INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (4, 'Report', 'https://www.cdc.gov/niosh/surveyreports/pdfs/349-12a.pdf', 'Draft report.', 1);
 INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, file_status) VALUES (4, 'Report', 'https://www.gvsu.edu/cms4/asset/CC3BFEEB-C364-E1A1-A5390F221AC0FD2D/engineering_full_technical_report_gg_final.pdf', 'Final report.', 2, 1);
 
--- SELECT * FROM file_mngt; 
-
+-- SELECT * FROM file_mngt ORDER BY group_id;
 
 
 -- Table for course details
