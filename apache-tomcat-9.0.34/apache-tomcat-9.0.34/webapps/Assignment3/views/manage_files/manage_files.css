@@ -1,0 +1,121 @@
+.file-title-div {
+
+    text-align: center;
+
+}
+
+.file-list-div {
+    
+    padding: 20px;
+
+}
+
+.row-div {
+    
+    margin: 20px;
+    padding: 10px;
+
+}
+
+.file-name-div {
+    
+    max-width: 160px;
+    min-width: 160px;
+    align-self: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.file-desc-div {
+    
+    max-width: 410px;
+    min-width: 410px;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-self: center;
+
+}
+
+.btn-div {
+
+    align-self: center;
+    
+}
+
+.add-file-btn {
+
+    margin-left: 44%;
+    margin-right: 56%;
+    
+
+}
+
+.add-file-btn2 {
+
+    margin-left: 47%;
+    margin-right: 53%;
+
+}
+
+.add-file-form-div {
+
+    padding: 20px;
+    margin: 20px;
+
+}
+
+.form-div {
+
+    margin: 20px;
+    width: 90%;
+    
+}
+
+.form-input {
+
+    width: 100%;
+
+}
+
+.text-area {
+
+    width: 100%;
+    
+}
+
+.error {
+
+    margin-left: 18%;
+    margin-right: 2%;
+    width: 100%;
+    display: none;
+}
+
+.file-version-div {
+
+    max-width: 40px;
+    min-width: 40px;
+    align-self: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.btn-group-div {
+
+    max-width: 160px;
+    min-width: 320px;
+    align-self: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
