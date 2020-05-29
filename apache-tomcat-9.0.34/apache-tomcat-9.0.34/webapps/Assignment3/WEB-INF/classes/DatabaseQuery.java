@@ -93,11 +93,11 @@ public class DatabaseQuery {
     }
 
     public static String getCourseGroupList(int courseID) {
-        String result = "SELECT project.id, project.name, group_info.group_id, group_info.group_name" 
-            + " FROM project" 
-            + " JOIN group_info ON group_info.group_id = project.group_id" 
+        String result = "SELECT project_assign.project_id, project.name, group_info.group_id, group_info.group_name, project_assign.marked" 
+            + " FROM project_assign"
+            + " JOIN project ON project_assign.project_id = project.id"
+            + " JOIN group_info ON group_info.group_id = project_assign.group_id" 
             + " WHERE group_info.group_status = 1"
-            + " AND project.marked = 0"
             + " AND project.course_id = " + courseID + ";";
         return result;
     }

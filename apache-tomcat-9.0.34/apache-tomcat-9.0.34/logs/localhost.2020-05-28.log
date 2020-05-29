@@ -246,3 +246,8 @@
 		at java.base/java.lang.Thread.run(Thread.java:834)
 28-May-2020 17:03:44.115 INFO [Thread-3] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
 28-May-2020 17:03:44.115 INFO [Thread-3] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+28-May-2020 17:11:58.162 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+28-May-2020 17:11:58.162 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+28-May-2020 17:11:58.164 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@4ceff87d')
+28-May-2020 17:46:18.174 INFO [Thread-3] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+28-May-2020 17:46:18.174 INFO [Thread-3] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()

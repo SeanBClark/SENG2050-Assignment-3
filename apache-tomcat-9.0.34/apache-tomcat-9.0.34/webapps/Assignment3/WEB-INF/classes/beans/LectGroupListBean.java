@@ -11,16 +11,18 @@ public class LectGroupListBean implements java.io.Serializable
     private int groupId;
     private String projectName;
     private int projectId;
+    private int status;
 
     public LectGroupListBean(){}
 
-    public LectGroupListBean(String groupName, String  projectName, int groupId, int projectId)
+    public LectGroupListBean(String groupName, String  projectName, int groupId, int projectId, int status)
     {
 
         this.groupName = groupName;
         this. projectName =  projectName;
         this.groupId = groupId;
         this.projectId = projectId;
+        this.status = status;
 
     }
 
@@ -77,6 +79,19 @@ public class LectGroupListBean implements java.io.Serializable
     {
 
         return projectId;
+
+    }
+    public void setMarkedStatus(int param) 
+    {
+
+        this.status = param;
+
+    }
+
+    public int getMarkedStatus()
+    {
+
+        return status;
 
     }
 

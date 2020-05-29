@@ -83,6 +83,8 @@
 
             <div class = 'body'>
 
+                <p class = 'h5 d-flex justify-content-center'>Groups</p>
+
                 <ul class = "list-group">
 
                     <c:forEach var = "item" items = "${sessionScope.groupList}">
@@ -118,6 +120,8 @@
                     </c:forEach>
 
                 </ul>
+
+                <p class = 'h5 d-flex justify-content-center'>Create Assignment</p>
 
             </div>
 

@@ -29,8 +29,9 @@ public class LectGroupMngtController extends HttpServlet {
                 LectGroupListBean bean = new LectGroupListBean();
                 bean.setGroupId(rs.getInt("group_id"));
                 bean.setGroupName(rs.getString("group_name"));
-                bean.setProjectId(rs.getInt("id"));
+                bean.setProjectId(rs.getInt("project_id"));
                 bean.setProjectName(rs.getString("name"));
+                bean.setMarkedStatus(rs.getInt("marked"));
                 groupList.add(bean);
                 session.setAttribute("LectGroupListBean", bean);
 

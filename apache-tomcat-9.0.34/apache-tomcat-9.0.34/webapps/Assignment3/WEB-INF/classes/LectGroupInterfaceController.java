@@ -20,6 +20,7 @@ public class LectGroupInterfaceController extends HttpServlet {
             connection = ConfigBean.getConnection(); 
             HttpSession session = request.getSession();
 
+            // Gets group members
             int groupID = Integer.parseInt(request.getParameter("groupID"));
             List <GroupMemberBean> groupMemberList = new ArrayList<>();
             ResultSet groupMemberRS = null;
@@ -38,6 +39,8 @@ public class LectGroupInterfaceController extends HttpServlet {
 
             }
             session.setAttribute("groupMemberList", groupMemberList);
+
+            // TO DO: Gets group files
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/course_mngt/group_mngt.jsp");
             connection.close(); 
