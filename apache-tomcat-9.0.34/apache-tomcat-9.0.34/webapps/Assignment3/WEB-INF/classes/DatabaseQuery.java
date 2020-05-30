@@ -64,18 +64,18 @@ public class DatabaseQuery {
         String result = "INSERT INTO user_group_info(user_id, group_id) VALUES ('" + userID + "', (SELECT group_id FROM group_info WHERE group_name = '" + groupName + "'))";
         return result;
     }
-        public static String addNewMilestone (int groupID, String milestoneName, String milestoneDate) {
-        String result = "";
+    public static String addNewMilestone (int groupID, String milestoneName, String milestoneDateTime) {
+        String result = "INSERT INTO group_milestones(group_id, milestone_name, milestone_datetime) VALUES ('"+ groupID + "', '"+ milestoneName +"', '"+ milestoneDateTime +"');";
         return result;
     }
     
     public static String markMilestone (int groupID, String milestoneName, int mark) {
-        String result = "";
+        String result = "UPDATE group_milestones SET milestone_status =" + mark +" WHERE group_id='"+ groupID +"' AND milestone_name ='"+ milestoneName +"';"; 
         return result;
     }
     
     public static String deleteMilestone (int groupID, String milestoneName) {
-        String result = "";
+        String result = "DELETE FROM group_milestones WHERE milestone_name ='"+milestoneName+"' AND group_id='"+groupID+"';";
         return result;
     }
 

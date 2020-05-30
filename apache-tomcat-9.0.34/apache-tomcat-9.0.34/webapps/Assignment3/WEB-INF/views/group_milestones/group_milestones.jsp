@@ -197,12 +197,18 @@
                                     
                                                 <c:when test = "${item.getMilestoneStatus() == 1}">
                                                 
-                                                    mark incomplete
+                                                    <form method = "post" action = "/Assignment3/ManageMilestones">
+                                                        <input type="hidden" name="markIncomplete" value="${item.getMilestoneName()}">
+                                                        <button type = "submit" class = "btn btn-warning btn-lg"><i class="fas fa-times"></i> Mark Incomplete</button>
+                                                    </form>
                                                 
                                                 </c:when>
                                                 <c:otherwise>
 
-                                                    mark complete
+                                                    <form method = "post" action = "/Assignment3/ManageMilestones">
+                                                        <input type="hidden" name="markComplete" value="${item.getMilestoneName()}">
+                                                        <button type = "submit" class = "btn btn-success btn-lg"><i class="fas fa-check"></i> Mark Complete</button>
+                                                    </form>
 
                                                 </c:otherwise>
                                             
@@ -210,7 +216,10 @@
                                             </td>
                                             
                                             <td>
-                                                delete
+                                                <form method = "post" action = "/Assignment3/ManageMilestones">
+                                                    <input type="hidden" name="markRemove" value="${item.getMilestoneName()}">
+                                                    <button type = "submit" class = "btn btn-danger btn-lg"><i class="fas fa-trash"></i> Remove Milestone</button>
+                                                </form>
                                             </td>
                                             
                                             </tr>
@@ -231,6 +240,66 @@
                             </div>
  
 
+                        </div>
+                        <div class = "col">
+
+                            <div class = 'border form' id = 'createMilestoneForm'>
+
+                                <div class = 'h5 info-header border-bottom'>Create New Milestone</div>
+
+                                <form method = "post" action = "/Assignment3/ManageMilestones" onSubmit = "return formValidation()">
+
+                                    <div class = 'form-div'>
+
+                                        <div class = 'form-group row'>
+
+                                            <label for = 'milestoneName' class = 'col-sm-2 col-form-label'>Milestone Name:</label>
+
+                                            <div class="col-sm-10">
+
+                                                <input type = 'text' class = 'form-control form-input align-wth-txt' id = 'milestoneName' name = 'milestoneName' placeholder = 'Enter Name'>
+
+                                            </div>
+
+                                            <div class = 'alert alert-danger form-input' role = 'alert' id = 'name-invalid' hidden>
+
+                                                Group name must only contain letters and/or numbers
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class = 'form-group row'>
+
+                                            <label for = 'milestoneDate' class = 'col-sm-2 col-form-label'>Date:</label>
+
+                                            <div class="col-sm-10">
+
+                                                <input type="date" class="form-control form-input" id ="milestoneDate" name="milestoneDate">
+
+                                            </div>
+
+                                        </div>
+                                        
+                                        <div class = 'form-group row'>
+
+                                            <label for = 'milestoneTime' class = 'col-sm-2 col-form-label'>Time:</label>
+
+                                            <div class="col-sm-10">
+
+                                                <input type="time" class="form-control form-input" id ="milestoneTime" name="milestoneTime">
+
+                                            </div>
+
+                                        </div>
+
+                                        <button type = "submit" class = "btn btn-success btn-lg submit-btn"><i class="fas fa-plus"></i> Create Milestone</button>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
                         </div>
 
                     </div>

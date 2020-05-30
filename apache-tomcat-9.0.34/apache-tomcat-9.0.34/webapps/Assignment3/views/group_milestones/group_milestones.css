@@ -74,6 +74,21 @@ con-div {
 
 }
 
+.form {
+    padding: 1rem;
+}
+
+.submit-btn {
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.align-wth-txt {
+    margin-top: 1rem;
+}
+
+
 .list-group-item {
 
     text-align: center;
