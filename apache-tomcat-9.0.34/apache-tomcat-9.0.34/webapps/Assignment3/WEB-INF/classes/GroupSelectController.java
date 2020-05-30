@@ -62,7 +62,9 @@ public class GroupSelectController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
             Connection connection = null;
-            try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
+            try { 
+                connection = ConfigBean.getConnection(); 
+            } catch (Exception e) { e.printStackTrace(); }
 
             String groupName = request.getParameter("groupName");
             String groupDesc = request.getParameter("groupDesc");
@@ -76,7 +78,34 @@ public class GroupSelectController extends HttpServlet {
                 e.printStackTrace();
             }
 
-            
+            // Assign group to a project
+            String projectName = request.getParameter("projectName");
+            String courseCode = request.getParameter("courseCode");
+            // TO DO: Need to put in check if 0 do nothing
+            int groupID = 0;
+            System.out.println(projectName + ":" + courseCode);
+
+            // TO DO: Query is to complex
+            String getCourseID = "SELECT id FROM course WHERE course_code = '" + courseCode + "'";
+            String getProjectID = "SELECT id FROM project WHERE name = '" + projectName + "'";
+            String getGroupID = "SELECT group_id FROM group_info WHERE group_name = '" + groupName + "'";
+            String insertProjectGroup = "INSERT INTO project_assign(project_id, group_id) VALUES ("
+                                                        +  "( " + getProjectID + " AND course_id = (" + getCourseID  + ") ),"
+                                                        +  "( " + getGroupID + " ));";
+                                                        
+            try {
+                Statement statement = connection.createStatement();
+                statement.execute(insertProjectGroup);
+
+                ResultSet getGroupIdRS = DatabaseQuery.getResultSet(getGroupID, connection);
+                while (getGroupIdRS.next()){
+                    groupID = getGroupIdRS.getInt(1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // Add user to session then sends user to the new groups home page
             HttpSession session = request.getSession();
             int userID = (int) session.getAttribute("userID");
 
@@ -85,7 +114,7 @@ public class GroupSelectController extends HttpServlet {
             try {
                 Statement statement = connection.createStatement();
                 statement.execute(addGroupUser);
-                response.sendRedirect("/Assignment3/GroupHome");
+                response.sendRedirect("/Assignment3/GroupHome?groupid=" + groupID);
             } catch (Exception e) {
                 e.printStackTrace();
             }

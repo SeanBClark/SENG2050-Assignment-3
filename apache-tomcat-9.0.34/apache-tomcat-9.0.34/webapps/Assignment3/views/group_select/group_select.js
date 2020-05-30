@@ -18,11 +18,3 @@ function showCreateGroup() {
     }
 
 }
-
-// function showExistingGroup() {
-
-//     $("#createGroupForm").slideUp();
-//     $("#groupList").slideDown();
-//     $("#createGroupBtn").html('<i class="fas fa-plus"></i> Create Group');
-
-// }

@@ -17,6 +17,7 @@ FLUSH PRIVILEGES;
 CREATE USER 'root'@'GroupManagementDatabase' IDENTIFIED BY 'root'; 
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'GroupManagementDatabase';
 
+DROP TABLE IF EXISTS project_assign;
 DROP TABLE IF EXISTS project;
 DROP TABLE IF EXISTS course_cord;
 DROP TABLE IF EXISTS course_enrollments;
@@ -224,6 +225,8 @@ CREATE TABLE course_enrollments (
     id INT PRIMARY KEY NOT NULL auto_increment,
     course_id INT NOT NULL,
     std_id INT NOT NULL,
+    date_created TIMESTAMP default current_timestamp,
+    date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
 
     FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
     FOREIGN KEY (std_id) REFERENCES user(user_id) ON DELETE CASCADE
@@ -261,6 +264,8 @@ CREATE TABLE course_cord (
     id INT PRIMARY KEY NOT NULL auto_increment,
     course_id INT NOT NULL,
     lect_id INT NOT NULL,
+    date_created TIMESTAMP default current_timestamp,
+    date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
 
     FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
     FOREIGN KEY (lect_id) REFERENCES user(user_id) ON DELETE CASCADE
@@ -269,45 +274,97 @@ CREATE TABLE course_cord (
 
 -- Assign lecture 1 to web eng
 INSERT INTO course_cord(course_id, lect_id) VALUES (1, 6);
+INSERT INTO course_cord(course_id, lect_id) VALUES (2, 6);
 
--- Assign lecture 2 to web eng
-INSERT INTO course_cord(course_id, lect_id) VALUES (1, 7);
+-- Assign lecture 2 to course 2
+INSERT INTO course_cord(course_id, lect_id) VALUES (2, 7);
 
--- Assign lecture 3 to web eng
-INSERT INTO course_cord(course_id, lect_id) VALUES (1, 8);
+-- Assign lecture 3 to course 3
+INSERT INTO course_cord(course_id, lect_id) VALUES (3, 8);
 
--- Assign lecture 4 to web eng
-INSERT INTO course_cord(course_id, lect_id) VALUES (1, 9);
+-- Assign lecture 4 to course 4
+INSERT INTO course_cord(course_id, lect_id) VALUES (4, 9);
 
--- SELECT * FROM course_cord
+-- SELECT course_cord.course_id, course.name, course.course_code FROM course_cord 
+-- 	JOIN course ON course.id = course_cord.course_id
+-- 	WHERE course_cord.lect_id = 6;
 
 CREATE TABLE project (
 
     id INT PRIMARY KEY NOT NULL auto_increment,
     name VARCHAR(100) NOT NULL,
     description VARCHAR(500),
+    due_date TIMESTAMP NOT NULL,
+    course_id INT NOT NULL,
+    date_created TIMESTAMP default current_timestamp,
+    date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
+
+    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE
+
+);
+
+-- 
+INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 2', 'Assignment 2 Desc', 1, '2020-07-24 15:00:00');
+INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 3', 'Assignment 3 Desc', 2, '2020-08-24 10:00:00');
+INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 4', 'Assignment 4 Desc', 3, '2020-09-24 23:59:59');
+INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 5', 'Assignment 5 Desc', 4, '2020-10-24 06:00:00');
+-- SELECT * FROM project; 
+
+CREATE TABLE project_assign (
+
+    id INT PRIMARY KEY NOT NULL auto_increment,
+    project_id INT NOT NULL,
+    group_id INT NOT NULL,
     grade DECIMAL(4,2),
     mark VARCHAR(1),
     marked bit(1) default 0,
     feedback VARCHAR(1000),
-    course_id INT NOT NULL,
-    group_id INT NOT NULL,
+    date_created TIMESTAMP default current_timestamp,
+    date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
 
-    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
+    FOREIGN KEY (project_id) REFERENCES project(id) ON DELETE CASCADE,
     FOREIGN KEY (group_id) REFERENCES group_info(group_id) ON DELETE CASCADE
-
 
 );
 
--- Creates 2 uncompleted Projects for web eng and adv db for group 1 and group 2
-INSERT INTO project(name, description, course_id, group_id) VALUES ('Assignment 2', 'Assignment 2 Desc', 1, 1);
-INSERT INTO project(name, description, course_id, group_id) VALUES ('Assignment 2', 'Assignment 2 Desc', 2, 1);
-INSERT INTO project(name, description, course_id, group_id) VALUES ('Assignment 2', 'Assignment 2 Desc', 1, 2);
-INSERT INTO project(name, description, course_id, group_id) VALUES ('Assignment 2', 'Assignment 2 Desc', 2, 2);
+-- Creates 2 completed and one uncompleted project for group 1 and 2
+INSERT INTO project_assign(project_id, group_id, feedback) VALUES (1, 1, 'Good work, keep it up');
+INSERT INTO project_assign(project_id, group_id, feedback) VALUES (2, 1, 'This is terrible, drop out');
+INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES (3, 1, 88.88, 1, 'Great work!');
+INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES (4, 1, 12.33, 1, 'Worst I have ever seen!');
 
--- Create 2 completed Projects for group 1 and 2
-INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 1, 1, 1, 77.55, 'C', 'Great job you did not fail!');
-INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 2, 1, 1, 12.55, 'F', 'Terrilbe job you failure');
-INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 1, 2, 1, 77.55, 'C', 'Great job you did not fail!');
-INSERT INTO project(name, description, course_id, group_id, marked, grade, mark, feedback) VALUES ('Assignment 1', 'Assignment 1 Desc', 2, 2, 1, 37.55, 'F', 'Terrilbe job you failure');
--- SELECT * FROM project
+INSERT INTO project_assign(project_id, group_id, feedback) VALUES (4, 2, 'Good work, keep it up');
+INSERT INTO project_assign(project_id, group_id, feedback) VALUES (3, 2, 'This is terrible, drop out');
+INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES (2, 2, 88.88, 1, 'Great work!');
+INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES (1, 2, 12.33, 1, 'Worst I have ever seen!');
+
+-- SELECT id FROM course WHERE course_code = 'COMP2230';
+-- SELECT id FROM project WHERE name = 'Assignment 5';
+-- SELECT group_id from group_info WHERE group_name = 'Assignment Group for Beavers';
+-- SELECT * FROM group_info;
+
+-- INSERT into project_assign(project_id, group_id) VALUES ( (SELECT id FROM project WHERE name = projectName AND course_id = courseCode) , (SELECT group_id FROM group_info WHERE group_name = groupName));
+
+-- INSERT INTO group_info(group_name) VALUES ('TEST GROUP');
+
+-- INSERT INTO project_assign(project_id, group_id) VALUES (
+-- 	(SELECT id FROM project WHERE name = 'Assignment 5' AND course_id = (SELECT id FROM course WHERE course_code = 'COMP2230')),
+--     (SELECT group_id FROM group_info WHERE group_name = 'TEST GROUP'));
+    
+-- SELECT * FROM project_assign WHERE group_id = (SELECT group_id FROM group_info WHERE group_name = 'The Group');
+    
+    
+-- SELECT project_assign.project_id, project.name, group_info.group_id, group_info.group_name, project_assign.marked
+-- 	FROM project_assign
+--     JOIN project ON project_assign.project_id = project.id
+--     JOIN group_info ON group_info.group_id = project_assign.group_id
+--     WHERE group_info.group_status = 1
+-- 	AND project.course_id = 1;
+
+-- SELECT project.id, project.name, group_info.group_id, group_info.group_name 
+--     FROM project 
+--     JOIN group_info ON group_info.group_id = project.group_id 
+--     WHERE group_info.group_status = 1
+--     AND project.marked = 0
+--     AND project.course_id = 1;
+

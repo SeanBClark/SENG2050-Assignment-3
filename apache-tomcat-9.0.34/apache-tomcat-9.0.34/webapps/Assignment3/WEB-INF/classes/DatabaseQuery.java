@@ -85,4 +85,30 @@ public class DatabaseQuery {
         return result;
     }
 
+    public static String getLectCourses(int lectId) {
+        String result = "SELECT course_cord.course_id, course.name, course.course_code FROM course_cord" 
+                                + " JOIN course ON course.id = course_cord.course_id"
+                                + " WHERE course_cord.lect_id = " + lectId + ";";
+        return result;
+    }
+
+    public static String getCourseGroupList(int courseID) {
+        String result = "SELECT project_assign.project_id, project.name, group_info.group_id, group_info.group_name, project_assign.marked" 
+            + " FROM project_assign"
+            + " JOIN project ON project_assign.project_id = project.id"
+            + " JOIN group_info ON group_info.group_id = project_assign.group_id" 
+            + " WHERE group_info.group_status = 1"
+            + " AND project.course_id = " + courseID + ";";
+        return result;
+    }
+
+    public static String getGroupMembers(int groupID) {
+        String result = "SELECT user.user_name, user.user_id FROM user JOIN user_group_info on user_group_info.user_id = user.user_id WHERE user_group_info.group_id = " + groupID + ";";
+        return result;
+    }
+
+    public static String getUser(String email) {
+        return "SELECT user_id, user_email, user_name, user_status, user_type FROM user WHERE user_email = '" + email + "';";
+    }
+
 }
