@@ -15,17 +15,16 @@ public class LectGroupInterfaceController extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        Connection connection = null;
         try { 
-            connection = ConfigBean.getConnection(); 
+            Connection connection = ConfigBean.getConnection(); 
             HttpSession session = request.getSession();
+            int courseID = (int) session.getAttribute("courseID");
 
             // Gets group members
             int groupID = Integer.parseInt(request.getParameter("groupID"));
             List <GroupMemberBean> groupMemberList = new ArrayList<>();
-            ResultSet groupMemberRS = null;
 
-            groupMemberRS = DatabaseQuery.getResultSet(DatabaseQuery.getGroupMembers(groupID), connection);
+            ResultSet groupMemberRS = DatabaseQuery.getResultSet(DatabaseQuery.getGroupMembers(groupID), connection);
 
             while (groupMemberRS.next()) {
 
@@ -40,7 +39,22 @@ public class LectGroupInterfaceController extends HttpServlet {
             }
             session.setAttribute("groupMemberList", groupMemberList);
 
-            // TO DO: Gets group files
+            // Gets Assignments to mark
+            List <FileMarkListBean> fileList = new ArrayList<>();
+
+            ResultSet fileRS = DatabaseQuery.getResultSet(DatabaseQuery.getSubmittedAssign(groupID, courseID), connection);
+
+            while(fileRS.next()) {
+
+                FileMarkListBean fileMarkListBean = new FileMarkListBean();
+                fileMarkListBean.setFileID(fileRS.getInt("file_id"));
+                fileMarkListBean.setFileName(fileRS.getString("file_name"));
+                fileList.add(fileMarkListBean);
+                session.setAttribute("fileMarkListBean", fileMarkListBean);
+                session.setAttribute("fileID", fileRS.getInt("file_id"));
+
+            }
+            session.setAttribute("fileList", fileList);
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/course_mngt/group_mngt.jsp");
             connection.close(); 

@@ -3,6 +3,16 @@ $(document).ready(function () {
     
     $("#createAssignDiv").hide();
 
+    var gradeSlider = document.getElementById("gradeSlider");
+    var rangeValue = document.getElementById("rangeValue");
+    rangeValue.innerHTML = gradeSlider.value;
+   
+    gradeSlider.oninput = function() {
+   
+       rangeValue.innerHTML = this.value;
+   
+    }
+
 });
 
 function showCreateAssignment() {
@@ -23,3 +33,6 @@ function showCreateAssignment() {
 $(function () {
     $('#datetimepicker1').datetimepicker();
  });
+
+
+ 

@@ -17,18 +17,21 @@ public class FileManagementBean implements java.io.Serializable
     private String description; 
     private int version; 
     private boolean status; // submitted to lecturer
+    private int statusInt;
 
     // Constructors
     public FileManagementBean()
     {}
 
-    public FileManagementBean(String name, String url, String description, int version, boolean status)
+    public FileManagementBean(String name, String url, String description, int version, boolean status, int statusInt)
     {
         this.name = name;
         this.url = url;
         this.description = description;
         this.version = version;
         this.status = status; 
+        this.statusInt = statusInt;
+        
     }
 
 
@@ -60,6 +63,12 @@ public class FileManagementBean implements java.io.Serializable
         return this.status;
     }
 
+    public int getStatusInt() {
+
+        return this.statusInt;
+
+    }
+
 
 
 
@@ -87,6 +96,12 @@ public class FileManagementBean implements java.io.Serializable
     public void setStatus(boolean status)
     {
         this.status = status; 
+    }
+
+    public void setStatusInt(int param) {
+
+        this.statusInt = param;
+
     }
 
 

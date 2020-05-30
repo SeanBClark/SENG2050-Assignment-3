@@ -115,4 +115,18 @@ public class DatabaseQuery {
         return "INSERT INTO project(name, description, course_id, due_date) VALUES ('" + name + "', '" + description + "', " + courseID + ", '" + dueDate + "');";
     }
 
+    public static String getSubmittedAssign(int groupID, int courseID) {
+        return "SELECT file_mngt.file_id ,file_mngt.file_name" 
+                    + " FROM file_mngt"
+                    + " JOIN project_assign ON project_assign.group_id = file_mngt.group_id"
+                    + " JOIN project ON project.id = project_assign.project_id"
+                    + " WHERE file_mngt.group_id = " + groupID + "" 
+                    + " AND project.course_id = " + courseID + ""
+                    + " AND file_mngt.file_status = 1;";
+    }
+
+    public static String getFileDetails(int fileID) {
+        return "SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = " + fileID + ";";
+    }
+
 }
