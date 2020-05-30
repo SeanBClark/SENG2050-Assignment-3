@@ -63,6 +63,15 @@
                                 </a>
 
                             </li>
+                            <li class="nav-item">
+                            
+                                <a class="nav-link" href="/Assignment3/LogOutController">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
+                                    
+                                 </a>
+
+                            </li>
 
                         </ul>
 
@@ -124,10 +133,10 @@
                             </ul>
 
                         </div>
-
+                        
                         <div class = 'add-member-div'>
-
-                            <a href = '/Assignment3/GroupHome?${request.getParameter("groupID")}'><button class = 'btn btn-success add-member-btn'>Group Home</button></a>
+                            <c:set var = "item" value="${sessionScope.groupBean}"/> 
+                            <a href = '/Assignment3/GroupHome?groupid=${item.getGroupId()}'><button class = 'btn btn-success add-member-btn'>Group Home</button></a>
 
                         </div>
                     

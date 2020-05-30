@@ -138,7 +138,7 @@
 
                         <div class = 'add-member-div'>
 
-                            S<button class = 'btn btn-success add-member-btn'><i class="fas fa-plus"></i> Group </button> </a>
+                            <button class = 'btn btn-success add-member-btn'><i class="fas fa-plus"></i>Add to Group </button> </a>
 
                         </div>
                     
