@@ -1,5 +1,10 @@
 package beans;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GroupBean implements java.io.Serializable
 {
 
@@ -65,6 +70,37 @@ public class GroupBean implements java.io.Serializable
     }
 
 
+    public List<GroupBean> getGroupInfo(int groupID) {
 
+        List<GroupBean> groupInfo = new ArrayList<>();
+
+        try {
+            
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(groupInfoQuery(groupID), connection);
+
+            while (resultSet.next()) {
+
+                GroupBean bean = new GroupBean();
+                bean.setGroupId(resultSet.getInt("group_id"));
+                bean.setGroupName(resultSet.getString("group_name"));
+                bean.setGroupDesc(resultSet.getString("group_description"));
+                groupInfo.add(bean);
+
+            }
+
+            connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return groupInfo;
+
+    }
+
+    public static String groupInfoQuery(int groupID) {
+        return "SELECT group_id, group_name, group_description FROM group_info WHERE group_id =  " + groupID + "";
+    }
 
 }

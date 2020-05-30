@@ -253,10 +253,18 @@
                                 <div class = 'border-bottom row d-flex justify-content-center'>
 
                                     <ul class = 'list-group info-list'>
-                                        <li class = 'list-group-item'>Files placeholder</li>
-                                        <li class = 'list-group-item'>Files placeholder</li>
-                                        <li class = 'list-group-item'>Files placeholder</li>
-                                        <li class = 'list-group-item'>Files placeholder</li>
+
+                                        <c:forEach var = "item" items = "${sessionScope.recentFilesList}">
+
+                                            <li class = 'list-group-item'>
+                                            
+                                                ${item.getName()}
+
+                                                <a href = '${item.getUrl()}'><button class = 'btn btn-success btn-view-file'>View File</button></a> 
+                                                
+                                            </li>
+
+                                        </c:forEach>
                                     </ul>
 
                                 </div>

@@ -17,42 +17,43 @@ public class GroupSelectController extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        Connection connection = null;
-        try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
+        // Connection connection = null;
+        // // try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
 
-        ResultSet groupResultSet = null;
-        List <GroupListBean> groupList = new ArrayList<>();
+        // ResultSet groupResultSet = null;
+        // List <GroupListBean> groupList = new ArrayList<>();
 
         HttpSession session = request.getSession();
         int userID = (int) session.getAttribute("userID");
 
-        String groupInfo = getGroupInfo(userID);
-        groupResultSet = DatabaseQuery.getResultSet(groupInfo, connection);
+        // String groupInfo = getGroupInfo(userID);
+        // groupResultSet = DatabaseQuery.getResultSet(groupInfo, connection);
 
         try {
             
-            while(groupResultSet.next()) {
+        //     while(groupResultSet.next()) {
 
-                session = request.getSession();
+        //         session = request.getSession();
 
-                GroupListBean groupListBean = new GroupListBean();
-                groupListBean.setGroupId(groupResultSet.getInt("group_id"));
-                groupListBean.setGroupName(groupResultSet.getString("group_name"));
-                groupListBean.setGroupDesc(groupResultSet.getString("group_description"));
-                session.setAttribute("groupID", groupResultSet.getInt("group_id"));
-                groupList.add(groupListBean);
-                session.setAttribute("groupListBean", groupListBean);
+        //         GroupListBean groupListBean = new GroupListBean();
+        //         groupListBean.setGroupId(groupResultSet.getInt("group_id"));
+        //         groupListBean.setGroupName(groupResultSet.getString("group_name"));
+        //         groupListBean.setGroupDesc(groupResultSet.getString("group_description"));
+        //         session.setAttribute("groupID", groupResultSet.getInt("group_id"));
+        //         groupList.add(groupListBean);
+        //         session.setAttribute("groupListBean", groupListBean);
 
-            }
-            session.setAttribute("groupList", groupList);
+        //     }
+            GroupListBean groupListBean = new GroupListBean();
+            session.setAttribute("groupList", (groupListBean.getGroupList(userID)));
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
 
-        try {
+        // try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/group_select/group_select.jsp");
-            connection.close(); 
+            // connection.close(); 
             dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
