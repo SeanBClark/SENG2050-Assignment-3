@@ -97,7 +97,7 @@ public class MilestoneController extends HttpServlet {
         }
         
         // Gets 4 upcoming milestones
-        String upcomingMilestoneQuery = "SELECT milestone_datetime, milestone_name, milestone_status FROM group_milestones WHERE " + groupID + " = 1 ORDER BY milestone_datetime ASC;";
+        String upcomingMilestoneQuery = "SELECT milestone_datetime, milestone_name, milestone_status FROM group_milestones WHERE " + groupID + " = group_id ORDER BY milestone_datetime ASC;";
 
         upcomingMilestonesRS = DatabaseQuery.getResultSet(upcomingMilestoneQuery, connection);
 
@@ -170,7 +170,6 @@ public class MilestoneController extends HttpServlet {
         
         String markIncomplete = request.getParameter("markIncomplete");
         String markIncompleteQuery = DatabaseQuery.markMilestone(groupID,markIncomplete,0);
-        System.out.print(markIncompleteQuery);
         if (markIncomplete != null && !markIncomplete.equals(""))
         {
             
