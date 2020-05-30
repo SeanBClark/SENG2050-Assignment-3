@@ -198,6 +198,16 @@ INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, f
 
 -- SELECT * FROM file_mngt ORDER BY group_id;
 
+-- SELECT file_mngt.file_id ,file_mngt.file_name 
+-- 	FROM file_mngt
+--     JOIN project_assign ON project_assign.group_id = file_mngt.group_id
+--     JOIN project ON project.id = project_assign.project_id
+--     WHERE file_mngt.group_id = 1 
+--     AND project.course_id = 1
+--     AND file_mngt.file_status = 1;
+
+SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = 4;
+
 
 -- Table for course details
 CREATE TABLE course (
@@ -294,7 +304,7 @@ CREATE TABLE project (
     id INT PRIMARY KEY NOT NULL auto_increment,
     name VARCHAR(100) NOT NULL,
     description VARCHAR(500),
-    due_date TIMESTAMP NOT NULL,
+    due_date VARCHAR(100) NOT NULL,
     course_id INT NOT NULL,
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,
@@ -316,7 +326,7 @@ CREATE TABLE project_assign (
     project_id INT NOT NULL,
     group_id INT NOT NULL,
     grade DECIMAL(4,2),
-    mark VARCHAR(1),
+    mark VARCHAR(2),
     marked bit(1) default 0,
     feedback VARCHAR(1000),
     date_created TIMESTAMP default current_timestamp,
@@ -326,6 +336,15 @@ CREATE TABLE project_assign (
     FOREIGN KEY (group_id) REFERENCES group_info(group_id) ON DELETE CASCADE
 
 );
+
+-- INSERT INTO project_assign(project_id, group_id, feedback) VALUES ((SELECT id FROM ));
+-- INSERT INTO project_assign(project_id, group_id, feedback, grade, mark, marked) VALUES ( 1, 1, 'FEEDBACK', 87.20, 'B', 1 );
+
+
+-- select project.id from project 
+-- 			join project_assign on project.id = project_assign.project_id 
+-- 			where project_assign.group_id = 1
+-- 			AND project.course_id = 1;
 
 -- Creates 2 completed and one uncompleted project for group 1 and 2
 INSERT INTO project_assign(project_id, group_id, feedback) VALUES (1, 1, 'Good work, keep it up');
@@ -341,7 +360,7 @@ INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES
 -- SELECT id FROM course WHERE course_code = 'COMP2230';
 -- SELECT id FROM project WHERE name = 'Assignment 5';
 -- SELECT group_id from group_info WHERE group_name = 'Assignment Group for Beavers';
--- SELECT * FROM group_info;
+-- SELECT * FROM project_assign;
 
 -- INSERT into project_assign(project_id, group_id) VALUES ( (SELECT id FROM project WHERE name = projectName AND course_id = courseCode) , (SELECT group_id FROM group_info WHERE group_name = groupName));
 
@@ -368,3 +387,4 @@ INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES
 --     AND project.marked = 0
 --     AND project.course_id = 1;
 
+-- SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = 4;

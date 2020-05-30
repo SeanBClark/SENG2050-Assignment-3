@@ -21,6 +21,7 @@ public class LectGroupMngtController extends HttpServlet {
             HttpSession session = request.getSession();
 
             int courseID = Integer.parseInt(request.getParameter("courseID"));
+            session.setAttribute("courseID", courseID);
             ResultSet groupListRS = DatabaseQuery.getResultSet(DatabaseQuery.getCourseGroupList(courseID), connection);
             List <LectGroupListBean> groupList = new ArrayList<>();
 

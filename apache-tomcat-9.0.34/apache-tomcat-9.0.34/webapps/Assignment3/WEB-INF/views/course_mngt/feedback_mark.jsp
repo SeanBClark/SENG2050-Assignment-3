@@ -83,89 +83,84 @@
 
             <div class = 'body'>
             
-                <div class = 'row '>
+                <c:forEach var = "item" items = "${sessionScope.fileDetails}">
 
-                    <div class = 'border-bottom col d-flex justify-content-center page-header'>
+                    <div class = 'container d-flex content-align-center'>
 
-                        <p class = 'h3'>Group Name</p>
+                        <div class = 'border col col-lg-2'>
 
-                    </div>                    
+                            <div class = 'row content-align-center details-row'>
 
-                </div>
-                <div class = 'row'>
+                                <p class = 'h4'>File Details</p>
 
-                    <div class = 'border-right col d-flex justify-content-center page-header'>
+                            </div>
+                            <div class = 'row details-row'>
 
-                        <p class = 'h5'>Submitted Assignments<p>
+                            <p class = 'h6'>File Name: ${item.getName()}</p>
+
+                            </div>
+                            <div class = 'row content-align-center details-row'>
+
+                                <a href="${item.getUrl()}">
+
+                                    <button class="btn btn-success my-2 my-sm-0 " type="button">View Assignment</button>
+
+                                </a>
+
+                            </div>
+                            <div class = 'row details-row'>
+
+                                <c:choose>
+
+                                    <c:when test = "${item.getStatusInt() == 1}">
+
+                                        <p class = 'h6 alert alert-warning'>Submitted Version</p>
+
+                                    </c:when>
+                                    <c:otherwise>
+
+                                        Provide Feedback
+
+                                    </c:otherwise>
+
+                                </c:choose>
+
+                            </div>
+
+                        </div>
+
+                        <div class = 'border col'>
+
+                            <form method = 'post' action = '/Assignment3/Feedback' >
+
+                                <div class = 'form-group feedback-div'>
+
+                                    <label for = "feedback" class = 'content-align-center'><p class = 'h6'>Feedback</p></label>
+                                    <textarea class = 'form-control' id = "feedback" name = "feedback" rows = '5'></textarea>
+
+                                </div>
+
+                                <div class = 'form-group feedback-div'>
+
+                                    <label for = "grade" class = 'content-align-center'><p class = 'h6'>Grade</p></label>
+                                    <input type = 'range' class = 'form-control-range' id = 'gradeSlider' name = 'gradeSlider' min = '0' max = '100' value = '50' step = '0.1'></input>
+                                    <p>Value: <span id = 'rangeValue' name = 'rangeValue'</p>
+
+                                </div>
+
+                                <div class = 'form-group feedback-div d-flex justify-content-center'>
+
+                                    <button class="btn btn-success my-2 my-sm-0 content-align-center" type="submit">Submit Mark</button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
 
                     </div>
-                    <div class = 'col-sm-3 d-flex justify-content-center page-header'>
 
-                        <p class = 'h5'>Members<p>
-
-                    </div>                              
-
-                </div>
-                <div class = 'row'>
-
-                    <div class = 'col border-right'>
-
-                        <ul class = 'list-group list-group-flush'>
-                            <%-- List of submitted Assignments once blocker removed --%>
-                            <c:forEach var = "item" items = "${sessionScope.fileList}">
-
-                                <li class = "list-group-item justify-content-md-center border-0">
-
-                                    <div class = 'row d-flex justify-content-center assign-row'>
-                                
-                                        <div class = 'col'>
-                                        
-                                            ${item.getFileName()}
-                                            
-                                        </div>
-                                        <div class = 'col col-lg-2 d-flex justify-content-center  assign-btn'>
-                                        
-                                            <a href="/Assignment3/Feedback?fileID=${item.getFileID()}">
-
-                                                <button class="btn btn-success my-2 my-sm-0" type="button">Mark Assignment</button>
-
-                                            </a>
-                                        
-                                        </div>
-
-                                    </div>
-                                    
-                                </li>
-
-                            </c:forEach>
-
-                        </ul>
-
-                    </div>
-                    <div class = 'col-sm-3 d-flex justify-content-center page-header'>
-
-                        <ul class = 'list-group  list-group-flush'>
-                            <%-- List of submitted Assignments once blocker removed --%>
-                            <c:forEach var = "item" items = "${sessionScope.groupMemberList}">
-
-                                <li class = 'list-group-item'>
-                                
-                                    <div class = 'col'>
-                                    
-                                        ${item.getMemberName()}
-
-                                    </div>
-
-                                </li>
-
-                            </c:forEach>
-
-                        </ul>
-
-                    </div>     
-
-                </div>
-                
+                </c:forEach>
 
             </div>
 
