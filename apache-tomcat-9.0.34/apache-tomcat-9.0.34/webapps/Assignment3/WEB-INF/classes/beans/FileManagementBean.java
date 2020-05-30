@@ -5,8 +5,13 @@ import javax.sql.*;
 import java.sql.*;
 import java.util.*; 
 import javax.naming.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import beans.*;
+
 
 public class FileManagementBean implements java.io.Serializable
 {
@@ -279,5 +284,37 @@ public class FileManagementBean implements java.io.Serializable
             System.err.println(e.getMessage());
             System.err.println(e.getStackTrace());
         }
+    }
+
+    public List<FileManagementBean> getRecentFiles(int groupID) {
+
+        List<FileManagementBean> list = new ArrayList<>();
+
+        try {
+
+            Connection connection = ConfigBean.getConnection(); 
+            ResultSet resultSet = DatabaseQuery.getResultSet(getRecentFileQuery(groupID), connection);
+
+            while (resultSet.next()) {
+
+                FileManagementBean bean = new FileManagementBean();
+                bean.setName(resultSet.getString("file_name"));
+                bean.setUrl(resultSet.getString("file_url"));
+                bean.setStatusInt(resultSet.getInt("file_status"));
+                list.add(bean);
+
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+
+    }
+
+    public String getRecentFileQuery(int groupID) {
+        return "SELECT file_name, file_url, file_status FROM file_mngt" 
+                    + " WHERE group_id = " + groupID + "" 
+                    + " ORDER BY date_updated ASC LIMIT 4;";
     }
 }

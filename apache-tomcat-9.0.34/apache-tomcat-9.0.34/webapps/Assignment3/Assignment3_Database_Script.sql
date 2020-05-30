@@ -153,7 +153,7 @@ INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milesto
 INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
 	VALUES (1, 'Milestone 2', 0, '2020-06-24 11:00:00');
 INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
-	VALUES (1, 'Milestone 3', 0, '2020-07-24 11:00:00');
+	VALUES (1, 'Milestone 3', 1, '2020-07-24 11:00:00');
 INSERT INTO group_milestones(group_id, milestone_name, milestone_status, milestone_datetime)
 	VALUES (1, 'Milestone 4', 1, '2020-08-24 11:00:00');
     
@@ -196,6 +196,8 @@ INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) V
 INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (4, 'Report', 'https://www.cdc.gov/niosh/surveyreports/pdfs/349-12a.pdf', 'Draft report.', 1);
 INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, file_status) VALUES (4, 'Report', 'https://www.gvsu.edu/cms4/asset/CC3BFEEB-C364-E1A1-A5390F221AC0FD2D/engineering_full_technical_report_gg_final.pdf', 'Final report.', 2, 1);
 
+SELECT file_name, file_url, file_status FROM file_mngt WHERE group_id = 1 ORDER BY date_updated ASC LIMIT 4;
+
 -- SELECT * FROM file_mngt ORDER BY group_id;
 
 -- SELECT file_mngt.file_id ,file_mngt.file_name 
@@ -206,7 +208,7 @@ INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, f
 --     AND project.course_id = 1
 --     AND file_mngt.file_status = 1;
 
-SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = 4;
+-- SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = 4;
 
 
 -- Table for course details
@@ -387,4 +389,6 @@ INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES
 --     AND project.marked = 0
 --     AND project.course_id = 1;
 
--- SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = 4;
+-- SELECT (count(milestone_status) * 100 / (SELECT count(milestone_status) FROM group_milestones where group_id = 1)) as percentageComplete from group_milestones where group_id = 1 and milestone_status = 1;
+
+-- SELECT user.user_name, user.user_id FROM user JOIN user_group_info on user_group_info.user_id = user.user_id WHERE user_group_info.group_id = 1;
