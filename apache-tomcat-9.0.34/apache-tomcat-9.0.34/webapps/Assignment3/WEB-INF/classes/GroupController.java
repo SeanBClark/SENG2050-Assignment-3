@@ -1,8 +1,4 @@
 import java.io.*;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
@@ -43,9 +39,5 @@ public class GroupController extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException {
     }
 }
