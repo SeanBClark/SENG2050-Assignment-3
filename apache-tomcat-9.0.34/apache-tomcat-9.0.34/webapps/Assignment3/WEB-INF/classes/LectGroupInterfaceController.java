@@ -52,12 +52,11 @@ public class LectGroupInterfaceController extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
-            Connection connection = null;
             try { 
-                connection = ConfigBean.getConnection(); 
-            } catch (Exception e) { e.printStackTrace(); }
+                Connection connection = ConfigBean.getConnection();
 
-            try {
+                
+
                 connection.close();
             } catch (Exception e) {
                 e.printStackTrace();

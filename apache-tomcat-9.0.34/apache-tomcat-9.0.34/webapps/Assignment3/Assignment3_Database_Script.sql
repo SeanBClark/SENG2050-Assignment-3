@@ -294,7 +294,7 @@ CREATE TABLE project (
     id INT PRIMARY KEY NOT NULL auto_increment,
     name VARCHAR(100) NOT NULL,
     description VARCHAR(500),
-    due_date TIMESTAMP NOT NULL,
+    due_date VARCHAR(100) NOT NULL,
     course_id INT NOT NULL,
     date_created TIMESTAMP default current_timestamp,
     date_updated TIMESTAMP default current_timestamp ON UPDATE current_timestamp,

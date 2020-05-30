@@ -111,4 +111,8 @@ public class DatabaseQuery {
         return "SELECT user_id, user_email, user_name, user_status, user_type FROM user WHERE user_email = '" + email + "';";
     }
 
+    public static String insertProject(String name, String description, String dueDate, int courseID){
+        return "INSERT INTO project(name, description, course_id, due_date) VALUES ('" + name + "', '" + description + "', " + courseID + ", '" + dueDate + "');";
+    }
+
 }
