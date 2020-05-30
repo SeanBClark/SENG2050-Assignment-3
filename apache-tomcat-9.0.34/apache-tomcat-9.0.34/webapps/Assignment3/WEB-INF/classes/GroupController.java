@@ -78,7 +78,7 @@ public class GroupController extends HttpServlet {
         }
 
         // Calculates the percentage of currently completed milestones 
-        String percentCompleteQuery = "SELECT (count(milestone_status) * 100 / (SELECT count(milestone_status) FROM group_milestones where " + groupID + " = 1)) as percentageComplete from group_milestones where " + groupID + " = 1 and milestone_status = 0;";
+        String percentCompleteQuery = "SELECT (count(milestone_status) * 100 / (SELECT count(milestone_status) FROM group_milestones where " + groupID + " = group_id)) as percentageComplete from group_milestones where " + groupID + " = group_id and milestone_status = 1;";
 
         completedPercentageRS = DatabaseQuery.getResultSet(percentCompleteQuery, connection);
 
