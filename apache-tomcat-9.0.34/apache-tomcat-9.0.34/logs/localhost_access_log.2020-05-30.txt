@@ -466,3 +466,9 @@
 0:0:0:0:0:0:0:1 - - [30/May/2020:13:12:39 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 12707
 0:0:0:0:0:0:0:1 - - [30/May/2020:13:12:40 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 302 -
 0:0:0:0:0:0:0:1 - - [30/May/2020:13:12:40 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 12553
+0:0:0:0:0:0:0:1 - - [30/May/2020:13:14:32 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [30/May/2020:13:14:32 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 14942
+0:0:0:0:0:0:0:1 - - [30/May/2020:13:14:41 +1000] "GET /Assignment3/GroupHome?groupid=2 HTTP/1.1" 200 9686
+0:0:0:0:0:0:0:1 - - [30/May/2020:13:14:43 +1000] "GET /Assignment3/GroupHome?groupid=2 HTTP/1.1" 200 9686
+0:0:0:0:0:0:0:1 - - [30/May/2020:13:14:43 +1000] "GET /favicon.ico HTTP/1.1" 200 21630
+0:0:0:0:0:0:0:1 - - [30/May/2020:13:14:45 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 14942

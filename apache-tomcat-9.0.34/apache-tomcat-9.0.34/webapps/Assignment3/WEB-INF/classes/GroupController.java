@@ -96,7 +96,7 @@ public class GroupController extends HttpServlet {
         }
 
         // Gets 4 upcoming milestones
-        String upcomingMilestoneQuery = "SELECT milestone_datetime, milestone_name, milestone_status FROM group_milestones WHERE " + groupID + " = 1 ORDER BY milestone_datetime ASC LIMIT 4;";
+        String upcomingMilestoneQuery = "SELECT milestone_datetime, milestone_name, milestone_status FROM group_milestones WHERE " + groupID + " = group_id ORDER BY milestone_datetime ASC LIMIT 4;";
 
         upcomingMilestonesRS = DatabaseQuery.getResultSet(upcomingMilestoneQuery, connection);
 
@@ -122,7 +122,7 @@ public class GroupController extends HttpServlet {
         }
 
         // Upcoming Appointments
-        String upcomingAppQuery = "SELECT app_name, appointment_datetime FROM group_appointment WHERE " + groupID + " = 1 and app_status = 0 ORDER BY appointment_datetime ASC LIMIT 4;";
+        String upcomingAppQuery = "SELECT app_name, appointment_datetime FROM group_appointment WHERE " + groupID + " = group_id and app_status = 0 ORDER BY appointment_datetime ASC LIMIT 4;";
 
         upcomingAppRS = DatabaseQuery.getResultSet(upcomingAppQuery, connection);
 
