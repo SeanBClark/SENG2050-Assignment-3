@@ -23,74 +23,56 @@ public class LoginController extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
-            Connection connection = null;
-            String inputEmail = request.getParameter("userEmail");
-            String inputPassword = request.getParameter("userPassword");
+            try {                
+                Connection connection = ConfigBean.getConnection();
+                HttpSession session = request.getSession();
+                String email = request.getParameter("userEmail");
+                String password = request.getParameter("userPassword");
+                int exists = 0;
 
-            // Gets database connection
-            try {
-                connection = ConfigBean.getConnection();
-            }
-            catch (Exception e){ 
-                System.out.println("Could not connect to DBMS");
-                e.printStackTrace();
-            }
+                ResultSet existsRS = DatabaseQuery.getResultSet(DatabaseQuery.ifExistsQuery(email, password), connection);
+                while(existsRS.next()) {
+                    exists = existsRS.getInt(1);
+                }
 
-            String queryString = DatabaseQuery.ifExistsQuery(inputEmail, inputPassword);
-            // Checks if user exists
-            // True = exists, False = !exists
-            boolean exists = DatabaseQuery.ifExists(queryString, connection);
+                if (exists == 0){
+                    response.sendRedirect("../Assignment3/LoginController?exists=false");
+                }
+                else {
 
-            try {
-                if (exists != false) {
-
-                    String userString = "SELECT user_id, user_email, user_name, user_status, user_type FROM user WHERE user_email = '" + inputEmail + "';";
-                    ResultSet resultSet = DatabaseQuery.getResultSet(userString, connection);
-                    HttpSession session = request.getSession();
-
-                    while (resultSet.next()) {
-                        if (resultSet.getInt("user_status") == 0) {
-                            // TO DO: Redirect to account deactivated page (need to make)
-                            System.out.println("Account deactivated");
+                    ResultSet userRS = DatabaseQuery.getResultSet(DatabaseQuery.getUser(email), connection);
+                    while (userRS.next()){
+                        if (userRS.getInt("user_status") == 0){
+                            response.sendRedirect("../Assignment3/LoginController?active=false");
                         }
                         else {
+
                             UserBean userBean = new UserBean();
-                            userBean.setUserId(resultSet.getInt("user_id"));
-                            userBean.setUserEmail(resultSet.getString("user_email"));
-                            userBean.setUserName(resultSet.getString("user_name"));
-                            userBean.setUserStatus(resultSet.getInt("user_status"));
-                            userBean.setUserType(resultSet.getString("user_type"));
-                            session.setAttribute("userID", resultSet.getInt("user_id"));
-                            session.setAttribute("userType", resultSet.getString("user_type"));
+                            userBean.setUserId(userRS.getInt("user_id"));
+                            userBean.setUserEmail(userRS.getString("user_email"));
+                            userBean.setUserName(userRS.getString("user_name"));
+                            userBean.setUserStatus(userRS.getInt("user_status"));
+                            userBean.setUserType(userRS.getString("user_type"));
+                            session.setAttribute("userID", userRS.getInt("user_id"));
+                            session.setAttribute("userType", userRS.getString("user_type"));
                             session.setAttribute("userBean", userBean);
+
                         }
                     }
-
                     String userType = (String) session.getAttribute("userType");
 
                     if ( userType.equals("std")) {
                         response.sendRedirect("/Assignment3/GroupSelect");
                     }
                     else if ( userType.equals("lect")) {
-
                         response.sendRedirect("/Assignment3/CourseSelect");
-
                     }
                     else if ( userType.equals("admin")) {
-
                         response.sendRedirect("/Assignment3/Admin");
-
                     }
-                    
                 }
-                else {
-                    // TO DO: set user to register page
-                    response.sendRedirect("../Assignment3/views/login/login.jsp");
-                }
-                connection.close();                
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            // TO DO: setRedirect to user interface page
     }
 }

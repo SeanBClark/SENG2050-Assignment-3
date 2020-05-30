@@ -107,4 +107,8 @@ public class DatabaseQuery {
         return result;
     }
 
+    public static String getUser(String email) {
+        return "SELECT user_id, user_email, user_name, user_status, user_type FROM user WHERE user_email = '" + email + "';";
+    }
+
 }

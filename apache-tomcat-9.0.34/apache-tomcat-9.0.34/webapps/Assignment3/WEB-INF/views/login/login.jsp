@@ -2,6 +2,7 @@
 <%@page import="java.util.Iterator" %>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.Map.Entry" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -87,6 +88,30 @@
             </div>
 
             <div class = 'body'>
+
+                <c:if test = "${not empty param.exists}" >
+                    <c:if test = "${param.exists == 'false'}">
+
+                        <div class = 'alert alert-danger form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                    
+                            Account does not exists
+
+                        </div>
+
+                    </c:if>
+                </c:if>
+
+                <c:if test="${not empty param.active}" >
+                    <c:if test = "${param.active == 'false'}">
+
+                        <div class = 'alert alert-danger form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                    
+                            Account has been deactivated
+
+                        </div>
+
+                    </c:if>
+                </c:if>
 
                 <div class = 'login-form-div'>
 
