@@ -131,7 +131,7 @@
 
                         <div class = 'border col'>
 
-                            <form method = 'post' action = '/Assignment3/Feedback' >
+                            <form method = 'post' action = '/Assignment3/Feedback?fileID=${item.getFileID()}&groupID=${item.getGroupID()}' >
 
                                 <div class = 'form-group feedback-div'>
 

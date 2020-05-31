@@ -14,66 +14,25 @@ public class LectGroupInterfaceController extends HttpServlet {
         super();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
         try { 
-            Connection connection = ConfigBean.getConnection(); 
             HttpSession session = request.getSession();
             int courseID = (int) session.getAttribute("courseID");
+            // int courseID = Integer.parseInt(request.getParameter("courseID"));
 
             // Gets group members
-            int groupID = Integer.parseInt(request.getParameter("groupID"));
-            List <GroupMemberBean> groupMemberList = new ArrayList<>();
-
-            ResultSet groupMemberRS = DatabaseQuery.getResultSet(DatabaseQuery.getGroupMembers(groupID), connection);
-
-            while (groupMemberRS.next()) {
-
-                session = request.getSession();
-
-                GroupMemberBean groupMemberBean = new GroupMemberBean();
-                groupMemberBean.setMemberID(groupMemberRS.getInt("user.user_id"));
-                groupMemberBean.setMemberName(groupMemberRS.getString("user.user_name"));
-                groupMemberList.add(groupMemberBean);
-                session.setAttribute("groupMemberBean", groupMemberBean);
-
-            }
-            session.setAttribute("groupMemberList", groupMemberList);
+            GroupMemberBean groupMemberBean = new GroupMemberBean();
+            session.setAttribute("groupMemberList", (groupMemberBean.getMemberList(Integer.parseInt(request.getParameter("groupID")))));
 
             // Gets Assignments to mark
-            List <FileMarkListBean> fileList = new ArrayList<>();
-
-            ResultSet fileRS = DatabaseQuery.getResultSet(DatabaseQuery.getSubmittedAssign(groupID, courseID), connection);
-
-            while(fileRS.next()) {
-
-                FileMarkListBean fileMarkListBean = new FileMarkListBean();
-                fileMarkListBean.setFileID(fileRS.getInt("file_id"));
-                fileMarkListBean.setFileName(fileRS.getString("file_name"));
-                fileList.add(fileMarkListBean);
-                session.setAttribute("fileMarkListBean", fileMarkListBean);
-                session.setAttribute("fileID", fileRS.getInt("file_id"));
-
-            }
-            session.setAttribute("fileList", fileList);
+            FileMarkListBean fileMarkListBean = new FileMarkListBean();
+            session.setAttribute("fileMarkListBean", (fileMarkListBean.getCourses(Integer.parseInt(request.getParameter("groupID")), courseID)));
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/course_mngt/group_mngt.jsp");
-            connection.close(); 
             dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException {
-            try { 
-                Connection connection = ConfigBean.getConnection();
-
-                
-
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 }

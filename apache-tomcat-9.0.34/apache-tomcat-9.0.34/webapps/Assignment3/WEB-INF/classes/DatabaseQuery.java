@@ -125,8 +125,6 @@ public class DatabaseQuery {
                     + " AND file_mngt.file_status = 1;";
     }
 
-    public static String getFileDetails(int fileID) {
-        return "SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = " + fileID + ";";
-    }
+
 
 }
