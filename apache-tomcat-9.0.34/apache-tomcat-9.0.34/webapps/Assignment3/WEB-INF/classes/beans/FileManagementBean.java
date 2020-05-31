@@ -23,12 +23,14 @@ public class FileManagementBean implements java.io.Serializable
     private int version; 
     private boolean status; // submitted to lecturer
     private int statusInt;
+    private int fileID;
+    private int groupID;
 
     // Constructors
     public FileManagementBean()
     {}
 
-    public FileManagementBean(String name, String url, String description, int version, boolean status, int statusInt)
+    public FileManagementBean(String name, String url, String description, int version, boolean status, int statusInt, int fileID, int groupID)
     {
         this.name = name;
         this.url = url;
@@ -36,6 +38,8 @@ public class FileManagementBean implements java.io.Serializable
         this.version = version;
         this.status = status; 
         this.statusInt = statusInt;
+        this.fileID = fileID;
+        this.groupID = groupID;
         
     }
 
@@ -74,6 +78,18 @@ public class FileManagementBean implements java.io.Serializable
 
     }
 
+    public int getFileID() {
+
+        return this.fileID;
+
+    }
+
+    public int getGroupID() {
+
+        return this.groupID;
+
+    }
+
 
 
 
@@ -107,6 +123,14 @@ public class FileManagementBean implements java.io.Serializable
 
         this.statusInt = param;
 
+    }
+
+    public void setFileID(int param) {
+        this.fileID = param;
+    }
+
+    public void setGroupID(int param) {
+        this.groupID = param;
     }
 
 
@@ -162,6 +186,7 @@ public class FileManagementBean implements java.io.Serializable
                 FileManagementBean file = new FileManagementBean(); 
 
                 // get file info
+                file.setFileID(result.getInt("file_id"));
                 file.setName(result.getString("file_name"));
                 file.setUrl(result.getString("file_url"));
                 file.setDescription(result.getString("file_desc")); 
@@ -316,5 +341,101 @@ public class FileManagementBean implements java.io.Serializable
         return "SELECT file_name, file_url, file_status FROM file_mngt" 
                     + " WHERE group_id = " + groupID + "" 
                     + " ORDER BY date_updated ASC LIMIT 4;";
+    }
+
+    public List<FileManagementBean> getFileDetails(int fileID) {
+
+        List<FileManagementBean> list = new ArrayList<>();
+
+        try {
+            
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(getFileQuery(fileID), connection);
+
+            while (resultSet.next()) {
+                FileManagementBean bean = new FileManagementBean();
+                bean.setFileID(resultSet.getInt("file_id"));
+                bean.setName(resultSet.getString("file_name"));
+                bean.setUrl(resultSet.getString("file_url"));
+                bean.setDescription(resultSet.getString("file_desc"));
+                bean.setStatusInt(resultSet.getInt("file_status"));
+                bean.setGroupID(resultSet.getInt("group_id"));
+                list.add(bean);
+            }
+
+            connection.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+    public static String getFileQuery(int fileID) {
+        return "SELECT file_id, group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = " + fileID + ";";
+    }
+
+    public int getProjectID(int groupID, int courseID) {
+
+        int id = 0;
+
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(getProjectIDQuery(groupID, courseID), connection);
+            while (resultSet.next()) {id = resultSet.getInt(1);}
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return id;
+
+    }
+
+    public static String getProjectIDQuery(int groupID, int courseID){
+        return "SELECT project.id FROM project JOIN project_assign ON project.id = project_assign.project_id" 
+                        + " WHERE project_assign.group_id = " + groupID + "  AND project.course_id = " + courseID + "";
+    }
+
+    public void insertFeedback(int projectID, int groupID, String feedback, double grade) {
+
+        try {
+            
+            Connection connection = ConfigBean.getConnection(); 
+            Statement statement = connection.createStatement();
+            statement.execute(insertFeedbackQuery(projectID, groupID, feedback, grade));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static String insertFeedbackQuery(int projectID, int groupID, String feedback, double grade){
+        return "INSERT INTO project_assign(project_id, group_id, feedback, grade, mark, marked)" 
+                    + " VALUES ( " + projectID + ", " + groupID + ", '" + feedback + "', " + grade + ", '" + getMark(grade) + "', 1 );";
+    }
+
+    public static String getMark(double grade) {
+
+        String result = "";
+
+        if (grade > 83.00)
+            result = "HD";
+        else if (grade > 73 && grade < 82.99)
+            result = "D";
+        else if (grade > 63 && grade < 72.99)
+            result = "C";
+        else if (grade > 50 && grade < 62.99)
+            result = "P";
+        else if (grade < 50 && grade > 0.00)
+            result = "N";
+        else
+            result = "NA";
+        
+        return result;
     }
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.*;
 
 public class GroupBean implements java.io.Serializable
 {
@@ -101,6 +102,110 @@ public class GroupBean implements java.io.Serializable
 
     public static String groupInfoQuery(int groupID) {
         return "SELECT group_id, group_name, group_description FROM group_info WHERE group_id =  " + groupID + "";
+    }
+
+    public void insertGroup(String groupName, String groupDesc){
+        try {
+            Connection connection = ConfigBean.getConnection();
+            Statement statement = connection.createStatement();
+            statement.execute(insertGroupQuery(groupName, groupDesc));            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String insertGroupQuery(String groupName, String groupDesc) {
+        String result = "INSERT INTO group_info(group_name, group_description) VALUES ('" + groupName + "', '" + groupDesc + "');";
+        return result;
+    }
+
+    public void attachProject(String courseCode, String projectName, String groupName){
+        try {
+            Connection connection = ConfigBean.getConnection();
+            Statement statement = connection.createStatement();
+            statement.execute(insertProjectGroup(courseCode, projectName, groupName));    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getGroupID(String groupName) {
+        return "SELECT group_id FROM group_info WHERE group_name = '" + groupName + "'";
+    }
+
+    public String getProjectID(String projectName) {
+        return "SELECT id FROM project WHERE name = '" + projectName + "'";
+    }
+
+    public String getCourseID(String courseCode) {
+        return "SELECT id FROM course WHERE course_code = '" + courseCode + "'";
+    }
+
+    public String insertProjectGroup(String courseCode, String projectName, String groupName){
+        return "INSERT INTO project_assign(project_id, group_id) VALUES ("
+                +  "( " + getProjectID(projectName) + " AND course_id = (" + getCourseID(courseCode)  + ") ),"
+                +  "( " + getGroupID(groupName) + " ));";
+    }
+
+    public int lookUpGroupID(String groupName) {
+        int groupID = 0;
+
+        try {
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(getGroupID(groupName), connection);
+            while (resultSet.next()){
+                groupID = resultSet.getInt(1);
+            }
+            connection.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return groupID;
+    }
+
+    public void insertGroupUser(int userID, String groupName){
+        try {
+            Connection connection = ConfigBean.getConnection();
+            Statement statement = connection.createStatement();
+            statement.execute(insertGroupUserQuery(userID, groupName));    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String insertGroupUserQuery(int userID, String groupName) {
+        return "INSERT INTO user_group_info(user_id, group_id) VALUES ('" + userID + "', (SELECT group_id FROM group_info WHERE group_name = '" + groupName + "'))";
+    }
+
+    public boolean ifProjectExist(String courseCode, String projectName) {
+
+        boolean exists = false;
+        int result = 0;
+
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(ifProjectExistsQuery(courseCode, projectName), connection);
+            while (resultSet.next()){
+                result = resultSet.getInt(1);
+            }
+
+            if (result == 1) {
+                exists = true;
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return exists;
+
+    }
+
+    public String ifProjectExistsQuery(String courseCode, String projectName) {
+        return "SELECT EXISTS(SELECT id FROM project WHERE name = '" + projectName +"' AND course_id = (SELECT id FROM course WHERE course_code = '" + courseCode +"'))";
     }
 
 }

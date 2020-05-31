@@ -87,22 +87,9 @@ public class DatabaseQuery {
         return result;
     }
 
-    public static String getLectCourses(int lectId) {
-        String result = "SELECT course_cord.course_id, course.name, course.course_code FROM course_cord" 
-                                + " JOIN course ON course.id = course_cord.course_id"
-                                + " WHERE course_cord.lect_id = " + lectId + ";";
-        return result;
-    }
+    
 
-    public static String getCourseGroupList(int courseID) {
-        String result = "SELECT project_assign.project_id, project.name, group_info.group_id, group_info.group_name, project_assign.marked" 
-            + " FROM project_assign"
-            + " JOIN project ON project_assign.project_id = project.id"
-            + " JOIN group_info ON group_info.group_id = project_assign.group_id" 
-            + " WHERE group_info.group_status = 1"
-            + " AND project.course_id = " + courseID + ";";
-        return result;
-    }
+
 
     public static String getGroupMembers(int groupID) {
         String result = "SELECT user.user_name, user.user_id FROM user JOIN user_group_info on user_group_info.user_id = user.user_id WHERE user_group_info.group_id = " + groupID + ";";
@@ -117,15 +104,7 @@ public class DatabaseQuery {
         return "INSERT INTO project(name, description, course_id, due_date) VALUES ('" + name + "', '" + description + "', " + courseID + ", '" + dueDate + "');";
     }
 
-    public static String getSubmittedAssign(int groupID, int courseID) {
-        return "SELECT file_mngt.file_id ,file_mngt.file_name" 
-                    + " FROM file_mngt"
-                    + " JOIN project_assign ON project_assign.group_id = file_mngt.group_id"
-                    + " JOIN project ON project.id = project_assign.project_id"
-                    + " WHERE file_mngt.group_id = " + groupID + "" 
-                    + " AND project.course_id = " + courseID + ""
-                    + " AND file_mngt.file_status = 1;";
-    }
+
 
     public static String getFileDetails(int fileID) {
         return "SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = " + fileID + ";";

@@ -1,5 +1,10 @@
 package beans;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 public class LectGroupListBean implements java.io.Serializable
 {
 
@@ -93,6 +98,45 @@ public class LectGroupListBean implements java.io.Serializable
 
         return status;
 
+    }
+
+    public List<LectGroupListBean> getCourses(int courseID) {
+
+        List<LectGroupListBean> list = new ArrayList<>();
+
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(getCourseGroupList(courseID), connection);
+
+            while (resultSet.next()) {
+
+                LectGroupListBean bean = new LectGroupListBean();
+                bean.setGroupId(resultSet.getInt("group_id"));
+                bean.setGroupName(resultSet.getString("group_name"));
+                bean.setProjectId(resultSet.getInt("project_id"));
+                bean.setProjectName(resultSet.getString("name"));
+                bean.setMarkedStatus(resultSet.getInt("marked"));
+                list.add(bean);
+
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+    public static String getCourseGroupList(int courseID) {
+        String result = "SELECT project_assign.project_id, project.name, group_info.group_id, group_info.group_name, project_assign.marked" 
+            + " FROM project_assign"
+            + " JOIN project ON project_assign.project_id = project.id"
+            + " JOIN group_info ON group_info.group_id = project_assign.group_id" 
+            + " WHERE group_info.group_status = 1"
+            + " AND project.course_id = " + courseID + ";";
+        return result;
     }
 
 

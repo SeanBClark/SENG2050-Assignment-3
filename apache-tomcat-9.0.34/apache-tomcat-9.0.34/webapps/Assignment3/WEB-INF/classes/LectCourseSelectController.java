@@ -14,53 +14,19 @@ public class LectCourseSelectController extends HttpServlet {
         super();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        Connection connection = null;
-        try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
-
-        // Get courses the lecturer is course coordinator for
-        HttpSession session = request.getSession();
-        int lectId = (int) session.getAttribute("userID");
-
+    public void doGet(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException {
         try {
 
-            ResultSet courseListRS = DatabaseQuery.getResultSet(DatabaseQuery.getLectCourses(lectId), connection);
-            List <CourseListBean> courseList = new ArrayList<>();
-
-            while (courseListRS.next()){
-
-                session = request.getSession();
+                HttpSession session = request.getSession();
+                int lectID = (int) session.getAttribute("userID");
 
                 CourseListBean courseListBean = new CourseListBean();
-                courseListBean.setCourseId(courseListRS.getInt("course_id"));
-                courseListBean.setCourseName(courseListRS.getString("name"));
-                courseListBean.setCourseCode(courseListRS.getString("course_code"));
-                courseList.add(courseListBean);
-                session.setAttribute("courseListBean", courseListBean);
+                session.setAttribute("courseList", (courseListBean.getCourses(lectID)));
 
-            }
-            session.setAttribute("courseList", courseList);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        try {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/course_mngt/course_select.jsp");
-            connection.close(); 
-            dispatcher.forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException {
-            Connection connection = null;
-            try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
-
-            try {
-                connection.close();
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/course_mngt/course_select.jsp");
+                dispatcher.forward(request, response);
+                
             } catch (Exception e) {
                 e.printStackTrace();
             }

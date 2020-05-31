@@ -320,7 +320,8 @@ INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 
 INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 3', 'Assignment 3 Desc', 2, '2020-08-24 10:00:00');
 INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 4', 'Assignment 4 Desc', 3, '2020-09-24 23:59:59');
 INSERT INTO project(name, description, course_id, due_date) VALUES ('Assignment 5', 'Assignment 5 Desc', 4, '2020-10-24 06:00:00');
--- SELECT * FROM project; 
+-- SELECT * FROM project WHERE name = 'Assignment 2'; 
+-- SELECT id FROM project WHERE name = 'Assignment 2';
 
 CREATE TABLE project_assign (
 
@@ -392,3 +393,6 @@ INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES
 -- SELECT (count(milestone_status) * 100 / (SELECT count(milestone_status) FROM group_milestones where group_id = 1)) as percentageComplete from group_milestones where group_id = 1 and milestone_status = 1;
 
 -- SELECT user.user_name, user.user_id FROM user JOIN user_group_info on user_group_info.user_id = user.user_id WHERE user_group_info.group_id = 1;
+
+SELECT EXISTS(SELECT id FROM project WHERE name = 'Assignment 2' AND course_id = (SELECT id FROM course WHERE course_code = 'COMP1120'));
+-- INSERT INTO project_assign(project_id, group_id) VALUES (( SELECT id FROM project WHERE name = 'Assignment 2' AND course_id = (SELECT id FROM course WHERE course_code = 'COMP1120') ),( SELECT group_id FROM group_info WHERE group_name = 'we534535sadfsdfasdfsadfw4' ));

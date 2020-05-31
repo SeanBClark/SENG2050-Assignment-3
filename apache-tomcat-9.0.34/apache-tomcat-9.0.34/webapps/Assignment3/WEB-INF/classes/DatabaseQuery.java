@@ -55,15 +55,9 @@ public class DatabaseQuery {
         return result;
     }
 
-    public static String insertGroup(String groupName, String groupDesc) {
-        String result = "INSERT INTO group_info(group_name, group_description) VALUES ('" + groupName + "', '" + groupDesc + "');";
-        return result;
-    }
+    
 
-    public static String insertGroupUser(int userID, String groupName) {
-        String result = "INSERT INTO user_group_info(user_id, group_id) VALUES ('" + userID + "', (SELECT group_id FROM group_info WHERE group_name = '" + groupName + "'))";
-        return result;
-    }
+
 
     public static String ifStdExists(String userEmail) {
         String result = "SELECT EXISTS( SELECT user_id FROM user WHERE user_email = '" + userEmail + "');";
@@ -125,8 +119,6 @@ public class DatabaseQuery {
                     + " AND file_mngt.file_status = 1;";
     }
 
-    public static String getFileDetails(int fileID) {
-        return "SELECT group_id, file_name, file_url, file_desc, file_status FROM file_mngt WHERE file_id = " + fileID + ";";
-    }
+
 
 }

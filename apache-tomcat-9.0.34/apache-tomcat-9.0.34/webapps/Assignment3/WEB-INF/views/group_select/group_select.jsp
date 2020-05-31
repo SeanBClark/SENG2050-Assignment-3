@@ -81,7 +81,20 @@
 
             </div>
 
+
             <div class = 'body'>
+            
+                <c:if test="${not empty param.exists}" >
+                    <c:if test = "${param.exists == 'false'}">
+
+                        <div class = 'alert alert-danger form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                    
+                            Project does not exist. Please Enter Valid Project name and course code
+
+                        </div>
+
+                    </c:if>
+                </c:if>
 
                 <div class = 'border container group-list-div' >
 
