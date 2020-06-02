@@ -3,6 +3,14 @@ $(document).ready(function ()
     $("#addAppForm").hide();
 });
 
+function nameExist()
+{
+    $("#addAppForm").slideUp();
+    $("#nameAlreadyExists").show();
+    $("#schedule").slideDown();
+    $("#addAppBtn").html('<i class="fas fa-plus"></i> Add Appointment');
+}
+
 function showAddApp() 
 {
     if($("#schedule").is(":visible")) 

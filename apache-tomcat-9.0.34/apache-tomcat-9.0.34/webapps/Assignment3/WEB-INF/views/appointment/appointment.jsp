@@ -105,6 +105,23 @@
 
 
 
+               
+
+
+
+
+                <c:if test="${not empty param.exists}" >
+
+                    <c:if test = "${param.exists == 'true'}">
+ 
+                        <script type="text/javascript"> nameExist() </script>
+
+                    </c:if>
+
+                </c:if>
+
+
+
 
 
 
@@ -240,6 +257,12 @@
                                 <div class="alert alert-danger error" id='nameInvalid' role="alert">
 
                                     Must entre an appointment name
+                                    
+                                </div> 
+
+                                <div class="alert alert-danger error" id='nameAlreadyExists' role="alert">
+
+                                    There is already an appointment with this name
                                     
                                 </div> 
 

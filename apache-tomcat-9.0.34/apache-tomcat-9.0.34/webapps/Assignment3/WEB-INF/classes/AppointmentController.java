@@ -27,9 +27,9 @@ public class AppointmentController extends HttpServlet
         session.setAttribute("schedule", (appointment.getAllAppointments(groupId))); 
 
         // redirect to jsp manage appointments page
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/appointment/appointment.jsp");
         try 
         {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/appointment/appointment.jsp");
             dispatcher.forward(request, response);
         } 
         catch (Exception e) 
@@ -43,7 +43,8 @@ public class AppointmentController extends HttpServlet
     throws ServletException, IOException 
     {
         HttpSession session = request.getSession();
-        int groupId = (int) session.getAttribute("groupID");
+
+        int groupId = (int) session.getAttribute("groupID"); // used to call other databse functions in bean 
 
         // add list of appointments to session     
         UpcomingAppBean appointment = new UpcomingAppBean(); 
@@ -77,14 +78,15 @@ public class AppointmentController extends HttpServlet
         }
         else // user wants to add appointment to database 
         {
+            String name = request.getParameter("appName"); // get name to check against database for other appointments with the same name
+
             if(appointment.doesNameExist(groupId, name)) // appointment name already exists, notify user
             {
-                
+                response.sendRedirect("/Assignment3/ManageAppointments?exists=true");
             }
             else // new appointment and ni appointment exists with such name
             {
                 // get values from form 
-                String name = request.getParameter("appName");
                 String description = request.getParameter("appDesc");
 
                 String date = request.getParameter("appDate");
@@ -96,15 +98,6 @@ public class AppointmentController extends HttpServlet
                 appointment.addAppointment(groupId, name, dateTime, description, false);
             }
         }
-
-
-
-        
-
-
-
-
-
 
 
         // redirect to list of appointments jsp page. 
