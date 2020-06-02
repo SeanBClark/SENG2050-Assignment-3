@@ -208,4 +208,23 @@ public class GroupBean implements java.io.Serializable
         return "SELECT EXISTS(SELECT id FROM project WHERE name = '" + projectName +"' AND course_id = (SELECT id FROM course WHERE course_code = '" + courseCode +"'))";
     }
 
+    public void insertGroupMember(String email, int groupID) {
+
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            Statement statement = connection.createStatement();
+            statement.execute(insertGroupMemberQuery(email, groupID));
+            connection.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String insertGroupMemberQuery(String email, int groupID) {
+        return "INSERT INTO user_group_info(user_id, group_id) VALUES ((SELECT user_id FROM user WHERE user_email = '" + email + "'), " + groupID + ");";
+    }
+
 }

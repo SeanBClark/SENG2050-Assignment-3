@@ -33,6 +33,8 @@ public class AdminController extends HttpServlet {
             int userId = 0;
             String type = request.getParameter("param");
             
+            // Controller performs different actions depending on post request params
+            // Creates lecturer based on already created account
             if (type.equals("createLect")) {
 
                 try {
@@ -51,6 +53,7 @@ public class AdminController extends HttpServlet {
                     e.printStackTrace();
                 }
             }
+            // Enrols a student into a course
             else if (type.equals("enrolStd")) {
 
                 try {
@@ -79,50 +82,64 @@ public class AdminController extends HttpServlet {
                     e.printStackTrace();
                 }
             }
+            // Creates a new course
             else if (type.equals("createCourse")) {
 
-                String name = request.getParameter("courseName");
-                String desc = request.getParameter("courseDesc");
-                String code = request.getParameter("courseCode");
+                try {
+                    String name = request.getParameter("courseName");
+                    String desc = request.getParameter("courseDesc");
+                    String code = request.getParameter("courseCode");
 
-                AdminBean adminBean = new AdminBean();
-                int courseExists = adminBean.ifCourseExists(code);
+                    AdminBean adminBean = new AdminBean();
+                    int courseExists = adminBean.ifCourseExists(code);
 
-                if (courseExists == 1) {
-                    response.sendRedirect("/Assignment3/Admin?courseExists=true");
-                }
-                else {
-                    adminBean.createCourse(name, desc, code);
-                    response.sendRedirect("/Assignment3/Admin?courseExists=created");
+                    if (courseExists == 1) {
+                        response.sendRedirect("/Assignment3/Admin?courseExists=true");
+                    }
+                    else {
+                        adminBean.createCourse(name, desc, code);
+                        response.sendRedirect("/Assignment3/Admin?courseExists=created");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
             }
+            // Assigns a lecturer to a course
             else if (type.equals("assignCoordinator")) {
 
-                String email = request.getParameter("assignEmail");
-                String code = request.getParameter("assignCode");
-
-                AdminBean adminBean = new AdminBean();
-
-                int lectExists = adminBean.ifLectExists(email);
-
-                if (lectExists == 0) {
-                    response.sendRedirect("/Assignment3/Admin?lectExist=false");
-                }
-                else {
-
-                    int courseExists = adminBean.ifCourseExists(code);
-
-                    if (courseExists == 0) {
-                        response.sendRedirect("/Assignment3/Admin?courseExist=false");
+                try {
+                    String email = request.getParameter("assignEmail");
+                    String code = request.getParameter("assignCode");
+    
+                    AdminBean adminBean = new AdminBean();
+    
+                    int lectExists = adminBean.ifLectExists(email);
+    
+                    if (lectExists == 0) {
+                        response.sendRedirect("/Assignment3/Admin?lectExist=false");
                     }
                     else {
-
-                        adminBean.insertCourseCord(email, code);
-                        response.sendRedirect("/Assignment3/Admin?courseExists=true");
     
+                        int courseExists = adminBean.ifCourseExists(code);
+    
+                        if (courseExists == 0) {
+                            response.sendRedirect("/Assignment3/Admin?courseExist=false");
+                        }
+                        else {
+    
+                            adminBean.insertCourseCord(email, code);
+                            response.sendRedirect("/Assignment3/Admin?courseExists=true");
+        
+                        }
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+            }
+            else {
+                System.out.println("Post Request Failed");
+                // TO DO: Redirect to error page
             }
     }
 }

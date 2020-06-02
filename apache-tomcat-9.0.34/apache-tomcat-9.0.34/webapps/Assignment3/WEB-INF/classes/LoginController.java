@@ -5,6 +5,10 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Controller to handle user logins
+// Sends users to an interface specific to their type e.g. Admin goes to Admin
+// Currently incorrectly completes SQL within controller instead of bean. This was made early on and currently breaks the app if moved into beans
+
 @WebServlet(urlPatterns = { "/LoginController" })
 public class LoginController extends HttpServlet {
 

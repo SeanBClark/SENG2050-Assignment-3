@@ -9,6 +9,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Controller to post and get all group details for a user
+
 @WebServlet(name = "/GroupSelectController", urlPatterns = { "/GroupSelect" })
 public class GroupSelectController extends HttpServlet {
 
@@ -16,6 +18,7 @@ public class GroupSelectController extends HttpServlet {
         super();
     }
 
+    //  Gets a list of all groups the current user is a part of
     public void doGet(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
             try {
@@ -29,6 +32,7 @@ public class GroupSelectController extends HttpServlet {
             }
     }
 
+    // Post request to create a new group and attach it to a project 
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
 

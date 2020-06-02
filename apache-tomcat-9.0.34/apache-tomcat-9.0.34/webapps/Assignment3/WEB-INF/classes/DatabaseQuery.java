@@ -2,6 +2,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+// Old Database Query 
+// Was used before SQL was correctly placed in beans
+// Left here just to be safe
+// Should remove all referenced to SQL in controllers if possible
 public class DatabaseQuery {
 
     public static ResultSet getResultSet(String query, Connection connection) {

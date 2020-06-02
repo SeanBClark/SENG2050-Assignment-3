@@ -7,6 +7,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Controller to provide feedback for group submissions
+
 @WebServlet(name = "/FeedbackController", urlPatterns = { "/Feedback" })
 public class FeedbackController extends HttpServlet {
 
@@ -14,6 +16,7 @@ public class FeedbackController extends HttpServlet {
         super();
     }
 
+    // Gets list of completed assignments the forwards to jsp
     public void doGet(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
             try { 
@@ -29,19 +32,18 @@ public class FeedbackController extends HttpServlet {
             }
         }
 
+    //  Post request to submit feedback on an Assignment
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
             
             try { 
-                Connection connection = ConfigBean.getConnection(); 
-                HttpSession session = request.getSession();
-
-                int courseID = (int) session.getAttribute("courseID");
+                int groupID = Integer.parseInt(request.getParameter("groupID"));
+                int courseID = Integer.parseInt(request.getParameter("courseID"));
 
                 FileManagementBean fileManagementBean = new FileManagementBean();
 
                 fileManagementBean.insertFeedback(
-                    fileManagementBean.getProjectID(Integer.parseInt(request.getParameter("groupID")), courseID), 
+                    fileManagementBean.getProjectID(groupID, courseID), 
                     Integer.parseInt(request.getParameter("groupID")), 
                     request.getParameter("feedback"), 
                     Double.parseDouble(request.getParameter("gradeSlider")));

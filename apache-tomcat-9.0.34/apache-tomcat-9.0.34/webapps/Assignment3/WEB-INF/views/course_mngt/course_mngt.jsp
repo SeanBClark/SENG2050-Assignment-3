@@ -105,7 +105,7 @@
                             <div class = 'col-6 col-lg-2 justify-content-center'>${item.getProjectName()}</div>
                             <div class = 'col-2 justify-content-center'>
                             
-                                <a href="/Assignment3/GroupFeedback?groupID=${item.getGroupId()}">
+                                <a href="/Assignment3/GroupFeedback?groupID=${item.getGroupId()}&courseID=${param.courseID}">
 
                                     <button class="btn btn-success my-2 my-sm-0" type="button">Select Group</button>
 
@@ -132,7 +132,7 @@
 
                 <div class = 'row  justify-content-center group-row'>
 
-                    <form method = "post" action = "/Assignment3/CreateAssignment" >
+                    <form method = "post" action = "/Assignment3/CreateAssignment?courseID=${param.courseID}" >
 
                         <div class = 'form-group row create-assign-div'>
 
