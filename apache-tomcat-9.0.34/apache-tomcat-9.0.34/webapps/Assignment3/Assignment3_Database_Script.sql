@@ -196,7 +196,7 @@ INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) V
 INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version) VALUES (4, 'Report', 'https://www.cdc.gov/niosh/surveyreports/pdfs/349-12a.pdf', 'Draft report.', 1);
 INSERT INTO file_mngt (group_id, file_name, file_url, file_desc, file_version, file_status) VALUES (4, 'Report', 'https://www.gvsu.edu/cms4/asset/CC3BFEEB-C364-E1A1-A5390F221AC0FD2D/engineering_full_technical_report_gg_final.pdf', 'Final report.', 2, 1);
 
-SELECT file_name, file_url, file_status FROM file_mngt WHERE group_id = 1 ORDER BY date_updated ASC LIMIT 4;
+-- SELECT file_name, file_url, file_status FROM file_mngt WHERE group_id = 1 ORDER BY date_updated ASC LIMIT 4;
 
 -- SELECT * FROM file_mngt ORDER BY group_id;
 
@@ -394,5 +394,5 @@ INSERT INTO project_assign(project_id, group_id, grade, marked, feedback) VALUES
 
 -- SELECT user.user_name, user.user_id FROM user JOIN user_group_info on user_group_info.user_id = user.user_id WHERE user_group_info.group_id = 1;
 
-SELECT EXISTS(SELECT id FROM project WHERE name = 'Assignment 2' AND course_id = (SELECT id FROM course WHERE course_code = 'COMP1120'));
+-- SELECT EXISTS(SELECT id FROM project WHERE name = 'Assignment 2' AND course_id = (SELECT id FROM course WHERE course_code = 'COMP1120'));
 -- INSERT INTO project_assign(project_id, group_id) VALUES (( SELECT id FROM project WHERE name = 'Assignment 2' AND course_id = (SELECT id FROM course WHERE course_code = 'COMP1120') ),( SELECT group_id FROM group_info WHERE group_name = 'we534535sadfsdfasdfsadfw4' ));

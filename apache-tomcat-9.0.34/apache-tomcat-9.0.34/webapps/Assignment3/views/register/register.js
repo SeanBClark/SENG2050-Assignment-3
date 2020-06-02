@@ -123,7 +123,7 @@ function compareValue(param1, param2) {
 }
 
 function isLetNum(param) {
-    var regex = /^[0-9a-zA-Z]+$/;
+    var regex = /^[a-zA-Z0-9_ ]*$/;
     return regex.test(param);
 }
 
@@ -142,6 +142,6 @@ function isEmpty(param) {
 }
 
 function isLetters(param) {
-    var regex = /^[a-zA-Z]+$/;
+    var regex = /^[a-zA-Z_ ]+$/;
     return regex.test(param);
 }

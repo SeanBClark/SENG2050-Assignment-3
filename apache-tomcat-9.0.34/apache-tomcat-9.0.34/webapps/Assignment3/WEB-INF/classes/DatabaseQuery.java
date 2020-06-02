@@ -50,15 +50,6 @@ public class DatabaseQuery {
         return result;
     }
 
-    public static String insertUser(String name, String email, String password) {
-        String result = "INSERT INTO user(user_email, user_password, user_name) VALUES ('" + email + "', sha1('" + password + "'), '" + name + "');";
-        return result;
-    }
-
-    
-
-
-
     public static String ifStdExists(String userEmail) {
         String result = "SELECT EXISTS( SELECT user_id FROM user WHERE user_email = '" + userEmail + "');";
         return result;

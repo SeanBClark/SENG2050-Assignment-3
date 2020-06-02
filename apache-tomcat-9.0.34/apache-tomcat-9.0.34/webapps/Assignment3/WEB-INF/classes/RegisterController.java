@@ -23,32 +23,56 @@ public class RegisterController extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException {            
-            Connection connection = null;
-            try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
-
-            String inputName = request.getParameter("userName");
-            String inputEmail = request.getParameter("userEmailConf");
-            String inputPassword = request.getParameter("userPasswordConf");
-
-            // Check if User already exists
-            String ifExistsQuery = DatabaseQuery.ifExistsQuery(inputEmail, inputPassword);
-            boolean exists = DatabaseQuery.ifExists(ifExistsQuery, connection);
-
+        throws ServletException, IOException {
+            
             try {
+
+                String name = request.getParameter("userName");
+                String email = request.getParameter("userEmailConf");
+                String password = request.getParameter("userPasswordConf");
+
+                UserBean userBean = new UserBean();
+
+                boolean exists = userBean.ifExists(email, password);
                 if (exists == false) {
-                    String insertNewUser = DatabaseQuery.insertUser(inputName, inputEmail, inputPassword);
-                    Statement statement = connection.createStatement();
-                    statement.execute(insertNewUser);
-                    response.sendRedirect("/Assignment3/LoginController");
+                    userBean.insertNewUser(name, email, password);
+                    response.sendRedirect("/Assignment3/LoginController?success=true");
                 }
                 else {
-                    // TO DO: Need to add a way to tell the user the account already exists. 
-                    response.sendRedirect("/Assignment3/CreateAccount");
-                    System.out.println("Account Exists");
-                }                
-            } catch (Exception e) { e.printStackTrace(); }
+                    response.sendRedirect("/Assignment3/CreateAccount?exists=true");
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-            try { connection.close(); } catch (Exception e) { e.printStackTrace(); }            
+            // Connection connection = null;
+            // try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
+
+            // String name = request.getParameter("userName");
+            // String email = request.getParameter("userEmailConf");
+            // String password = request.getParameter("userPasswordConf");
+
+            // // Check if User already exists
+            // // String ifExistsQuery = DatabaseQuery.ifExistsQuery(inputEmail, inputPassword);
+            // // boolean exists = DatabaseQuery.ifExists(ifExistsQuery, connection);
+            // UserBean userBean = new UserBean();
+
+            // boolean exists = userBean.ifExists(email, password);
+
+            // try {
+            //     if (exists == false) {
+            //         // String insertNewUser = DatabaseQuery.insertUser(inputName, inputEmail, inputPassword);
+            //         // Statement statement = connection.createStatement();
+            //         // statement.execute(insertNewUser);
+            //         userBean.insertNewUser(name, email, password);
+            //         response.sendRedirect("/Assignment3/LoginController");
+            //     }
+            //     else {
+            //         response.sendRedirect("/Assignment3/CreateAccount?exists=true");
+            //     }                
+            // } catch (Exception e) { e.printStackTrace(); }
+
+            // try { connection.close(); } catch (Exception e) { e.printStackTrace(); }            
     }
 }

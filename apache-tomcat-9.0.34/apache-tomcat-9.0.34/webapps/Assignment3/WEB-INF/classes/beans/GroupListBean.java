@@ -90,7 +90,9 @@ public class GroupListBean implements java.io.Serializable
                 groupListBean.setGroupDesc(resultSet.getString("group_description"));
                 groupList.add(groupListBean);
 
-            }           
+            }
+            
+            connection.close();
 
         } catch (Exception e) {
             e.printStackTrace();
