@@ -1,4 +1,4 @@
-<%-- Page viewed after user logs in. Will List groups the user is currently apart of or will enable the user to create a new group --%>
+<%-- Page to enable lecturers to provide feedback --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.Iterator" %>
@@ -131,7 +131,7 @@
 
                         <div class = 'border col'>
 
-                            <form method = 'post' action = '/Assignment3/Feedback?fileID=${item.getFileID()}&groupID=${item.getGroupID()}' >
+                            <form method = 'post' action = '/Assignment3/Feedback?fileID=${item.getFileID()}&groupID=${item.getGroupID()}&courseID=${param.courseID}' >
 
                                 <div class = 'form-group feedback-div'>
 

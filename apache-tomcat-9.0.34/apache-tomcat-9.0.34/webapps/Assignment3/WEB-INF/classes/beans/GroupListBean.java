@@ -11,6 +11,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Gets a list of groups and their members
+
 public class GroupListBean implements java.io.Serializable
 {
 
@@ -75,6 +77,7 @@ public class GroupListBean implements java.io.Serializable
 
     }
 
+    // List of group members
     public List<GroupListBean> getGroupList(int userID) {
 
         List<GroupListBean> groupList = new ArrayList<>();

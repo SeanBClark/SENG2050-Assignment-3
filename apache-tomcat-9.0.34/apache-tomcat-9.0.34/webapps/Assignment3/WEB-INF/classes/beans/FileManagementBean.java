@@ -12,6 +12,8 @@ import java.util.List;
 
 import beans.*;
 
+// Files management Bean
+
 
 public class FileManagementBean implements java.io.Serializable
 {

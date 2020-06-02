@@ -1,4 +1,4 @@
-<%-- Page viewed after user logs in. Will List groups the user is currently apart of or will enable the user to create a new group --%>
+<%-- Page for lecturers to manage groups --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.Iterator" %>
@@ -112,7 +112,7 @@
 
                         <ul class = 'list-group list-group-flush'>
                             <%-- List of submitted Assignments once blocker removed --%>
-                            <c:forEach var = "item" items = "${sessionScope.fileList}">
+                            <c:forEach var = "item" items = "${sessionScope.submittedProjects}">
 
                                 <li class = "list-group-item justify-content-md-center border-0">
 
@@ -125,7 +125,7 @@
                                         </div>
                                         <div class = 'col col-lg-2 d-flex justify-content-center  assign-btn'>
                                         
-                                            <a href="/Assignment3/Feedback?fileID=${item.getFileID()}">
+                                            <a href="/Assignment3/Feedback?fileID=${item.getFileID()}&courseID=${param.courseID}">
 
                                                 <button class="btn btn-success my-2 my-sm-0" type="button">Mark Assignment</button>
 

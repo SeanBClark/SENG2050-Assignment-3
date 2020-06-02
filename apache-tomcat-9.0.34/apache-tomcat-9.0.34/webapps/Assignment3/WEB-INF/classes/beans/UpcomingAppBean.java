@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+// Simple bean to get a list of the upcoming appointments
+
 public class UpcomingAppBean implements java.io.Serializable
 {
 

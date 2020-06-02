@@ -4,6 +4,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Controller to fill out group management home page
+
 @WebServlet(name = "/GroupController", urlPatterns = { "/GroupHome" })
 public class GroupController extends HttpServlet {
 

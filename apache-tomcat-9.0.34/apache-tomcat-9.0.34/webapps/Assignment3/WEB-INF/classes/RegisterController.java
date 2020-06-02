@@ -5,6 +5,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Controller for users to register a new account within the app
+
 @WebServlet(name = "/RegisterController", urlPatterns = { "/CreateAccount" })
 public class RegisterController extends HttpServlet {
 
@@ -44,35 +46,6 @@ public class RegisterController extends HttpServlet {
                 
             } catch (Exception e) {
                 e.printStackTrace();
-            }
-
-            // Connection connection = null;
-            // try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
-
-            // String name = request.getParameter("userName");
-            // String email = request.getParameter("userEmailConf");
-            // String password = request.getParameter("userPasswordConf");
-
-            // // Check if User already exists
-            // // String ifExistsQuery = DatabaseQuery.ifExistsQuery(inputEmail, inputPassword);
-            // // boolean exists = DatabaseQuery.ifExists(ifExistsQuery, connection);
-            // UserBean userBean = new UserBean();
-
-            // boolean exists = userBean.ifExists(email, password);
-
-            // try {
-            //     if (exists == false) {
-            //         // String insertNewUser = DatabaseQuery.insertUser(inputName, inputEmail, inputPassword);
-            //         // Statement statement = connection.createStatement();
-            //         // statement.execute(insertNewUser);
-            //         userBean.insertNewUser(name, email, password);
-            //         response.sendRedirect("/Assignment3/LoginController");
-            //     }
-            //     else {
-            //         response.sendRedirect("/Assignment3/CreateAccount?exists=true");
-            //     }                
-            // } catch (Exception e) { e.printStackTrace(); }
-
-            // try { connection.close(); } catch (Exception e) { e.printStackTrace(); }            
+            }      
     }
 }

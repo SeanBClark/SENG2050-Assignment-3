@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+// Bean to manage groups under each course/course coordinator
+
 public class LectGroupListBean implements java.io.Serializable
 {
 
@@ -100,6 +102,7 @@ public class LectGroupListBean implements java.io.Serializable
 
     }
 
+    // List of groups in a course
     public List<LectGroupListBean> getCourses(int courseID) {
 
         List<LectGroupListBean> list = new ArrayList<>();

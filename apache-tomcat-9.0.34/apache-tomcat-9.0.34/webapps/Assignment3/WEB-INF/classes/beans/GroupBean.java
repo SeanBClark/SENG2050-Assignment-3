@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
+// Bean to manage group info
+
 public class GroupBean implements java.io.Serializable
 {
 
@@ -70,7 +72,7 @@ public class GroupBean implements java.io.Serializable
 
     }
 
-
+    // Gets all details about a group
     public List<GroupBean> getGroupInfo(int groupID) {
 
         List<GroupBean> groupInfo = new ArrayList<>();
@@ -104,6 +106,7 @@ public class GroupBean implements java.io.Serializable
         return "SELECT group_id, group_name, group_description FROM group_info WHERE group_id =  " + groupID + "";
     }
 
+    // Inserts a new group
     public void insertGroup(String groupName, String groupDesc){
         try {
             Connection connection = ConfigBean.getConnection();
@@ -119,6 +122,7 @@ public class GroupBean implements java.io.Serializable
         return result;
     }
 
+    // Attaches a project to a group
     public void attachProject(String courseCode, String projectName, String groupName){
         try {
             Connection connection = ConfigBean.getConnection();
@@ -147,6 +151,7 @@ public class GroupBean implements java.io.Serializable
                 +  "( " + getGroupID(groupName) + " ));";
     }
 
+    // Gets group id
     public int lookUpGroupID(String groupName) {
         int groupID = 0;
 
@@ -165,6 +170,7 @@ public class GroupBean implements java.io.Serializable
         return groupID;
     }
 
+    // Inserts new user to a group
     public void insertGroupUser(int userID, String groupName){
         try {
             Connection connection = ConfigBean.getConnection();
@@ -179,6 +185,7 @@ public class GroupBean implements java.io.Serializable
         return "INSERT INTO user_group_info(user_id, group_id) VALUES ('" + userID + "', (SELECT group_id FROM group_info WHERE group_name = '" + groupName + "'))";
     }
 
+    // Checks if project exists
     public boolean ifProjectExist(String courseCode, String projectName) {
 
         boolean exists = false;
@@ -206,6 +213,26 @@ public class GroupBean implements java.io.Serializable
 
     public String ifProjectExistsQuery(String courseCode, String projectName) {
         return "SELECT EXISTS(SELECT id FROM project WHERE name = '" + projectName +"' AND course_id = (SELECT id FROM course WHERE course_code = '" + courseCode +"'))";
+    }
+
+    // Insert group members to a group
+    public void insertGroupMember(String email, int groupID) {
+
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            Statement statement = connection.createStatement();
+            statement.execute(insertGroupMemberQuery(email, groupID));
+            connection.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String insertGroupMemberQuery(String email, int groupID) {
+        return "INSERT INTO user_group_info(user_id, group_id) VALUES ((SELECT user_id FROM user WHERE user_email = '" + email + "'), " + groupID + ");";
     }
 
 }

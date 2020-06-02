@@ -7,6 +7,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Controller to list out groups under a course
+
 @WebServlet(name = "/LectGroupMngtController", urlPatterns = { "/GroupManagement" })
 public class LectGroupMngtController extends HttpServlet {
 

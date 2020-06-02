@@ -1,4 +1,4 @@
-<%-- Page viewed after user logs in. Will List groups the user is currently apart of or will enable the user to create a new group --%>
+<%-- Page to show lecturers all the courses they are cordinators for --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.Iterator" %>
@@ -44,12 +44,6 @@
 
                     <a class="navbar-brand" href="/Assignment3/HomePage">Group Mangement System</a>
 
-                    <%-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-
-                        <span class="navbar-toggler-icon"></span>
-
-                    </button> --%>
-
                     <div class="collapse navbar-collapse" id="navbarNav">
 
                         <ul class="navbar-nav">
@@ -61,6 +55,16 @@
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="button">Home</button>
                                     
                                 </a>
+
+                            </li>
+
+                            <li class="nav-item">
+                            
+                                <a class="nav-link" href="/Assignment3/LogOutController">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
+                                    
+                                 </a>
 
                             </li>
 

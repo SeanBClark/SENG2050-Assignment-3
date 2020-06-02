@@ -7,6 +7,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Controller to list out courses a lecturer is course coordinator for
+
 @WebServlet(name = "/LectCourseSelectController", urlPatterns = { "/CourseSelect" })
 public class LectCourseSelectController extends HttpServlet {
 
