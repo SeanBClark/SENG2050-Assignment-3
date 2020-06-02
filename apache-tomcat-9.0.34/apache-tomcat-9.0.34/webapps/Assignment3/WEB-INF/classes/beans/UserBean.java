@@ -12,6 +12,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Bean to manage all user interfaces
 
 public class UserBean implements java.io.Serializable
 {
@@ -109,6 +110,7 @@ public class UserBean implements java.io.Serializable
 
     }
 
+    // Inserts a new user that registers
     public void insertNewUser(String name, String email, String password) {
 
         try {
@@ -123,6 +125,7 @@ public class UserBean implements java.io.Serializable
         }        
     }
 
+    // Checks if users exists
     public boolean ifExists(String email, String password) {
 
         boolean result = false;

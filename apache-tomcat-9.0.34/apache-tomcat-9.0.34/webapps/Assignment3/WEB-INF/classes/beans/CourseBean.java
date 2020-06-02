@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+// Bean to create new assignments for each class
+
 public class CourseBean {
     
     public void insertAssignment(int courseID, String dueDate, String name, String description) {

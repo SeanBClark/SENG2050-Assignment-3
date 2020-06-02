@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+// Bean to manage marking files and providing feedback
 
 public class FileMarkListBean implements java.io.Serializable
 {
@@ -53,6 +54,8 @@ public class FileMarkListBean implements java.io.Serializable
         return fileID;
 
     }
+
+    // Gets a list of submitted Assignments
 
     public List<FileMarkListBean> getProjects(int groupID, int courseID) {
 

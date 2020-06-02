@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+// Bean to manage group members
+// Functions are almost the same as group bean, could be merged with it
+
 public class GroupMemberBean implements java.io.Serializable
 {
 
@@ -53,6 +56,7 @@ public class GroupMemberBean implements java.io.Serializable
 
     }
 
+    // List of group members
     public List<GroupMemberBean> getMemberList(int groupID) {
 
         List<GroupMemberBean> list = new ArrayList<>();

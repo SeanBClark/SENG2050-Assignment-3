@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+// Bean to get and store lists of courses for each course coordinator
+
 public class CourseListBean implements java.io.Serializable {
 
     /**
@@ -67,6 +69,8 @@ public class CourseListBean implements java.io.Serializable {
         return courseID;
 
     }
+
+    // Gets a list of courses under a course coordinator
 
     public List<CourseListBean> getCourses(int lectID) {
 

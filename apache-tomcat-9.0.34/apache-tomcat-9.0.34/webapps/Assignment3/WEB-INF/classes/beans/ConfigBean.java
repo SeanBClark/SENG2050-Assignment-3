@@ -6,6 +6,8 @@ import java.sql.*;
 import javax.management.RuntimeErrorException;
 import javax.naming.*;
 
+// Database connector
+
 public class ConfigBean 
 {
 

@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+// Java class to manage major database interactions as a way to avoid repeating code
+// Gets result sets and checks if something exists
+// As well as provides some default queries that work, and are easy to call
+
 public class DatabaseQuery {
 
     public static ResultSet getResultSet(String query, Connection connection) {

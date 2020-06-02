@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+// Bean to list upcoming milestones
+
 public class UpcomingMilestoneBean implements java.io.Serializable
 {
 
