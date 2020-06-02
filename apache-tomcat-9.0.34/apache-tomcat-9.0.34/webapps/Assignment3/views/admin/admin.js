@@ -7,6 +7,7 @@ function showLectForm() {
     $("#enrolForm").slideUp();
     $("#createCourseForm").slideUp();
     $("#emailSucFail").slideUp();
+    $("#assignForm").slideUp();
     $("#lectForm").slideToggle();
 }
 
@@ -14,6 +15,7 @@ function showEnrolForm() {
     $("#createCourseForm").slideUp();
     $("#lectForm").slideUp();
     $("#emailSucFail").slideUp();
+    $("#assignForm").slideUp();
     $("#enrolForm").slideToggle();
 }
 
@@ -21,7 +23,18 @@ function showCourseForm() {
     $("#lectForm").slideUp();
     $("#enrolForm").slideUp();
     $("#emailSucFail").slideUp();
+    $("#assignForm").slideUp();
     $("#createCourseForm").slideToggle();
+}
+
+function showAssignForm() {
+
+    $("#lectForm").slideUp();
+    $("#enrolForm").slideUp();
+    $("#emailSucFail").slideUp();
+    $("#createCourseForm").slideUp();
+    $("#assignForm").slideDown();
+
 }
 
 function formValidationLect() {
@@ -50,39 +63,52 @@ function formValidationEnrol() {
 
     let userEmail = document.getElementById('userEnrol').value;
     let courseCode = document.getElementById('classCode').value;
+    let invalidEmail = $("#email-invalid-enrol");
+    let noEmail = $('#no-email-enrol');
+    let courseAlert =  $('#courseCodeAlert');
 
     if (isEmpty(userEmail) === false)
     {
 
-        $("#email-invalid-enrol").hide();
-        $('#no-email-enrol').slideDown();
+        hideEnrolErrors()
+        noEmail.slideDown();
         return false;
 
     }
     else if (isEmail(userEmail) === false) {
         
-        $("#no-email-enrol").hide();
-        $('#email-invalid-enrol').slideDown();
+        hideEnrolErrors()
+        invalidEmail.slideDown();
         return false;
 
     }
 
     else if (isEmpty(courseCode) == false) {
 
-        $("#no-email-enrol").hide();
-        $("#email-invalid-enrol").hide();
-        $('#courseCodeAlert').slideDown();
+        hideEnrolErrors()
+        courseAlert.slideDown();
         return false;
 
     }
     else if (isCourseCode(courseCode) == false) {
 
-        $("#no-email-enrol").hide();
-        $("#email-invalid-enrol").hide();
-        $('#courseCodeAlert').slideDown();
+        hideEnrolErrors()
+        courseAlert.slideDown();
         return false;
 
     }
+
+}
+
+function hideEnrolErrors() {
+
+    let invalidEmail = $("#email-invalid-enrol");
+    let noEmail = $('#no-email-enrol');
+    let codeAlert = $('#courseCodeAlert');
+
+    invalidEmail.hide();
+    noEmail.hide();
+    codeAlert.hide();
 
 }
 
@@ -91,36 +117,104 @@ function formValidationCreate() {
     let courseName = document.getElementById("courseName").value;
     let courseDesc = document.getElementById("courseDesc").value;
     let courseCode = document.getElementById("courseCode").value;
+    let noName = $("#noName");
+    let noDesc = $("#noDesc");
+    let invalidName = $("#invalidName");
+    let noCourseCode = $("#noCourseCode");
 
     if (isEmpty(courseName) === false) {
-        $("#noName").hide();
-        $("#noDesc").hide();
-        $("#invalidName").hide();
-        $("#noName").slideDown();
+        hideCourseErrors();
+        noName.slideDown();
         return false; 
     }
     else if (isEmpty(courseDesc) === false) {
-        $("#noCourseCode").hide();
-        $("#invalidName").hide();
-        $("#noName").hide();
-        $("#noDesc").slideDown();
+        hideCourseErrors();
+        noDesc.slideDown();
         return false
     }
     else if (isEmpty(courseCode) === false) {
-        $("#noDesc").hide();
-        $("#noName").hide();
-        $("#invalidName").hide();
-        $("#noCourseCode").slideDown();
+        hideCourseErrors();
+        noCourseCode.slideDown();
         return false
     }
     else if (isCourseCode(courseCode) == false) {
-        $("#noDesc").hide();
-        $("#noName").hide();  
-        $("#noCourseCode").hide();
-        $("#invalidName").slideDown();
+        hideCourseErrors();
+        invalidName.slideDown();
         return false
     }
 
+}
+
+function hideCourseErrors() {
+
+    let noName = $("#noName");
+    let noDesc = $("#noDesc");
+    let invalidName = $("#invalidName");
+    let noCourseCode = $("#noCourseCode");
+
+    noDesc.hide();
+    noName.hide();  
+    noCourseCode.hide();
+    invalidName.hide();
+
+}
+
+function formValidationAssign() {
+
+    let email = document.getElementById("assignEmail").value;
+    let code = document.getElementById("assignCode").value;
+    let invalidEmail = $("#assignEmailError");
+    let emptyEmail = $("#assignEmailEmpty");
+    let invalidCode = $("#assignInvalidCode");
+    let noCode = $("#assignNoCode");
+
+    if ( isEmpty(email) === false ) {
+
+        hideAssignErrors();
+        showAssignErrors(emptyEmail);
+        return false;
+
+    }
+    else if ( isEmail(email) === false ) {
+
+        hideAssignErrors();
+        showAssignErrors(invalidEmail);
+        return false;
+
+    }
+    else if ( isEmpty(code) === false ) {
+
+        hideAssignErrors();
+        showAssignErrors(noCode);
+        return false;
+
+    }
+    else if ( isCourseCode(code) === false ) {
+
+        hideAssignErrors();
+        showAssignErrors(invalidCode);
+        return false;
+
+    }
+
+}
+
+function hideAssignErrors() {
+
+    let invalidEmail = $("#assignEmailError");
+    let emptyEmail = $("#assignEmailEmpty");
+    let invalidCode = $("#assignInvalidCode");
+    let noCode = $("#assignNoCode");
+
+    noCode.hide();
+    invalidCode.hide();
+    emptyEmail.hide();
+    invalidEmail.hide();
+
+}
+
+function showAssignErrors(error) {
+    error.slideDown();
 }
 
 function isEmail(param) {
@@ -142,7 +236,7 @@ function isCourseCode(param) {
     return regex.test(param);
 }
 
-
+// I hate this as well
 function hideForms() {
     $("#enrolForm").hide();
     $("#createCourseForm").hide();
@@ -156,4 +250,9 @@ function hideForms() {
     $("#noDesc").hide();
     $("#noCourseCode").hide();
     $("#invalidName").hide();
+    $("#assignInvalidCode").hide();
+    $("#assignNoCode").hide();
+    $("#assignEmailEmpty").hide();
+    $("#assignEmailError").hide();
+    $("#assignForm").hide();
 }

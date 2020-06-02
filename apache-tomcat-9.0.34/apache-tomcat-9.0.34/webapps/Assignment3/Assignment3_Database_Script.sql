@@ -228,6 +228,7 @@ INSERT INTO course(name, description,course_code) VALUES ('Web Engineering', 'We
 INSERT INTO course(name, description,course_code) VALUES ('Advanced Databases', 'Advaced Databases Desc', 'COMP3350');
 INSERT INTO course(name, description,course_code) VALUES ('Data Structures', 'Data Structures Desc', 'COMP1120');
 INSERT INTO course(name, description,course_code) VALUES ('Algorithms', 'Algorithms Desc', 'COMP2230');
+INSERT INTO course(name, description,course_code) VALUES ('Major Project','Internship','COMP3851');
 -- SELECT * FROM course;
 
 -- Table for students to enrol within a course
@@ -300,6 +301,8 @@ INSERT INTO course_cord(course_id, lect_id) VALUES (4, 9);
 -- SELECT course_cord.course_id, course.name, course.course_code FROM course_cord 
 -- 	JOIN course ON course.id = course_cord.course_id
 -- 	WHERE course_cord.lect_id = 6;
+
+-- SELECT course.name, user.user_name, user.user_email FROM course_cord JOIN user on user_id = lect_id JOIN course ON course.id = course_cord.course_id;
 
 CREATE TABLE project (
 
