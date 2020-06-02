@@ -713,3 +713,127 @@
 02-Jun-2020 16:20:04.022 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\ROOT] has finished in [133] ms
 02-Jun-2020 16:20:04.042 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
 02-Jun-2020 16:20:04.093 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [2,852] milliseconds
+02-Jun-2020 16:25:59.980 INFO [Thread-3] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:26:00.158 INFO [Thread-3] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+02-Jun-2020 16:26:00.200 WARNING [Thread-3] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [Assignment3] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+02-Jun-2020 16:26:00.200 WARNING [Thread-3] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Assignment3] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.2/java.lang.Object.wait(Native Method)
+ java.base@11.0.2/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@11.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+ java.base@11.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.2/java.lang.Thread.run(Thread.java:834)
+02-Jun-2020 16:26:00.220 INFO [Thread-3] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:26:00.230 INFO [Thread-3] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:26:46.970 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.34
+02-Jun-2020 16:26:46.970 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2020 12:02:52 UTC
+02-Jun-2020 16:26:46.970 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.34.0
+02-Jun-2020 16:26:46.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+02-Jun-2020 16:26:46.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+02-Jun-2020 16:26:46.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+02-Jun-2020 16:26:46.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-11.0.2
+02-Jun-2020 16:26:46.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.2+9-LTS
+02-Jun-2020 16:26:46.990 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+02-Jun-2020 16:26:46.990 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+02-Jun-2020 16:26:47.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+02-Jun-2020 16:26:47.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Jun-2020 16:26:47.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+02-Jun-2020 16:26:47.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Jun-2020 16:26:47.015 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\conf\logging.properties
+02-Jun-2020 16:26:47.020 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Jun-2020 16:26:47.020 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+02-Jun-2020 16:26:47.020 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+02-Jun-2020 16:26:47.020 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+02-Jun-2020 16:26:47.020 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+02-Jun-2020 16:26:47.020 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+02-Jun-2020 16:26:47.020 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\temp
+02-Jun-2020 16:26:47.020 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\cygwin64\bin;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Java\jdk-11.0.2\bin;;C:\WINDOWS\system32;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Declan\AppData\Local\Microsoft\WindowsApps;C:\Users\Declan\AppData\Local\GitHubDesktop\bin;.]
+02-Jun-2020 16:26:47.329 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:26:47.599 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [836] milliseconds
+02-Jun-2020 16:26:47.680 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+02-Jun-2020 16:26:47.680 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.34]
+02-Jun-2020 16:26:47.699 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\Assignment3]
+02-Jun-2020 16:26:49.509 WARNING [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = MyConnection Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "10" for "maxActive" property, which is being ignored.
+02-Jun-2020 16:26:49.650 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Jun-2020 16:26:49.869 WARNING [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [159] milliseconds.
+02-Jun-2020 16:26:49.940 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\Assignment3] has finished in [2,241] ms
+02-Jun-2020 16:26:49.940 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\docs]
+02-Jun-2020 16:26:50.009 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\docs] has finished in [69] ms
+02-Jun-2020 16:26:50.009 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\examples]
+02-Jun-2020 16:26:50.520 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\examples] has finished in [511] ms
+02-Jun-2020 16:26:50.520 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\host-manager]
+02-Jun-2020 16:26:50.591 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\host-manager] has finished in [71] ms
+02-Jun-2020 16:26:50.591 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\manager]
+02-Jun-2020 16:26:50.665 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\manager] has finished in [74] ms
+02-Jun-2020 16:26:50.665 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\ROOT]
+02-Jun-2020 16:26:50.746 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\ROOT] has finished in [79] ms
+02-Jun-2020 16:26:50.754 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:26:50.790 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [3,185] milliseconds
+02-Jun-2020 16:28:53.129 INFO [Thread-3] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:28:53.297 INFO [Thread-3] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+02-Jun-2020 16:28:53.339 WARNING [Thread-3] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [Assignment3] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+02-Jun-2020 16:28:53.339 WARNING [Thread-3] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Assignment3] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.2/java.lang.Object.wait(Native Method)
+ java.base@11.0.2/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@11.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+ java.base@11.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.2/java.lang.Thread.run(Thread.java:834)
+02-Jun-2020 16:28:53.349 INFO [Thread-3] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:28:53.349 INFO [Thread-3] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:33:52.528 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.34
+02-Jun-2020 16:33:52.538 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2020 12:02:52 UTC
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.34.0
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-11.0.2
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.2+9-LTS
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+02-Jun-2020 16:33:52.548 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+02-Jun-2020 16:33:52.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Jun-2020 16:33:52.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+02-Jun-2020 16:33:52.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Jun-2020 16:33:52.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\conf\logging.properties
+02-Jun-2020 16:33:52.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Jun-2020 16:33:52.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+02-Jun-2020 16:33:52.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+02-Jun-2020 16:33:52.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+02-Jun-2020 16:33:52.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+02-Jun-2020 16:33:52.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34
+02-Jun-2020 16:33:52.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\temp
+02-Jun-2020 16:33:52.581 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\cygwin64\bin;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Java\jdk-11.0.2\bin;;C:\WINDOWS\system32;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Declan\AppData\Local\Microsoft\WindowsApps;C:\Users\Declan\AppData\Local\GitHubDesktop\bin;.]
+02-Jun-2020 16:33:52.928 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:33:53.181 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [837] milliseconds
+02-Jun-2020 16:33:53.248 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+02-Jun-2020 16:33:53.248 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.34]
+02-Jun-2020 16:33:53.282 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\Assignment3]
+02-Jun-2020 16:33:55.568 WARNING [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = MyConnection Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "10" for "maxActive" property, which is being ignored.
+02-Jun-2020 16:33:55.758 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Jun-2020 16:33:55.998 WARNING [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [190] milliseconds.
+02-Jun-2020 16:33:56.068 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\Assignment3] has finished in [2,786] ms
+02-Jun-2020 16:33:56.068 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\docs]
+02-Jun-2020 16:33:56.128 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\docs] has finished in [60] ms
+02-Jun-2020 16:33:56.128 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\examples]
+02-Jun-2020 16:33:56.650 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\examples] has finished in [522] ms
+02-Jun-2020 16:33:56.650 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\host-manager]
+02-Jun-2020 16:33:56.762 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\host-manager] has finished in [112] ms
+02-Jun-2020 16:33:56.762 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\manager]
+02-Jun-2020 16:33:56.864 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\manager] has finished in [102] ms
+02-Jun-2020 16:33:56.864 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\ROOT]
+02-Jun-2020 16:33:56.953 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Declan\Documents\GitHub\SENG2050-Assignment-3\apache-tomcat-9.0.34\apache-tomcat-9.0.34\webapps\ROOT] has finished in [84] ms
+02-Jun-2020 16:33:56.965 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:33:57.018 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [3,836] milliseconds
+02-Jun-2020 16:49:36.024 INFO [Thread-3] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:49:36.202 INFO [Thread-3] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+02-Jun-2020 16:49:36.254 WARNING [Thread-3] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [Assignment3] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+02-Jun-2020 16:49:36.254 WARNING [Thread-3] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Assignment3] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.2/java.lang.Object.wait(Native Method)
+ java.base@11.0.2/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@11.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+ java.base@11.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.2/java.lang.Thread.run(Thread.java:834)
+02-Jun-2020 16:49:36.289 INFO [Thread-3] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+02-Jun-2020 16:49:36.294 INFO [Thread-3] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]

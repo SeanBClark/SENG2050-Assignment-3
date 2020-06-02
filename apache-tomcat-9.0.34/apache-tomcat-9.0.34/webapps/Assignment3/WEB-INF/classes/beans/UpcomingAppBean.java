@@ -226,7 +226,7 @@ public class UpcomingAppBean implements java.io.Serializable
     public void updateStatus(int groupId, String name, boolean status)
     {
         // prepare statment 
-        String appStatment = ("UPDATE file_mngt SET file_status = " + status + " WHERE group_id = " + groupId + " AND  app_name = '" + name + "';");
+        String appStatment = ("UPDATE group_appointment SET app_status = " + status + " WHERE group_id = " + groupId + " AND  app_name = '" + name + "';");
 
         // connect to database and update appointment 
         try  
@@ -249,7 +249,7 @@ public class UpcomingAppBean implements java.io.Serializable
     public boolean doesNameExist(int groupId, String testName)
     {
         // prepare query
-        String fileQuery = ("SELECT * FROM file_mngt WHERE group_id = " + groupId + ";"); 
+        String fileQuery = ("SELECT * FROM group_appointment WHERE group_id = " + groupId + ";"); 
 
         try(Connection connection = ConfigBean.getConnection(); 
             Statement statement = connection.createStatement();   

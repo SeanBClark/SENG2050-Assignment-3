@@ -153,13 +153,13 @@
 
                                     <c:when test="${appointment.getStatus()}" >
 
-                                        <button class="btn btn-success btn-sub" type="button" id="appStatusBtn" onclick="changeStatus('${file.getName()}', true)">Completed</button>
+                                        <button class="btn btn-success btn-sub" type="button" id="appStatusBtn" onclick="changeStatus('${appointment.getAppName()}', true)">Completed</button>
 
                                     </c:when>
 
                                     <c:otherwise>
 
-                                        <button class="btn btn-outline-success btn-sub" type="button" id="appStatusBtn" onclick="changeStatus('${file.getName()}', false)">Complete</button>
+                                        <button class="btn btn-outline-success btn-sub" type="button" id="appStatusBtn" onclick="changeStatus('${appointment.getAppName()}', false)">Complete</button>
 
                                     </c:otherwise>
 

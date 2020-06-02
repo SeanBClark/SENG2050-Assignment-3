@@ -77,17 +77,24 @@ public class AppointmentController extends HttpServlet
         }
         else // user wants to add appointment to database 
         {
-            // get values from form 
-            String name = request.getParameter("appName");
-            String description = request.getParameter("appDesc");
+            if(appointment.doesNameExist(groupId, name)) // appointment name already exists, notify user
+            {
+                
+            }
+            else // new appointment and ni appointment exists with such name
+            {
+                // get values from form 
+                String name = request.getParameter("appName");
+                String description = request.getParameter("appDesc");
 
-            String date = request.getParameter("appDate");
-            String time = request.getParameter("appTime");
-            String dateTime = date + " " + time + ":00"; // convert date a time into from that database will understand
+                String date = request.getParameter("appDate");
+                String time = request.getParameter("appTime");
+                String dateTime = date + " " + time + ":00"; // convert date a time into from that database will understand
 
 
-            // add new appointment
-            appointment.addAppointment(groupId, name, dateTime, description, false);
+                // add new appointment
+                appointment.addAppointment(groupId, name, dateTime, description, false);
+            }
         }
 
 
