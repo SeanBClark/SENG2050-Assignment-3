@@ -2,6 +2,7 @@
 <%@page import="java.util.Iterator" %>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.Map.Entry" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -96,6 +97,18 @@
             </div>
 
             <div class = 'body'>
+
+                <c:if test="${not empty param.exists}" >
+                    <c:if test = "${param.exists == 'true'}">
+
+                        <div class = 'alert alert-danger form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                    
+                            Email Address already taken
+
+                        </div>
+
+                    </c:if>
+                </c:if>
         
                 <div class = 'login-form-div'>
                     <%-- onSubmit = 'return registerValidation()' --%>

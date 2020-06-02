@@ -89,6 +89,18 @@
 
             <div class = 'body'>
 
+                <c:if test="${not empty param.success}" >
+                    <c:if test = "${param.success == 'true'}">
+
+                        <div class = 'alert alert-success form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                    
+                            You may now log in with your new account 
+
+                        </div>
+
+                    </c:if>
+                </c:if>
+
                 <c:if test = "${not empty param.exists}" >
                     <c:if test = "${param.exists == 'false'}">
 
