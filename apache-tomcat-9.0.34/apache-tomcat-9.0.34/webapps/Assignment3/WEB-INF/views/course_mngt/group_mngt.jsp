@@ -1,4 +1,4 @@
-<%-- Page viewed after user logs in. Will List groups the user is currently apart of or will enable the user to create a new group --%>
+<%-- Page for lecturers to manage groups --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.Iterator" %>
