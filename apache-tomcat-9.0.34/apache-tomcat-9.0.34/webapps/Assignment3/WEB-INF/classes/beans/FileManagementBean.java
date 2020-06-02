@@ -18,6 +18,9 @@ public class FileManagementBean implements java.io.Serializable
     private int version; 
     private boolean status; // submitted to lecturer
 
+
+
+
     // Constructors
     public FileManagementBean()
     {}
@@ -112,8 +115,8 @@ public class FileManagementBean implements java.io.Serializable
                 }
             }
 
-            //result.close();
-            //connection.close();
+            result.close();
+            connection.close();
         }
         catch(SQLException e)
         {
@@ -151,8 +154,8 @@ public class FileManagementBean implements java.io.Serializable
                 folder.add(file); // add file to folder
             }
 
-            //result.close();
-            //connection.close();
+            result.close();
+            connection.close();
         }
         catch(SQLException e)
         {
@@ -182,8 +185,8 @@ public class FileManagementBean implements java.io.Serializable
 
             pS.executeUpdate(); 
 
-            //pS.close(); 
-            //connection.close();
+            pS.close(); 
+            connection.close();
         }
         catch(SQLException e)
         {
@@ -205,7 +208,7 @@ public class FileManagementBean implements java.io.Serializable
             Statement statement = connection.createStatement();   
             statement.executeUpdate(fileStatment);
 
-            //connection.close();
+            connection.close();
         }
         catch(SQLException e)
         {
@@ -232,8 +235,8 @@ public class FileManagementBean implements java.io.Serializable
                 currentVersion = (result.getInt("file_version"));
             }
 
-           // result.close();
-            //connection.close();
+            result.close();
+            connection.close();
         }
         catch(SQLException e)
         {
@@ -257,7 +260,7 @@ public class FileManagementBean implements java.io.Serializable
             Statement statement = connection.createStatement();   
             statement.executeUpdate(fileStatment);
 
-            //connection.close();
+            connection.close();
         }
         catch(SQLException e)
         {
