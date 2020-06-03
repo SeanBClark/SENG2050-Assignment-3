@@ -1,0 +1,139 @@
+.app-title-div {
+
+    text-align: center;
+
+}
+
+.app-list-div {
+    
+    padding: 20px;
+
+}
+
+.row-div {
+    
+    margin: 20px;
+    padding: 10px;
+
+}
+
+.app-name-div {
+    
+    max-width: 120px;
+    min-width: 120px;
+    align-self: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.app-desc-div {
+    
+    max-width: 410px;
+    min-width: 410px;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-self: center;
+
+}
+
+.app-date-div {
+
+    max-width: 350px;
+    min-width: 20px;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-self: center;
+
+}
+
+.btn-div {
+
+    align-self: center;
+    
+}
+
+.add-app-btn {
+
+    margin-left: 38%;
+    margin-right: 62%;
+    
+
+}
+
+.add-app-btn2 {
+
+    margin-left: 40%;
+    margin-right: 60%;
+
+}
+
+.add-app-form-div {
+
+    padding: 20px;
+    margin: 20px;
+
+}
+
+.form-div {
+
+    margin: 20px;
+    width: 90%;
+    
+}
+
+.form-input {
+
+    width: 100%;
+
+}
+
+.text-area {
+
+    width: 100%;
+    
+}
+
+.error {
+
+    margin-left: 17%;
+    width: 83%;
+    display: none;
+}
+
+.app-version-div {
+
+    max-width: 40px;
+    min-width: 40px;
+    align-self: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.btn-group-div {
+
+    max-width: 160px;
+    min-width: 320px;
+    align-self: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.app-exists {
+
+    margin-left: 5%;
+    width: 90%;
+
+}

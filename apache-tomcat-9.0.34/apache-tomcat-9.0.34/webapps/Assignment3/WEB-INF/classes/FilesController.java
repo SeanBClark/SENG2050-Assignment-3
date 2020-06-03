@@ -42,7 +42,6 @@ public class FilesController extends HttpServlet
     {
         FileManagementBean file = new FileManagementBean(); 
 
-        // get file values
         HttpSession session = request.getSession();
         int groupId = (int) session.getAttribute("groupID");
 
