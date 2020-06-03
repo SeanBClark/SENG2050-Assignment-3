@@ -1,0 +1,52 @@
+.page-header {
+
+    padding: 20px;
+
+}
+
+.assign-row {
+
+    padding-right: 50px;
+
+}
+
+.header-row {
+
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+
+}
+
+.group-row {
+
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+
+}
+
+.create-group-div {
+
+    padding: 20px;
+
+}
+
+.create-assign-div {
+
+    width: 700px;
+
+}
+
+.details-row {
+
+    padding: 10px;
+    text-align: center;
+
+}
+
+.feedback-div {
+
+    padding: 10px;
+
+}

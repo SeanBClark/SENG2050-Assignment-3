@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 127.0.0.1 - - [03/Jun/2020:09:04:06 +1000] "GET /Assignment3/LoginController HTTP/1.1" 200 5208
 127.0.0.1 - - [03/Jun/2020:09:04:06 +1000] "GET /views/application.css HTTP/1.1" 404 734
 127.0.0.1 - - [03/Jun/2020:09:04:11 +1000] "POST /Assignment3/LoginController HTTP/1.1" 302 -
@@ -406,3 +407,32 @@
 127.0.0.1 - - [03/Jun/2020:11:47:13 +1000] "GET /Assignment3/ManageFiles HTTP/1.1" 200 16148
 127.0.0.1 - - [03/Jun/2020:11:47:13 +1000] "GET /Assignment3/views/manage_files/manage_files.css HTTP/1.1" 200 1516
 127.0.0.1 - - [03/Jun/2020:11:47:13 +1000] "GET /Assignment3/views/manage_files/manage_files.js HTTP/1.1" 200 4281
+=======
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:00 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 500 1088
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:00 +1000] "GET /favicon.ico HTTP/1.1" 200 21630
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:09 +1000] "GET /Assignment3/LoginController HTTP/1.1" 200 5274
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:09 +1000] "GET /views/application.css HTTP/1.1" 404 734
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:11 +1000] "POST /Assignment3/LoginController HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:12 +1000] "GET /Assignment3/GroupSelect HTTP/1.1" 200 7648
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:15 +1000] "GET /Assignment3/GroupHome?groupid=1 HTTP/1.1" 200 13494
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:17 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 20478
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:27:19 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 500 1408
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:18 +1000] "GET /Assignment3/LogOutController HTTP/1.1" 200 5274
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:18 +1000] "GET /views/application.css HTTP/1.1" 404 734
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:21 +1000] "POST /Assignment3/LoginController HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:21 +1000] "GET /Assignment3/GroupSelect HTTP/1.1" 200 7648
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:22 +1000] "GET /Assignment3/GroupHome?groupid=1 HTTP/1.1" 200 13494
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:23 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 20478
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:24 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:24 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 20326
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:26 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:26 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 20478
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:27 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:27 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 20326
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:27 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:27 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 20478
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:31 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:31 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 18089
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:42 +1000] "POST /Assignment3/ManageMilestones HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [03/Jun/2020:10:29:42 +1000] "GET /Assignment3/ManageMilestones HTTP/1.1" 200 20478
+>>>>>>> master

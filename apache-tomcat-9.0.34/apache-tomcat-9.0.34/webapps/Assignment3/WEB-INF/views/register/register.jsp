@@ -1,7 +1,10 @@
+<%-- Page for new users to register --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.Iterator" %>
 <%@page import="java.util.Map" %>
 <%@page import="java.util.Map.Entry" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -39,12 +42,6 @@
                 <nav class = 'navbar navbar-expand-lg navbar-light bg-light'>
 
                     <a class="navbar-brand" href="/Assignment3/HomePage">Group Mangement System</a>
-
-                    <%-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-
-                        <span class="navbar-toggler-icon"></span>
-
-                    </button> --%>
 
                     <div class="collapse navbar-collapse" id="navbarNav">
 
@@ -96,6 +93,18 @@
             </div>
 
             <div class = 'body'>
+
+                <c:if test="${not empty param.exists}" >
+                    <c:if test = "${param.exists == 'true'}">
+
+                        <div class = 'alert alert-danger form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                    
+                            Email Address already taken
+
+                        </div>
+
+                    </c:if>
+                </c:if>
         
                 <div class = 'login-form-div'>
                     <%-- onSubmit = 'return registerValidation()' --%>

@@ -54,26 +54,89 @@
 
                     <div class = 'border-bottom row btn-row'>
 
+                        <%-- Show form to create a lecturer --%>
                         <div class = 'col-sm d-flex justify-content-center btn-col'>
 
                             <button onClick = 'showLectForm()' class = 'btn btn-success'>Create Lecturer</button>
 
                         </div>
 
+                        <%-- Show form to enrol a student in a class --%>
                         <div class = 'col-sm d-flex justify-content-center btn-col'>
 
                             <button onClick = 'showEnrolForm()' class = 'btn btn-success'>Enrol Student</button>
 
                         </div>
 
+                        <%-- Show form to create a new course --%>
                         <div class = 'col-sm d-flex justify-content-center btn-col'>
 
                             <button onClick = 'showCourseForm()' class = 'btn btn-success'>Create Course</button>
 
                         </div>
 
+                        <%-- Show form to create course cordinator --%>
+                        <div class = 'col-sm d-flex justify-content-center btn-col'>
+
+                            <button onClick = 'showAssignForm()' class = 'btn btn-success'>Create Course Cordinator</button>
+
+                        </div>
+
                     </div>
 
+                    <%-- Course does not exist error --%>
+                    <c:if test="${not empty param.courseExist}" >
+                        <c:if test = "${param.courseExist == 'false'}">
+
+                            <div class = 'alert alert-danger form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                        
+                                Course does not exist
+
+                            </div>
+
+                        </c:if>
+                    </c:if>
+
+                    <%-- Lecturer does not exist --%>
+                    <c:if test="${not empty param.lectExist}" >
+                        <c:if test = "${param.lectExist == 'false'}">
+
+                            <div class = 'alert alert-danger form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                        
+                                Lecturer does not exist
+
+                            </div>
+
+                        </c:if>
+                    </c:if>
+
+                    <%-- Successful  Cordinator Creation --%>
+                    <c:if test="${not empty param.lectExist}" >
+                        <c:if test = "${param.lectExist == 'True'}">
+
+                            <div class = 'alert alert-success form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                        
+                                Cordinator assigned
+                                
+                            </div>
+
+                        </c:if>
+                    </c:if>
+
+                    <%-- Lecturer Created --%>
+                    <c:if test="${not empty param.update}" >
+                        <c:if test = "${param.update == 'true'}">
+
+                            <div class = 'alert alert-success form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                        
+                                Created Lecturer
+
+                            </div>
+
+                        </c:if>
+                    </c:if>
+
+                    <%-- Email does not exist error --%>
                     <c:if test="${not empty param.enrolSuccess}" >
                         <c:if test="${param.enrolSuccess == 'false'}">
 
@@ -86,6 +149,7 @@
                         </c:if>
                     </c:if>
                     
+                    <%-- Successful student enroled --%>
                     <c:if test="${not empty param.enrolSuccess}" >
                         <c:if test = "${param.enrolSuccess == 'true'}">
 
@@ -98,6 +162,7 @@
                         </c:if>
                     </c:if>
 
+                    <%--  --%>
                     <c:if test="${not empty param.courseExists}" >
                         <c:if test="${param.courseExists == 'false'}">
 
@@ -133,9 +198,8 @@
 
                         </c:if>
                     </c:if>
-
                         
-
+                    <%-- Form to created lecturer from current accounts --%>
                     <div class = 'row form-row justify-content-center' id = 'lectForm' name = 'lectForm'>
 
                         <%-- --%>
@@ -172,6 +236,7 @@
 
                     </div>
 
+                    <%-- Form to enrol a student in a class --%>
                     <div class = 'row form-row justify-content-center' id = 'enrolForm'>
 
                         <form method = "post" action = '/Assignment3/Admin?param=enrolStd' onSubmit = "return formValidationEnrol() " >
@@ -219,6 +284,7 @@
 
                     </div>
 
+                    <%-- Form to create a new course --%>
                     <div class = 'row form-row justify-content-center' id = 'createCourseForm'>
 
                         <form method = "post" action = '/Assignment3/Admin?param=createCourse' onSubmit = "return formValidationCreate() " >
@@ -286,6 +352,67 @@
 
                             </div>            
                         
+                        </form>
+
+                    </div>
+
+                    <%-- Form to assign a lecturer to a course --%>
+                    <div class = 'row form-row justify-content-center' id = 'assignForm'>
+
+                        <form method = "post" action = '/Assignment3/Admin?param=assignCoordinator' onSubmit = "return formValidationAssign() " >
+
+                            <div class = 'border-bottom form-group-row'>
+
+                                <label for = 'assignEmail' class = 'col-sm-2 col-form-label'>Enter Email</label>
+
+                                <div class = 'col'>
+
+                                    <input type = 'email' class = 'form-control ' id = 'assignEmail' name = 'assignEmail' placeholder = 'Enter Email Address'>
+
+                                </div>
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'assignEmailError'>
+
+                                    Invalid Email Address
+
+                                </div>
+                                <div class = 'alert alert-danger form-input hidden' role = 'alert' id = 'assignEmailEmpty'>
+
+                                    Please Enter Email Address
+                                        
+                                </div>
+
+                            </div>
+
+                             <div class = 'form-group-row'>
+
+                                <div class = 'col'>
+
+                                    <label for = 'assignCode' class = 'col-form-label '>Enter Course Code</label>
+
+                                    <input type = 'text' class = 'form-control ' id = 'assignCode' name = 'assignCode' placeholder = 'Enter Course Code'>
+
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'assignNoCode'>
+
+                                    Please enter course code
+                                        
+                                </div>
+
+                                <div class = 'alert alert-danger form-input' role = 'alert' id = 'assignInvalidCode'>
+
+                                    Invaid course name. Must start with 4 captial letters and end with 4 numbers
+                                        
+                                </div>                               
+
+                            </div>
+
+                            <div class = 'form-group-row'>
+
+                                <button type = 'submit' onClick = '' class = 'btn btn-success'><i class="fas fa-plus"></i> Create Course Cordinator</button>
+
+                            </div>
+
                         </form>
 
                     </div>
