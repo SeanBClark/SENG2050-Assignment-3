@@ -68,6 +68,20 @@ public class DatabaseQuery {
         String result = "INSERT INTO course_enrollments(course_id, std_id) VALUES ( ( SELECT id FROM course WHERE course_code = '" + courseID + "' ), ( SELECT user_id FROM user WHERE user_email = '" + userEmail + "'  ) );";
         return result;
     }
+    public static String addNewMilestone (int groupID, String milestoneName, String milestoneDateTime) {
+        String result = "INSERT INTO group_milestones(group_id, milestone_name, milestone_datetime) VALUES ('"+ groupID + "', '"+ milestoneName +"', '"+ milestoneDateTime +"');";
+        return result;
+    }
+    
+    public static String markMilestone (int groupID, String milestoneName, int mark) {
+        String result = "UPDATE group_milestones SET milestone_status =" + mark +" WHERE group_id='"+ groupID +"' AND milestone_name ='"+ milestoneName +"';"; 
+        return result;
+    }
+    
+    public static String deleteMilestone (int groupID, String milestoneName) {
+        String result = "DELETE FROM group_milestones WHERE milestone_name ='"+milestoneName+"' AND group_id='"+groupID+"';";
+        return result;
+    }
 
     public static String createCourseQuery(String courseName, String courseDesc, String CourseCode){
         String result = "INSERT INTO course(name, description,course_code) VALUES ('" + courseName + "', '" + courseDesc + "', '" + CourseCode + "');";
