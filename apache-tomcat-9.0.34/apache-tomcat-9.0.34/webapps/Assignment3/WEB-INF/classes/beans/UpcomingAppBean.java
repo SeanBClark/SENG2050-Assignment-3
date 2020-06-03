@@ -276,4 +276,74 @@ public class UpcomingAppBean implements java.io.Serializable
     }
 
 
+
+
+
+    // used on the GroupControl.java 
+
+
+    public List<UpcomingAppBean> getUpcomingApp(int groupId)
+    {
+        List<UpcomingAppBean> schedule = new LinkedList<>(); 
+
+        // prepare query
+        String appQuery = ("SELECT app_name, appointment_datetime FROM group_appointment WHERE group_id = " + groupId + " AND app_status = 0" + " ORDER BY appointment_datetime ASC LIMIT 4;"); 
+
+        try(Connection connection = ConfigBean.getConnection(); 
+            Statement statement = connection.createStatement();   
+            ResultSet result = statement.executeQuery(appQuery);)       
+        { 
+            while(result.next())                          
+            {
+                // create new appointment 
+                UpcomingAppBean appointment = new UpcomingAppBean(); 
+
+                // get appointment info
+                appointment.setAppName(result.getString("app_name"));
+                appointment.setAppDate(changeTimeFormat(groupId, (result.getString("app_name"))));
+
+                schedule.add(appointment); // add appointment to schedule
+            }
+
+            result.close();
+            connection.close();
+        }
+        catch(SQLException e)
+        {
+            System.err.println(e.getMessage());
+            System.err.println(e.getStackTrace());
+        }
+
+        return schedule; 
+    }
+
+
+    public int getProgress(int groupID) {
+
+        int percentageComplete = 0;
+
+        try {
+            
+            Connection connection = ConfigBean.getConnection();
+            ResultSet completedPercentageRS = DatabaseQuery.getResultSet(getPercentQuery(groupID), connection);
+            while (completedPercentageRS.next()) {
+                percentageComplete = completedPercentageRS.getInt("percentageComplete");
+            }
+
+            connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return percentageComplete;
+
+    }
+
+    public static String getPercentQuery(int groupID) {
+        return "SELECT (count(milestone_status) * 100 / (SELECT count(milestone_status)" 
+                    + " FROM group_milestones where group_id = " + groupID + ")) as percentageComplete" 
+                    + " FROM group_milestones where group_id = " + groupID + " and milestone_status = 1;";
+    }
+
+
 }
