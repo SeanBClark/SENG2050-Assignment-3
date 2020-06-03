@@ -15,8 +15,13 @@ public class HomePageController extends HttpServlet {
 
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException {
-
+    // gets JSP
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {        
+        try {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/homepage/homepage.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,0 +1,37 @@
+.navbar {
+    text-align: center;
+    font-size: 200px;
+    text-transform: capitalize;
+}
+
+.header-p {
+    text-transform: capitalize;
+    font-family: sans-serif;
+}
+
+.btn-div-right {
+    float: right;
+}
+
+.btn-div-right {
+
+    margin: 100px;
+
+}
+
+.btn-div-left {
+
+    margin: 100px;
+
+}
+
+.btn-homepage {
+
+    padding: 20px;
+    width: 300px;
+
+}
+
+.row {
+    margin-top: 50px;
+}
