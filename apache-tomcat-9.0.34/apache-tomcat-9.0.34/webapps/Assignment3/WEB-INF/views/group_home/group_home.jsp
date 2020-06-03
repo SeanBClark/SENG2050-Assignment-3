@@ -132,7 +132,7 @@
 
                         <div class = 'add-member-div'>
 
-                            <button class = 'btn btn-success add-member-btn'><i class="fas fa-plus"></i>Add to Group </button> </a>
+                            <a href = '/Assignment3/InviteMembers'><button class = 'btn btn-success add-member-btn'><i class="fas fa-plus"></i>Add to Group </button> </a>
 
                         </div>
                     
