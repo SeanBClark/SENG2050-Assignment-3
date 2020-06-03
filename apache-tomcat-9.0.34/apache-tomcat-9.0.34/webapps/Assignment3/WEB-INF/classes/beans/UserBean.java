@@ -1,5 +1,19 @@
 package beans;
 
+
+import java.io.*;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.WebServlet;
+import beans.*;
+
+// Bean to manage all user interfaces
+
 public class UserBean implements java.io.Serializable
 {
 
@@ -96,7 +110,57 @@ public class UserBean implements java.io.Serializable
 
     }
 
+    // Inserts a new user that registers
+    public void insertNewUser(String name, String email, String password) {
 
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            Statement statement = connection.createStatement();
+            statement.execute(insertUser(name, email, password));
+            connection.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+    }
+
+    // Checks if users exists
+    public boolean ifExists(String email, String password) {
+
+        boolean result = false;
+        int check = 0;
+        ResultSet resultSet = null;
+        
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(ifExistsQuery(email, password));
+
+            while(resultSet.next()) {
+                if(resultSet.getInt(1) == 1) {
+                    check = 1;
+                    result = true;
+                }
+            }
+
+            connection.close();
+            
+        } catch (Exception e) { e.printStackTrace(); }
+
+        return result;
+
+    }
+
+    public String insertUser(String name, String email, String password) {
+        return "INSERT INTO user(user_email, user_password, user_name) VALUES ('" + email + "', sha1('" + password + "'), '" + name + "');";
+    }
+
+    public String ifExistsQuery(String email, String password) {
+        String result = "SELECT EXISTS(select * from user where user_email = '" + email + "' and user_password = sha1('" + password + "'));";
+        return result;
+    }
 
 
 }

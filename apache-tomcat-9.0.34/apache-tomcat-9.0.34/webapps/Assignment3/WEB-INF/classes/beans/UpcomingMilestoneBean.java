@@ -1,5 +1,12 @@
 package beans;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+// Bean to list upcoming milestones
+
 public class UpcomingMilestoneBean implements java.io.Serializable
 {
 
@@ -62,5 +69,38 @@ public class UpcomingMilestoneBean implements java.io.Serializable
 
         return milestoneStatus;
 
+    }
+
+    public List<UpcomingMilestoneBean> getUpcomingMS(int groupID) {
+
+        List<UpcomingMilestoneBean> list = new ArrayList<>();
+
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(getQuery(groupID), connection);
+
+            while (resultSet.next()) {
+
+                UpcomingMilestoneBean bean = new UpcomingMilestoneBean();
+                bean.setMilestoneName(resultSet.getString("milestone_name"));
+                bean.setMilestoneDate(resultSet.getString("milestone_datetime"));
+                bean.setMilestoneStatus(resultSet.getInt("milestone_status"));
+                list.add(bean);
+
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+    public static String getQuery(int groupID) {
+        return "SELECT milestone_datetime, milestone_name, milestone_status FROM group_milestones" 
+                        + " WHERE group_id = " + groupID + "" 
+                        + " ORDER BY milestone_datetime ASC LIMIT 4;";
     }
 }

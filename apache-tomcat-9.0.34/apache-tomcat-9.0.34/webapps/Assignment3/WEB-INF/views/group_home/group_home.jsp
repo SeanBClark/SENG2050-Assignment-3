@@ -44,12 +44,6 @@
 
                     <a class="navbar-brand" href="/Assignment3/HomePage">Group Mangement System</a>
 
-                    <%-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-
-                        <span class="navbar-toggler-icon"></span>
-
-                    </button> --%>
-
                     <div class="collapse navbar-collapse" id="navbarNav">
 
                         <ul class="navbar-nav">
@@ -253,10 +247,18 @@
                                 <div class = 'border-bottom row d-flex justify-content-center'>
 
                                     <ul class = 'list-group info-list'>
-                                        <li class = 'list-group-item'>Files placeholder</li>
-                                        <li class = 'list-group-item'>Files placeholder</li>
-                                        <li class = 'list-group-item'>Files placeholder</li>
-                                        <li class = 'list-group-item'>Files placeholder</li>
+
+                                        <c:forEach var = "item" items = "${sessionScope.recentFilesList}">
+
+                                            <li class = 'list-group-item'>
+                                            
+                                                ${item.getName()}
+
+                                                <a href = '${item.getUrl()}'><button class = 'btn btn-success btn-view-file'>View File</button></a> 
+                                                
+                                            </li>
+
+                                        </c:forEach>
                                     </ul>
 
                                 </div>

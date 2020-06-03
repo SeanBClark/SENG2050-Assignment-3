@@ -16,12 +16,8 @@ public class AdminController extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        // Connection connection = null;
-        // try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
-
         try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/admin/admin.jsp");
-            // connection.close(); 
             dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,118 +33,113 @@ public class AdminController extends HttpServlet {
             int userId = 0;
             String type = request.getParameter("param");
             
+            // Controller performs different actions depending on post request params
+            // Creates lecturer based on already created account
             if (type.equals("createLect")) {
 
-                // TO DO: Check if user stdExists at all
-                String userEmail = request.getParameter("searchUser");
-                String userIDQuery = "SELECT user_id FROM user where user_email = '" + userEmail + "';";
                 try {
-                    userIdRS = DatabaseQuery.getResultSet(userIDQuery, connection);
-                    while (userIdRS.next()) {
-                        userId = userIdRS.getInt("user_id");
-                    }
-                    
-                    String updateUserQuery = "UPDATE user SET user_type = 'lect' WHERE user_id = " + userId + " AND user_email = '" + userEmail + "';";
-                    Statement  preparedStatement = connection.createStatement();
-                    preparedStatement.executeUpdate(updateUserQuery);
+                    String email = request.getParameter("searchUser");
+                    AdminBean adminBean = new AdminBean();
+                    int id = adminBean.getUserID(email);
 
-                    connection.close();
-                    response.sendRedirect("/Assignment3/Admin");
-                    
+                    if (id == 0) {
+                        System.out.println("Failed to get user ID");
+                    }
+                    else {
+                        adminBean.makeUserLect(id, email);
+                    }
+                    response.sendRedirect("/Assignment3/Admin?update=true");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+            // Enrols a student into a course
             else if (type.equals("enrolStd")) {
 
-                String userEmail = request.getParameter("userEnrol");
-                String courseID = request.getParameter("classCode");                
-
                 try {
+                    String email = request.getParameter("userEnrol");
+                    String code = request.getParameter("classCode");
 
-                    //Checks if Student Exists in Database
-                    ResultSet ifStdExists = null;
-                    int stdExists = 0;
+                    AdminBean adminBean = new AdminBean();
+                    int exists = adminBean.ifStdExists(email);
 
-                    ifStdExists = DatabaseQuery.getResultSet(DatabaseQuery.ifStdExists(userEmail), connection);
-                    while (ifStdExists.next()){
-                        stdExists = ifStdExists.getInt(1);                    
-                    }
-
-                    if (stdExists == 0) {
-                        connection.close();
+                    if (exists == 0) {
                         response.sendRedirect("/Assignment3/Admin?enrolSuccess=false");
                     }
                     else {
 
-                        //Checks if Course Exists
-                        // If it does enrolls student
-                        ResultSet ifCourseExists = null;
-                        int courseExists = 0;
-
-                        ifCourseExists = DatabaseQuery.getResultSet(DatabaseQuery.ifCourseExists(courseID), connection);
-                        while (ifCourseExists.next()){
-                            courseExists = ifCourseExists.getInt(1);                    
-                        }
+                        int courseExists = adminBean.ifCourseExists(code);
 
                         if (courseExists == 0) {
-                            connection.close();
                             response.sendRedirect("/Assignment3/Admin?courseExists=false");
                         }
                         else {
-
-                            String enrolStd = DatabaseQuery.enrollStudentQuery(userEmail, courseID);
-                            Statement statement = connection.createStatement();
-                            statement.execute(enrolStd);
-
-                            connection.close();
+                            adminBean.enrolStudent(email, code);
                             response.sendRedirect("/Assignment3/Admin?courseExists=true");
                         }
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+            // Creates a new course
             else if (type.equals("createCourse")) {
 
-                String courseName = request.getParameter("courseName");
-                String courseDesc = request.getParameter("courseDesc");
-                String courseCode = request.getParameter("courseCode");
-
                 try {
+                    String name = request.getParameter("courseName");
+                    String desc = request.getParameter("courseDesc");
+                    String code = request.getParameter("courseCode");
 
-                    //Check if course already exists
-                    ResultSet ifCourseExists = null;
-                    int courseExists = 0;
-
-                    ifCourseExists = DatabaseQuery.getResultSet(DatabaseQuery.ifCourseExists(courseCode), connection);
-                    while (ifCourseExists.next()){
-                        courseExists = ifCourseExists.getInt(1);                    
-                    }
+                    AdminBean adminBean = new AdminBean();
+                    int courseExists = adminBean.ifCourseExists(code);
 
                     if (courseExists == 1) {
-
-                        connection.close();
                         response.sendRedirect("/Assignment3/Admin?courseExists=true");
-
                     }
                     else {
-
-                        String createCourseQuery = DatabaseQuery.createCourseQuery(courseName, courseDesc, courseCode);
-                        Statement statement = connection.createStatement();
-                        statement.execute(createCourseQuery);
-
-                        connection.close();
+                        adminBean.createCourse(name, desc, code);
                         response.sendRedirect("/Assignment3/Admin?courseExists=created");
-
                     }
-
-                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
+            }
+            // Assigns a lecturer to a course
+            else if (type.equals("assignCoordinator")) {
+
+                try {
+                    String email = request.getParameter("assignEmail");
+                    String code = request.getParameter("assignCode");
+    
+                    AdminBean adminBean = new AdminBean();
+    
+                    int lectExists = adminBean.ifLectExists(email);
+    
+                    if (lectExists == 0) {
+                        response.sendRedirect("/Assignment3/Admin?lectExist=false");
+                    }
+                    else {
+    
+                        int courseExists = adminBean.ifCourseExists(code);
+    
+                        if (courseExists == 0) {
+                            response.sendRedirect("/Assignment3/Admin?courseExist=false");
+                        }
+                        else {
+    
+                            adminBean.insertCourseCord(email, code);
+                            response.sendRedirect("/Assignment3/Admin?courseExists=true");
+        
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                System.out.println("Post Request Failed");
+                // TO DO: Redirect to error page
             }
     }
 }

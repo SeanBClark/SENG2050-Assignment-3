@@ -5,6 +5,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Logs user out and deletes their session
+
 @WebServlet(urlPatterns = { "/LogOutController" })
 public class LogOutController extends HttpServlet {
 

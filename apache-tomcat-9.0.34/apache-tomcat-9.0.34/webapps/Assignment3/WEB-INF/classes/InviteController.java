@@ -7,6 +7,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import beans.*;
 
+// Controller to invite a new user to a group
+
 @WebServlet(name = "/InviteController", urlPatterns = { "/InviteMembers" })
 public class InviteController extends HttpServlet {
 
@@ -14,19 +16,18 @@ public class InviteController extends HttpServlet {
         super();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        Connection connection = null;
-        try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
-        
+    // gets JSP
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {        
         try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/group_invite/group_invite.jsp");
-            connection.close(); 
             dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    // Post request to insert users into a group
+    // Group can had many members in one go
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
             Connection connection = null;
@@ -42,22 +43,24 @@ public class InviteController extends HttpServlet {
 
                 if (i == 0) {
 
-                    String emailAddress = request.getParameter("userEmail");
-                    String memberInsert = "INSERT INTO user_group_info(user_id, group_id) VALUES ((SELECT user_id FROM user WHERE user_email = '" + emailAddress + "'), " + groupID + ");";
+                    String email = request.getParameter("userEmail");
                     try {
-                        Statement statement = connection.createStatement();
-                        statement.execute(memberInsert);                        
+                        
+                        GroupBean groupBean = new GroupBean();
+                        groupBean.insertGroupMember(email, groupID);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
                 else {
 
-                    String emailAddress = request.getParameter("userEmail" + i);
-                    String memberInsert = "INSERT INTO user_group_info(user_id, group_id) VALUES ((SELECT user_id FROM user WHERE user_email = '" + emailAddress + "'), " + groupID + ");";
+                    String email = request.getParameter("userEmail" + i);
                     try {
-                        Statement statement = connection.createStatement();
-                        statement.execute(memberInsert);                        
+                        
+                        GroupBean groupBean = new GroupBean();
+                        groupBean.insertGroupMember(email, groupID);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

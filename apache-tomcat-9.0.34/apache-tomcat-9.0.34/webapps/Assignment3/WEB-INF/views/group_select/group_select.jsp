@@ -81,7 +81,20 @@
 
             </div>
 
+
             <div class = 'body'>
+            
+                <c:if test="${not empty param.exists}" >
+                    <c:if test = "${param.exists == 'false'}">
+
+                        <div class = 'alert alert-danger form-input justify-content-center email-suc-fail' role = 'alert' id = 'emailSucFail'>
+                    
+                            Project does not exist. Please Enter Valid Project name and course code
+
+                        </div>
+
+                    </c:if>
+                </c:if>
 
                 <div class = 'border container group-list-div' >
 
@@ -164,6 +177,30 @@
                                 <div class="col-sm-10">
 
                                     <textarea class = 'form-contol text-area' id = 'groupDesc' name = 'groupDesc'></textarea>
+
+                                </div>
+
+                            </div>
+
+                            <div class = 'form-group row'>
+                                
+                                <label for = 'projectName' class = 'col-sm-2 col-form-label'>Project Name:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type = 'text' class = 'form-control form-input' id = 'projectName' name = 'projectName' placeholder = 'Enter Project that this group is for e.g. Assignment 1'>
+
+                                </div>
+
+                            </div>
+
+                            <div class = 'form-group row'>
+                                
+                                <label for = 'courseCode' class = 'col-sm-2 col-form-label'>Course Code:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type = 'text' class = 'form-control form-input' id = 'courseCode' name = 'courseCode' placeholder = 'Enter Course Code that this group is for'>
 
                                 </div>
 

@@ -1,4 +1,4 @@
-<%-- Page viewed after user logs in. Will List groups the user is currently apart of or will enable the user to create a new group --%>
+<%-- Page for groups to manage files --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.Iterator" %>
@@ -15,7 +15,7 @@
     
         <title>
 
-            Milestones
+            Files
 
         </title>
 
@@ -35,6 +35,9 @@
     </head>
 
     <body>
+
+
+
 
         <div class = 'align-self-center page-div'>
 
@@ -64,6 +67,16 @@
 
                             </li>
 
+                            <li class="nav-item"> 
+
+                                <a class="nav-link" href="/Assignment3/LogOutController">
+
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
+
+                                </a>
+
+                            </li>
+
                         </ul>
 
                     </div>
@@ -81,11 +94,271 @@
 
             </div>
 
+
+
+
+
+
+
+
+
             <div class = 'body'>
 
-                Files
 
-            <div>
+                <div class = 'border container file-list-div' >
+
+                    <div id = 'folder'>
+
+                        <div class = 'h2 file-title-div'>Files</div>
+
+
+                        <c:forEach var="file" items="${sessionScope.folder}">   
+
+                            <div class="border row row-div">
+
+
+                                <div class="col-sm file-version-div">
+
+                                    <span class="badge badge-success"> <c:out value="${file.getVersion()}"/> </span>
+
+                                </div>
+
+
+                                <div class="border-right col-sm file-name-div">
+
+                                    <c:out value="${file.getName()}" />
+
+                                </div>
+
+
+                                <div class="border-right col-sm file-desc-div">
+
+                                    <c:out value="${file.getDescription()}" />
+
+                                </div> 
+
+ 
+                                <div class="btn-group btn-group-div">   
+
+                                    <button class="btn btn-outline-success" type="button" onclick="window.location.href='${file.getUrl()}';">Visit</button>  
+
+                                    <button class="btn btn-outline-success" type="button" id="removeButton" onclick="removeFile('${file.getName()}', '${file.getVersion()}')">Remove</button>
+
+                                    <button class="btn btn-success" id="addVersionBtn" onclick="showAddVersion('${file.getName()}')"><i class="fas fa-plus"></i> Add New Version</button>
+
+                                </div>
+
+
+                                <c:choose> 
+
+                                    <c:when test="${file.getStatus()}" >
+
+                                        <button class="btn btn-success btn-sub" type="button" id="fileStatusBtn" onclick="changeStatus('${file.getName()}', '${file.getVersion()}', true)">Submitted</button>
+
+                                    </c:when>
+
+                                    <c:otherwise>
+
+                                        <button class="btn btn-outline-success btn-sub" type="button" id="fileStatusBtn" onclick="changeStatus('${file.getName()}', '${file.getVersion()}', false)">Submit</button>
+
+                                    </c:otherwise>
+
+                                </c:choose>
+
+                            
+                            </div>
+
+                        </c:forEach>
+
+
+                    </div>
+
+
+                <div>
+
+
+
+                <form id="removeForm" action="ManageFiles" method="POST" > 
+
+                    <input type="hidden" name="remove" id="remove">
+
+                    <input type="hidden" name="removeFileName" id="removeFileName">
+
+                    <input type="hidden" name="removeFileVersion" id="removeFileVersion">
+
+                </form>  
+
+
+
+                <form id="statusForm" action="ManageFiles" method="POST" >
+
+                    <input type="hidden" name="status" id="status">
+
+                    <input type="hidden" name="statusFileName" id="statusFileName">
+
+                    <input type="hidden" name="statusFileVersion" id="statusFileVersion">
+
+                </form> 
+
+
+
+
+
+
+
+                <div class='container add-file-div'>
+
+                    <button class='btn btn-success btn-lg add-file-btn' id="addFileBtn" onClick="showAddFile()"><i class="fas fa-plus"></i> Add File</div>
+
+                </div>
+
+                
+
+                <div class='border add-file-form-div' id='addVersionForm'>
+
+
+                    <div class='h2 file-title-div'> Add New Version</div>    
+
+
+                    <form id="newVersionForm" method="POST" action="/Assignment3/ManageFiles" > <%-- onsubmit="return formVersionVal()" --%> 
+
+                        <div class='form-div'>
+
+
+                            <div class='form-file row'>
+
+
+                                <label for='versionUrl' class='col-sm-2 col-form-label'>File URL:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type='text' class='form-control form-input' id='versionUrl' name='versionUrl' placeholder='Enter URL'>
+
+                                </div>
+
+
+                                <div class="alert alert-danger error" id='urlVersionInvalid' role="alert">
+
+                                    Must enter a valid URL 
+
+                                </div> 
+
+
+                            </div>
+
+
+
+                            <div class='form-file row'>  
+
+
+                                <label for='newVersionDesc' class='col-sm-2 col-form-label'>File Description:</label>
+
+                                <div class="col-sm-10">
+
+                                    <textarea class='form-contol text-area' id='newVersionDesc' name='newVersionDesc'></textarea>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <input type="hidden" name="newVersion" id="newVersion">
+
+                            <input type="hidden" name="newVersionFileName" id="newVersionFileName">
+
+
+                            <button type="submit" class="btn btn-success btn-lg add-file-btn2"><i class="fas fa-plus"></i> Add File</button>
+
+
+                        </div>
+
+                    </form>
+
+                </div> 
+
+
+
+
+
+
+                
+
+                <div class='border add-file-form-div' id='addFileForm'>
+
+                <div class='h2 file-title-div'>Add New File</div>
+
+                    <form id="fileForm" method="POST" action="/Assignment3/ManageFiles" onSubmit="return formValidation()">
+
+                        <div class='form-div'>
+
+
+                            <div class='form-file row'>
+                            
+                                <label for='fileName' class='col-sm-2 col-form-label'>File Name:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type='text' class='form-control form-input' id='fileName' name='fileName' placeholder='Enter Name'>
+
+                                </div>
+
+                                <div class="alert alert-danger error" id='nameInvalid' role="alert">
+
+                                    Must entre a file name
+                                    
+                                </div> 
+
+                            </div>
+
+
+                            <div class='form-file row'>
+                            
+                                <label for='fileUrl' class='col-sm-2 col-form-label'>File URL:</label>
+
+                                <div class="col-sm-10">
+
+                                    <input type='text' class='form-control form-input' id='fileUrl' name='fileUrl' placeholder='Enter URL'>
+
+                                </div>
+
+                                <div class="alert alert-danger error" id='urlInvalid' role="alert">
+
+                                    Must enter a valid URL
+                                    
+                                </div>                              
+
+                            </div>
+
+
+                            <div class='form-file row'>
+                            
+                                <label for='fileDesc' class='col-sm-2 col-form-label'>File Description:</label>
+
+                                <div class="col-sm-10">
+
+                                    <textarea class='form-contol text-area' id='fileDesc' name='fileDesc'></textarea>
+
+                                </div>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-lg add-file-btn2"><i class="fas fa-plus"></i> Add File</button>
+
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+
+
+
+
+            </div>
 
         </div>
 
