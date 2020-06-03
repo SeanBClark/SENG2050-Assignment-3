@@ -5,10 +5,10 @@ $(document).ready(function ()
 
 function nameExist()
 {
-    $("#addAppForm").slideUp();
+    $("#schedule").slideUp();
+    $("#addAppForm").slideDown();
     $("#nameAlreadyExists").show();
-    $("#schedule").slideDown();
-    $("#addAppBtn").html('<i class="fas fa-plus"></i> Add Appointment');
+    $("#addAppBtn").html('<i class="fas fa-plus"></i> Show Appointments');
 }
 
 function showAddApp() 

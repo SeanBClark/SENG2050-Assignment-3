@@ -102,9 +102,8 @@
 
 .error {
 
-    margin-left: 18%;
-    margin-right: 2%;
-    width: 100%;
+    margin-left: 17%;
+    width: 83%;
     display: none;
 }
 
@@ -129,5 +128,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+}
+
+.app-exists {
+
+    margin-left: 5%;
+    width: 90%;
 
 }

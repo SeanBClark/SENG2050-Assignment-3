@@ -44,6 +44,8 @@ public class AppointmentController extends HttpServlet
     {
         HttpSession session = request.getSession();
 
+        boolean redirectSent = false; 
+
         int groupId = (int) session.getAttribute("groupID"); // used to call other databse functions in bean 
 
         // add list of appointments to session     
@@ -83,6 +85,7 @@ public class AppointmentController extends HttpServlet
             if(appointment.doesNameExist(groupId, name)) // appointment name already exists, notify user
             {
                 response.sendRedirect("/Assignment3/ManageAppointments?exists=true");
+                redirectSent = true; 
             }
             else // new appointment and ni appointment exists with such name
             {
@@ -99,8 +102,10 @@ public class AppointmentController extends HttpServlet
             }
         }
 
-
-        // redirect to list of appointments jsp page. 
-        response.sendRedirect("/Assignment3/ManageAppointments");
+        if(redirectSent == false)
+        {
+            // redirect to list of appointments jsp page. 
+            response.sendRedirect("/Assignment3/ManageAppointments");
+        }
     }
 }
