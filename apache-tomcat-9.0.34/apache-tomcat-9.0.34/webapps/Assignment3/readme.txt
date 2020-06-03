@@ -4,6 +4,20 @@ javac -cp ".;mysql-connector-java-8.0.20.jar" *.java
 
 DOCUMENTATION
 
+    -   START PAGE = /Assignment3/HomePage
+
+    -   Pre-created Accounts
+
+        -   Account Name: admin@admin.com | Password: admin
+
+        -   Account Name: lect1@lect1.com | Password: lect1
+        -   Account Name: lect2@lect2.com | Password: lect2
+        -   Account Name: lect3@lect3.com | Password: lect3
+
+        -   Account Name: std1@std1.com | Password: password
+        -   Account Name: std2@std2.com | Password: password
+        -   Account Name: std3@std3.com | Password: password
+
     -   Log in 
 
             -   Database adds dummy accounts when script is ran 
