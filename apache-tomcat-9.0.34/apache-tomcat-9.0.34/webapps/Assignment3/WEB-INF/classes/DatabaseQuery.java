@@ -73,13 +73,13 @@ public class DatabaseQuery {
         return result;
     }
     
-    public static String markMilestone (int groupID, String milestoneName, int mark) {
-        String result = "UPDATE group_milestones SET milestone_status =" + mark +" WHERE group_id='"+ groupID +"' AND milestone_name ='"+ milestoneName +"';"; 
+    public static String markMilestone (int groupID, String milestoneName, int mark, String date) {
+        String result = "UPDATE group_milestones SET milestone_status =" + mark +" WHERE group_id='"+ groupID +"' AND milestone_name ='"+ milestoneName +"' AND milestone_datetime = '"+ date +"';"; 
         return result;
     }
     
-    public static String deleteMilestone (int groupID, String milestoneName) {
-        String result = "DELETE FROM group_milestones WHERE milestone_name ='"+milestoneName+"' AND group_id='"+groupID+"';";
+    public static String deleteMilestone (int groupID, String milestoneName, String date) {
+        String result = "DELETE FROM group_milestones WHERE milestone_name ='"+milestoneName+"' AND group_id='"+groupID+"' AND milestone_datetime = '"+ date +"';";
         return result;
     }
 

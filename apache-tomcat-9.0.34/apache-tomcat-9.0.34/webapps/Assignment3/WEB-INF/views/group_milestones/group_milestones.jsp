@@ -208,6 +208,7 @@
                                                 
                                                     <form method = "post" action = "/Assignment3/ManageMilestones">
                                                         <input type="hidden" name="markIncomplete" value="${item.getMilestoneName()}">
+                                                        <input type="hidden" name="date" value="${item.getMilestoneDate()}">
                                                         <button type = "submit" class = "btn btn-warning btn-lg"><i class="fas fa-times"></i> Mark Incomplete</button>
                                                     </form>
                                                 
@@ -216,6 +217,7 @@
 
                                                     <form method = "post" action = "/Assignment3/ManageMilestones">
                                                         <input type="hidden" name="markComplete" value="${item.getMilestoneName()}">
+                                                        <input type="hidden" name="date" value="${item.getMilestoneDate()}">
                                                         <button type = "submit" class = "btn btn-success btn-lg"><i class="fas fa-check"></i> Mark Complete</button>
                                                     </form>
 
@@ -227,6 +229,7 @@
                                             <td>
                                                 <form method = "post" action = "/Assignment3/ManageMilestones">
                                                     <input type="hidden" name="markRemove" value="${item.getMilestoneName()}">
+                                                    <input type="hidden" name="date" value="${item.getMilestoneDate()}">
                                                     <button type = "submit" class = "btn btn-danger btn-lg"><i class="fas fa-trash"></i> Remove Milestone</button>
                                                 </form>
                                             </td>

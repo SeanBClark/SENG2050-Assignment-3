@@ -169,7 +169,8 @@ public class MilestoneController extends HttpServlet {
         }
         
         String markIncomplete = request.getParameter("markIncomplete");
-        String markIncompleteQuery = DatabaseQuery.markMilestone(groupID,markIncomplete,0);
+        String date = request.getParameter("date");
+        String markIncompleteQuery = DatabaseQuery.markMilestone(groupID,markIncomplete,0,date);
         if (markIncomplete != null && !markIncomplete.equals(""))
         {
             
@@ -184,7 +185,7 @@ public class MilestoneController extends HttpServlet {
         }
         
         String markComplete = request.getParameter("markComplete");
-        String markCompleteQuery = DatabaseQuery.markMilestone(groupID,markComplete,1);
+        String markCompleteQuery = DatabaseQuery.markMilestone(groupID,markComplete,1,date);
         if (markComplete != null && !markComplete.equals(""))
         {
             
@@ -199,7 +200,7 @@ public class MilestoneController extends HttpServlet {
         }
         
         String markRemove = request.getParameter("markRemove");
-        String removeQuery = DatabaseQuery.deleteMilestone(groupID,markRemove);
+        String removeQuery = DatabaseQuery.deleteMilestone(groupID,markRemove,date);
         if (markRemove != null && !markRemove.equals(""))
         {
             
