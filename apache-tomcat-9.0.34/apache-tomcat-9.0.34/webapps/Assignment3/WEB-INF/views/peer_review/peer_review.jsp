@@ -152,7 +152,12 @@
                                     <p class = 'h5 info-header border-bottom '>Peer Review</p>
                                     
                                 </div>
-                                
+                                <c:choose>
+                                    <c:when test = "${sessionScope.error != null}">
+                                        <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Error: The total percentage cannot exceed 100%</div>
+                                    </c:when>
+                                </c:choose>
+                                <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> Notice: any remainder from 100 left will be divided equally between members</div>
                                 
                                 <form method="post" action="/Assignment3/PeerReview" onSubmit = "return formValidation()">
                                 <ul class = 'list-group info-list'>

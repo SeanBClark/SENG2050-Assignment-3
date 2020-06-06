@@ -20,6 +20,7 @@ public class PeerReviewController extends HttpServlet {
         Connection connection = null;
         try { connection = ConfigBean.getConnection(); } catch (Exception e) { e.printStackTrace(); }
         
+
         ResultSet groupInfoRS = null;
         ResultSet groupMemberRS = null;
         
@@ -28,6 +29,13 @@ public class PeerReviewController extends HttpServlet {
         
         HttpSession session = request.getSession();
         int groupID = (int) session.getAttribute("groupID");
+        
+        String error = request.getParameter("error");
+        if (error != null && !error.equals(""))
+        {
+            session.setAttribute("error",error);
+        }
+        
         String getGroupInfoQuery = "SELECT group_id, group_name, group_description FROM group_info WHERE group_id =  " + groupID + "";
         
         groupInfoRS = DatabaseQuery.getResultSet(getGroupInfoQuery, connection);
