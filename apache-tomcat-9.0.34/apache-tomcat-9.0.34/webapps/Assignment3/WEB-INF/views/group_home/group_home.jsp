@@ -275,8 +275,12 @@
 
                     </div>
                     <div class = 'border col'>
-
-                        Group Messanger?
+                        <div class ="peer-review border-bottom">
+                            <p class = 'h5'>Peer Review</p>
+                        </div>
+                        <div class = 'peer-review'>
+                            <a href = '/Assignment3/PeerReview'><button class = 'btn btn-success add-member-btn'><i class="fas fa-chart-pie"></i>Peer Review </button> </a>
+                        </div>
 
                     </div>
 
