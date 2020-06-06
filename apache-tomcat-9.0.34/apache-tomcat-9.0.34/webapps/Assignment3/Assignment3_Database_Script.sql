@@ -313,6 +313,10 @@ CREATE TABLE project_assign (
 
 );
 
+-- SELECT project.name, project_assign.grade, project_assign.feedback FROM project_assign 
+-- 	JOIN project ON project.id = project_assign.project_id
+-- 	WHERE group_id = 1 and marked = 1;
+
 -- Creates 2 completed and one uncompleted project for group 1 and 2
 INSERT INTO project_assign(project_id, group_id, feedback) VALUES (1, 1, 'Good work, keep it up');
 INSERT INTO project_assign(project_id, group_id, feedback) VALUES (2, 1, 'This is terrible, drop out');

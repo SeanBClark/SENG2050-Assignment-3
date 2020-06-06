@@ -23,6 +23,14 @@ public class GroupController extends HttpServlet {
         GroupBean groupBean = new GroupBean();
         session.setAttribute("groupInfo", (groupBean.getGroupInfo(Integer.parseInt(groupID))));
 
+        boolean ifFeedbackExists = groupBean.ifFeedbackExists(Integer.parseInt(groupID));
+
+        if (ifFeedbackExists == true) {
+
+            session.setAttribute("feedbackList" , (groupBean.getFeedbackList(Integer.parseInt(groupID))));
+
+        }
+
         GroupMemberBean groupMemberBean = new GroupMemberBean();
         session.setAttribute("groupMemberList", (groupMemberBean.getMemberList(Integer.parseInt(groupID))));
 
