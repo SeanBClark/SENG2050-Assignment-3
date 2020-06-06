@@ -15,6 +15,7 @@ public class CourseBean {
             Connection connection = ConfigBean.getConnection(); 
             Statement statement = connection.createStatement();
             statement.execute(insertProject(name, description, dueDate, courseID));
+            statement.close();
             connection.close();
             
         } catch (Exception e) {

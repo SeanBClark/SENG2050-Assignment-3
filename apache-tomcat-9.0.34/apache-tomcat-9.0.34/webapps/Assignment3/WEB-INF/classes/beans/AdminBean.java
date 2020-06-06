@@ -20,6 +20,7 @@ public class AdminBean implements java.io.Serializable {
             Connection connection = ConfigBean.getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateUserQuery(id, email));
+            statement.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,7 +44,7 @@ public class AdminBean implements java.io.Serializable {
             while (resultSet.next()) {
                 id = resultSet.getInt(1);
             }
-
+            resultSet.close();
             connection.close();
 
         } catch (Exception e) {
@@ -65,6 +66,7 @@ public class AdminBean implements java.io.Serializable {
             Connection connection = ConfigBean.getConnection();
             Statement statement = connection.createStatement();
             statement.execute(enrollStudentQuery(email, code));
+            statement.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,6 +89,7 @@ public class AdminBean implements java.io.Serializable {
                 exists = resultSet.getInt(1);
             }
 
+            resultSet.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,6 +113,7 @@ public class AdminBean implements java.io.Serializable {
                 exists = resultSet.getInt(1);
             }
 
+            resultSet.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,6 +132,7 @@ public class AdminBean implements java.io.Serializable {
             Connection connection = ConfigBean.getConnection();
             Statement statement = connection.createStatement();
             statement.execute(createCourseQuery(name, desc, code));
+            statement.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -150,6 +155,7 @@ public class AdminBean implements java.io.Serializable {
                 exists = resultSet.getInt(1);
             }
 
+            resultSet.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -169,6 +175,7 @@ public class AdminBean implements java.io.Serializable {
             Connection connection = ConfigBean.getConnection();
             Statement statement = connection.createStatement();
             statement.execute(insertCord(email, code));
+            statement.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
