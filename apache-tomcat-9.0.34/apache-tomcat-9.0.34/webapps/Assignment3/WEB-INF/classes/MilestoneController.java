@@ -123,6 +123,10 @@ public class MilestoneController extends HttpServlet {
         }
         
         try {
+                groupInfoRS.close();
+                groupMemberRS.close();
+                completedPercentageRS.close();
+                upcomingMilestonesRS.close();
                 connection.close(); 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -161,6 +165,7 @@ public class MilestoneController extends HttpServlet {
             try {
                 Statement statement = connection.createStatement();
                 statement.execute(addMilestoneQuery);
+                statement.close();
                 connection.close(); 
                 response.sendRedirect("/Assignment3/ManageMilestones");
             } catch (Exception e) {
@@ -177,6 +182,7 @@ public class MilestoneController extends HttpServlet {
             try {
                 Statement statement = connection.createStatement();
                 statement.execute(markIncompleteQuery);
+                statement.close();
                 connection.close(); 
                 response.sendRedirect("/Assignment3/ManageMilestones");
             } catch (Exception e) {
@@ -192,6 +198,7 @@ public class MilestoneController extends HttpServlet {
             try {
                 Statement statement = connection.createStatement();
                 statement.execute(markCompleteQuery);
+                statement.close();
                 connection.close(); 
                 response.sendRedirect("/Assignment3/ManageMilestones");
             } catch (Exception e) {
@@ -207,6 +214,7 @@ public class MilestoneController extends HttpServlet {
             try {
                 Statement statement = connection.createStatement();
                 statement.execute(removeQuery);
+                statement.close();
                 connection.close(); 
                 response.sendRedirect("/Assignment3/ManageMilestones");
             } catch (Exception e) {

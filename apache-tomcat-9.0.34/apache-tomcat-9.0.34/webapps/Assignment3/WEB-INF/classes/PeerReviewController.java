@@ -83,6 +83,8 @@ public class PeerReviewController extends HttpServlet {
         }
         
         try {
+                groupInfoRS.close();
+                groupMemberRS.close();
                 connection.close(); 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -137,6 +139,7 @@ public class PeerReviewController extends HttpServlet {
                     Statement statement = connection.createStatement();
                     statement.execute(clearReview);
                     statement.execute(addReview);
+                    statement.close();
                     connection.close(); 
                 }
                 catch(Exception e) {
