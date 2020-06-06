@@ -94,7 +94,7 @@ public class GroupListBean implements java.io.Serializable
                 groupList.add(groupListBean);
 
             }
-            
+            resultSet.close();
             connection.close();
 
         } catch (Exception e) {

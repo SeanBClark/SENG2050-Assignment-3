@@ -207,6 +207,7 @@ public class GroupBean implements java.io.Serializable
             while (resultSet.next()){
                 groupID = resultSet.getInt(1);
             }
+            resultSet.close();
             connection.close();
             
         } catch (Exception e) {
@@ -222,6 +223,8 @@ public class GroupBean implements java.io.Serializable
             Connection connection = ConfigBean.getConnection();
             Statement statement = connection.createStatement();
             statement.execute(insertGroupUserQuery(userID, groupName));    
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -248,6 +251,8 @@ public class GroupBean implements java.io.Serializable
             if (result == 1) {
                 exists = true;
             }
+            resultSet.close();
+            connection.close();
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -269,6 +274,7 @@ public class GroupBean implements java.io.Serializable
             Connection connection = ConfigBean.getConnection();
             Statement statement = connection.createStatement();
             statement.execute(insertGroupMemberQuery(email, groupID));
+            statement.close();
             connection.close();
             
         } catch (Exception e) {

@@ -25,6 +25,12 @@
 
 }
 
+.peer-review {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
 .progress-row {
 
     margin-top: 0.5rem;

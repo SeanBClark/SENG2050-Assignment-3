@@ -91,6 +91,7 @@ public class CourseListBean implements java.io.Serializable {
 
             }
 
+            resultSet.close();
             connection.close();
             
         } catch (Exception e) {

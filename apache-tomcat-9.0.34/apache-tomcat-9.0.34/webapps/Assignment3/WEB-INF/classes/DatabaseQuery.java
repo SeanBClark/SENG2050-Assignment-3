@@ -129,5 +129,14 @@ public class DatabaseQuery {
     }
 
 
+    public static String removeReview(String userId, String groupId) {
+        String result = "DELETE FROM review WHERE user_id='"+ userId +"' AND group_id='"+ groupId +"';";
+        return result;
+    }
+    
+    public static String addReview(String userId, String groupId, String score) {
+        String result = "INSERT INTO review(user_id, group_id, percent) VALUES ('"+ userId +"', '"+ groupId +"', '"+ score +"');";
+        return result;
+    }
 
 }
