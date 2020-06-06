@@ -118,6 +118,7 @@ public class UserBean implements java.io.Serializable
             Connection connection = ConfigBean.getConnection();
             Statement statement = connection.createStatement();
             statement.execute(insertUser(name, email, password));
+            statement.close();
             connection.close();
             
         } catch (Exception e) {
@@ -145,6 +146,7 @@ public class UserBean implements java.io.Serializable
                 }
             }
 
+            resultSet.close();
             connection.close();
             
         } catch (Exception e) { e.printStackTrace(); }

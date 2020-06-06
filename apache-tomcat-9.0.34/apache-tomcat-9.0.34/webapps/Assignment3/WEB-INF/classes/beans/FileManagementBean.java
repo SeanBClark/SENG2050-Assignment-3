@@ -334,6 +334,7 @@ public class FileManagementBean implements java.io.Serializable
                 list.add(bean);
 
             }
+            connection.close();
             
         } catch (Exception e) {
             e.printStackTrace();

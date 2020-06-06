@@ -89,7 +89,8 @@ public class UpcomingMilestoneBean implements java.io.Serializable
                 list.add(bean);
 
             }
-            
+            resultSet.close();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
