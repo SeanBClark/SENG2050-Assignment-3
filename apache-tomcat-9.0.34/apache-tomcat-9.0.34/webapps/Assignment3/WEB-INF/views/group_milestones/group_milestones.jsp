@@ -91,9 +91,9 @@
             </div>
 
              <div class = 'container con-div'>
-                <div class = 'row'>
+                <div class = 'row con-div'>
 
-                    <div class = 'border col'>
+                    <div class = 'border col sidebar'>
                     
                         <c:forEach var = "item" items = "${sessionScope.groupInfo}">
 
