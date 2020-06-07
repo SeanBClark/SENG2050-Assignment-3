@@ -276,3 +276,11 @@
 0:0:0:0:0:0:0:1 - - [07/Jun/2020:05:07:52 +1000] "GET /Assignment3/Admin HTTP/1.1" 200 13396
 0:0:0:0:0:0:0:1 - - [07/Jun/2020:05:07:52 +1000] "GET /Assignment3/views/admin/admin.css HTTP/1.1" 200 419
 0:0:0:0:0:0:0:1 - - [07/Jun/2020:05:07:52 +1000] "GET /Assignment3/views/admin/admin.js HTTP/1.1" 200 5987
+0:0:0:0:0:0:0:1 - - [07/Jun/2020:15:26:44 +1000] "GET /Assignment3/LogOutController HTTP/1.1" 200 5274
+0:0:0:0:0:0:0:1 - - [07/Jun/2020:15:26:44 +1000] "GET /views/application.css HTTP/1.1" 404 734
+0:0:0:0:0:0:0:1 - - [07/Jun/2020:15:26:47 +1000] "POST /Assignment3/LoginController HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [07/Jun/2020:15:26:48 +1000] "GET /Assignment3/GroupSelect HTTP/1.1" 200 7993
+0:0:0:0:0:0:0:1 - - [07/Jun/2020:15:26:49 +1000] "GET /Assignment3/GroupHome?groupid=1 HTTP/1.1" 200 19737
+0:0:0:0:0:0:0:1 - - [07/Jun/2020:15:27:12 +1000] "GET /Assignment3/PeerReview HTTP/1.1" 200 11479
+0:0:0:0:0:0:0:1 - - [07/Jun/2020:15:27:12 +1000] "GET /Assignment3/views/peer_review/peer_review.js HTTP/1.1" 200 448
+0:0:0:0:0:0:0:1 - - [07/Jun/2020:15:27:14 +1000] "GET /Assignment3/GroupHome?groupid=1 HTTP/1.1" 200 19737
