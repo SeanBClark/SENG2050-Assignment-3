@@ -271,15 +271,66 @@
 
                             </div>
 
+                            <%-- Feedback --%>
+                            <div class = 'border col info-col'>
+
+                                <div class = 'row'>
+                                
+                                    <p class = 'h5 info-header border-bottom '>Feedback</p>
+                                    
+                                </div>
+
+                                <div class = 'border-bottom row d-flex justify-content-center'>
+
+                                    <ul class = 'list-group info-list'>
+
+                                        <c:forEach var = "item" items = "${sessionScope.feedbackList}">
+
+                                            <li class = 'list-group-item'>
+                                            
+                                                <p class = 'h5'>${item.getProjectName()}</p>
+
+                                                <%-- <p class = 'h6'>${item.getGrade()}</p> --%>
+                                            <c:choose>
+                                                <c:when  test = "${item.getGrade() < 50}">
+                                                
+                                                    <p class = 'h6 alert-danger'>${item.getGrade()}</p>
+                                                
+                                                </c:when >
+                                                <c:otherwise>
+
+                                                    <p class = 'h6 alert-success'>${item.getGrade()}</p>
+
+                                                </c:otherwise>
+
+                                            </c:choose>
+
+                                                ${item.getFeedback()}
+                                                
+                                            </li>
+
+                                        </c:forEach>
+                                    </ul>
+
+                                </div>
+
+                                <div class = 'row d-flex justify-content-center info-btn'>
+
+                                    <%-- <a href = '/Assignment3/ManageFiles'><button class = 'btn btn-success'>Manage Files</button></a>  --%>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
                     </div>
                     <div class = 'border col'>
-                        <div class ="peer-review border-bottom">
-                            <p class = 'h5'>Peer Review</p>
-                        </div>
-                        <div class = 'peer-review'>
-                            <a href = '/Assignment3/PeerReview'><button class = 'btn btn-success add-member-btn'><i class="fas fa-chart-pie"></i>Peer Review </button> </a>
+
+                        <div class = 'border-bottom group-name-div'>
+
+                            Messanger?
+                                
                         </div>
 
                     </div>

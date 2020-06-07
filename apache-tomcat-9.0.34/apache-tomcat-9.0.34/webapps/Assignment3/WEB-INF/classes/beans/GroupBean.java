@@ -18,15 +18,61 @@ public class GroupBean implements java.io.Serializable
     private String groupName;
     private String groupDesc;
     private int groupId;
+    private double grade;
+    private String feedback;
+    private String projectName;
 
     public GroupBean(){}
 
-    public GroupBean(String groupName, String groupDesc, int groupId)
+    public GroupBean(String groupName, String groupDesc, int groupId, double grade, String feedback, String projectName)
     {
 
         this.groupName = groupName;
         this.groupDesc = groupDesc;
         this.groupId = groupId;
+        this.grade = grade;
+        this.feedback = feedback;
+        this.projectName = projectName;
+
+    }
+
+    public void setGrade(double param) {
+
+        this.grade = param;
+
+    }
+
+    public double getGrade() {
+
+        return grade;
+
+    }
+
+    public void setFeedback(String param) 
+    {
+
+        this.feedback = param;
+
+    }
+
+    public String getFeedback()
+    {
+
+        return feedback;
+
+    }
+
+    public void setProjectName(String param) 
+    {
+
+        this.projectName = param;
+
+    }
+
+    public String getProjectName()
+    {
+
+        return projectName;
 
     }
 
@@ -239,6 +285,71 @@ public class GroupBean implements java.io.Serializable
 
     public String insertGroupMemberQuery(String email, int groupID) {
         return "INSERT INTO user_group_info(user_id, group_id) VALUES ((SELECT user_id FROM user WHERE user_email = '" + email + "'), " + groupID + ");";
+    }
+
+    //  Get group feedback if exists
+
+    public List<GroupBean> getFeedbackList(int groupID) {
+
+        List<GroupBean> list = new ArrayList<>();
+
+        try {
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(getFeedbackQuery(groupID), connection);
+
+            while (resultSet.next()) {
+
+                GroupBean bean = new GroupBean();
+                bean.setProjectName(resultSet.getString("name"));
+                bean.setGrade(resultSet.getDouble("grade"));
+                bean.setFeedback(resultSet.getString("feedback"));
+                list.add(bean);
+
+            }
+
+            resultSet.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+    public String getFeedbackQuery(int groupID) {
+        return "SELECT project.name, project_assign.grade, project_assign.feedback FROM project_assign" 
+                    + " JOIN project ON project.id = project_assign.project_id"
+                    + " WHERE group_id = " + groupID + " and marked = 1;";
+    }
+
+    public boolean ifFeedbackExists(int groupID) {
+
+        boolean exists = false;
+        int result = 0;
+
+        try {
+
+            Connection connection = ConfigBean.getConnection();
+            ResultSet resultSet = DatabaseQuery.getResultSet(ifFeedbackExistsQuery(groupID), connection);
+            while (resultSet.next()){
+                result = resultSet.getInt(1);
+            }
+
+            if (result == 1) {
+                exists = true;
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return exists;
+
+    }
+
+    public String ifFeedbackExistsQuery(int groupID) {
+        return "SELECT EXISTS(SELECT project_id FROM project_assign WHERE group_id = " + groupID + ");";
     }
 
 }
