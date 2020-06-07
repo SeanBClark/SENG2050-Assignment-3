@@ -421,8 +421,9 @@ public class FileManagementBean implements java.io.Serializable
     }
 
     public static String insertFeedbackQuery(int projectID, int groupID, String feedback, double grade){
-        return "INSERT INTO project_assign(project_id, group_id, feedback, grade, mark, marked)" 
-                    + " VALUES ( " + projectID + ", " + groupID + ", '" + feedback + "', " + grade + ", '" + getMark(grade) + "', 1 );";
+        return "UPDATE project_assign" 
+                    + " SET feedback = '" + feedback + "', grade = '"+ grade +"', mark = '"+ getMark(grade) +"', marked = 1" 
+                    + " WHERE project_id = '"+ projectID + "' AND group_id = '" + groupID + "';";
     }
 
     public static String getMark(double grade) {

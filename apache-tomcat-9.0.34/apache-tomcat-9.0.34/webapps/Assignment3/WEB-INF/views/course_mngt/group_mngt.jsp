@@ -63,6 +63,16 @@
                                 </a>
 
                             </li>
+                            
+                            <li class="nav-item">
+                            
+                                <a class="nav-link" href="/Assignment3/LogOutController">
+                                
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
+                                    
+                                 </a>
+
+                            </li>
 
                         </ul>
 
@@ -87,9 +97,31 @@
 
                     <div class = 'border-bottom col d-flex justify-content-center page-header'>
 
-                        <p class = 'h3'>Group Name</p>
+                        <c:forEach var = "item" items = "${sessionScope.groupInfo}">
+
+                            <p class = 'h3'>${item.getGroupName()}</p>
+
+                        </c:forEach>
 
                     </div>                    
+
+                </div>
+                <div class = 'row progress-row'>
+
+                    <div class = 'col-1 '>
+
+                        <p class = 'progress-text'>Progress:</p>
+
+                    </div>
+                    <div class = 'col-11'>
+
+                        <div class = 'progress'>
+
+                            <div class = 'progress-bar progress-bar-striped bg-success' style = 'width: ${sessionScope.percentageComplete}%;' roll = 'progressbar' aria-valuemin = '0' aria-valuemax = '100'"></div>
+
+                        </div>
+
+                    </div>
 
                 </div>
                 <div class = 'row'>
